@@ -17,6 +17,8 @@
   },
   "homepage": "https://github.com/magiama9/group-project-02#readme",
   "dependencies": {
+    "express": "^4.17.1",
+    "handlebars": "^4.7.3",
     "mysql2": "^2.1.0",
     "sequelize": "^5.21.4",
     "sequelize-cli": "^5.5.1"
