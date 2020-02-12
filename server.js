@@ -18,7 +18,7 @@ app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
 // Static directory
-app.use(express.static(__dirname + "app/public"));
+app.use(express.static(__dirname + "/public"));
 
 app.engine("handlebars", exphb({ defaultLayout: "main" }));
 app.set("view engine", "handlebars");
