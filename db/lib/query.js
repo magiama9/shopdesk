@@ -66,6 +66,27 @@ const removeFromCart = id => {
     { where: { id: id } }
   );
 };
+// Placeholder function to save items using sequelize
+// Expects ID to be the ID of a selected item and valid
+const save = id => {
+  db.Items.update(
+    {
+      saved: true
+    },
+    { where: { id: id } }
+  );
+};
+
+// Placeholder function to unsave items using sequelize
+// Expects ID to be the ID of a selected item and valid
+const unSave = id => {
+  db.Items.update(
+    {
+      saved: false
+    },
+    { where: { id: id } }
+  );
+};
 
 // Placeholder function to decrease available quantity of item once it's purchased
 // Expects ID to be the ID of a purchased item and valid
@@ -76,5 +97,12 @@ const decreaseQty = id => {
 viewInventory();
 
 module.exports = {
-  addItem: addItem
+  view: viewInventory,
+  addItem: addItem,
+  addToCart: addToCart,
+  removeFromCart: removeFromCart,
+  save: save,
+  unSave: unSave,
+  search: searchItem,
+  decreaseQty: decreaseQty
 };
