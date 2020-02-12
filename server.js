@@ -5,6 +5,7 @@ const exphb = require("express-handlebars");
 
 // Requires in index file that sequelize helps us with (DO NOT TOUCH THAT INDEX.JS FILE GOD DAMNIT!)
 const db = require("./models");
+const seed = require("./db/init/seed");
 
 // Initializes Express
 const app = express();
@@ -25,6 +26,7 @@ require("./app/routes/api-routes.js")(app);
 // Updates DB before beginning the express service
 // force:true is essentially the same as DROP DATABASE IF EXISTS
 db.sequelize.sync({ force: true }).then(function() {
+  seed();
   app.listen(PORT, function() {
     console.log("Listening on port %s", PORT);
   });
