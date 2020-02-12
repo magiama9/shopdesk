@@ -7,7 +7,6 @@ const passport = require("passport");
 const path = require("path");
 const db = require("../../models");
 
-
 // SETS STORAGE DESTINATION AND FILENAMES WHEN IMAGES ARE UPLOADED
 const storage = multer.diskStorage({
   destination: (req, file, cb) => {
@@ -34,7 +33,7 @@ module.exports = function(app, passport) {
   // GET ROUTE FOR VIEWING INVENTORY
   app.get("/", function(req, res) {
     query.view(res);
-    console.log(res)
+    console.log(res);
   });
 
   // POST ROUTE FOR ADDING INVENTORY
