@@ -60,6 +60,6 @@ const removeFromCart = id => {
 
 // Placeholder function to decrease available quantity of item once it's purchased
 // Expects ID to be the ID of a purchased item and valid
-const decreaseQty = (id) => {
-  db.Items.decrement("qty", {where: {id:id}})
-}
+const decreaseQty = id => {
+  db.Items.decrement("qty", { where: { id: id } });
+};
