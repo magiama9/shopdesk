@@ -4,7 +4,7 @@ const db = require("../../models");
 // Replace console logs with res.json once routes are implemented
 const viewInventory = (res) => {
   db.Items.findAll({}).then(dbItems => {
-    res.json(dbItems)
+    res.render("index", { items: dbItems });
   });
 };
 

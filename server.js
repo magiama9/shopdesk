@@ -17,11 +17,16 @@ const PORT = process.env.PORT || 8080;
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
+app.engine("handlebars", exphb({ defaultLayout: "main" }));
+app.set("view engine", "handlebars");
+
 // Static directory
 app.use(express.static("app/public"));
 
 // Routes
 require("./app/routes/api-routes.js")(app);
+
+
 
 // Updates DB before beginning the express service
 // force:true is essentially the same as DROP DATABASE IF EXISTS
