@@ -90,7 +90,7 @@ const decreaseQty = id => {
   db.Items.decrement("qty", { where: { id: id } });
 };
 
-viewInventory();
+// viewInventory();
 
 module.exports = {
   view: viewInventory,
