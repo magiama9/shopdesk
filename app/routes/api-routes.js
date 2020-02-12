@@ -14,7 +14,7 @@ module.exports = function(app) {
 
   // GET ROUTE FOR VIEWING INVENTORY
   app.get("/", function(req, res) {
-    query.view();
+    query.view(res);
   });
 
 

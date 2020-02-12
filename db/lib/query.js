@@ -2,25 +2,21 @@ const db = require("../../models");
 
 // Placeholder function to view all inventory using sequelize
 // Replace console logs with res.json once routes are implemented
-const viewInventory = () => {
+const viewInventory = (res) => {
   db.Items.findAll({}).then(dbItems => {
-    dbItems.forEach(idx => {
-      console.log(idx.description);
-      console.log(idx.name);
-      console.log(idx.price);
-      console.log(idx.img);
-    });
+    res.json(dbItems)
   });
 };
 
 // Placeholder function to add an item using sequelize
 // Replace console logs with res.json once routes are implemented
-const addItem = () => {
+const addItem = (obj, path) => {
   db.Items.create({
-    name: "Test",
-    description: "This is a test",
-    price: 100000,
-    img: "/assets/something.jpg"
+    name: obj.name,
+    description: obj.description,
+    qty: obj.qty,
+    price: obj.price,
+    img: path
   }).then(dbItems => {
     console.log(dbItems);
   });
@@ -66,6 +62,27 @@ const removeFromCart = id => {
     { where: { id: id } }
   );
 };
+// Placeholder function to save items using sequelize
+// Expects ID to be the ID of a selected item and valid
+const save = id => {
+  db.Items.update(
+    {
+      saved: true
+    },
+    { where: { id: id } }
+  );
+};
+
+// Placeholder function to unsave items using sequelize
+// Expects ID to be the ID of a selected item and valid
+const unSave = id => {
+  db.Items.update(
+    {
+      saved: false
+    },
+    { where: { id: id } }
+  );
+};
 
 // Placeholder function to decrease available quantity of item once it's purchased
 // Expects ID to be the ID of a purchased item and valid
@@ -76,5 +93,12 @@ const decreaseQty = id => {
 viewInventory();
 
 module.exports = {
-  addItem: addItem
+  view: viewInventory,
+  addItem: addItem,
+  addToCart: addToCart,
+  removeFromCart: removeFromCart,
+  save: save,
+  unSave: unSave,
+  search: searchItem,
+  decreaseQty: decreaseQty
 };
