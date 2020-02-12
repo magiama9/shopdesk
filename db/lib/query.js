@@ -4,10 +4,12 @@ const db = require("../../models");
 // Replace console logs with res.json once routes are implemented
 const viewInventory = () => {
   db.Items.findAll({}).then(dbItems => {
-    console.log(dbItems.description);
-    console.log(dbItems.name);
-    console.log(dbItems.price);
-    console.log(dbItems.img);
+    dbItems.forEach(idx => {
+      console.log(idx.description);
+      console.log(idx.name);
+      console.log(idx.price);
+      console.log(idx.img);
+    });
   });
 };
 
@@ -26,13 +28,20 @@ const addItem = () => {
 
 // Placeholder function to view items matching search using sequelize
 // Replace console logs with res.json once routes are implemented
+
+// SEARCH TERM IS NOT CASE SENSITIVE, THANK GOD.
 const searchItem = searchTerm => {
   db.Items.findAll({
     where: {
       name: searchTerm
     }
   }).then(search => {
-    console.log(search);
+    search.forEach(idx => {
+      console.log(idx.description);
+      console.log(idx.name);
+      console.log(idx.price);
+      console.log(idx.img);
+    });
   });
 };
 
@@ -63,3 +72,5 @@ const removeFromCart = id => {
 const decreaseQty = id => {
   db.Items.decrement("qty", { where: { id: id } });
 };
+
+viewInventory();
