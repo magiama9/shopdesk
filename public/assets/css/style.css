@@ -1,12 +1,13 @@
 .nav2{
     box-shadow: none;
 }
-.black-text{
+.menu{
     font-family: 'Times New Roman', Times, serif;
     font-size: x-large;
 }
 
-/* .white{
-    display: inline-block;
-} */
-
+.card-title{
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    font-weight: bolder;
+    font-size: xx-large;
+}
