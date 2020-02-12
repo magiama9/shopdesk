@@ -4,7 +4,6 @@
 // =============================================================
 //                  REQUIRE IN QUERY FUNCTIONS
 // =============================================================
-
 const query = require("../../db/lib/query")
 
 // =============================================================
@@ -13,8 +12,10 @@ const query = require("../../db/lib/query")
 
 module.exports = function(app) {
 
-
   // GET ROUTE FOR VIEWING INVENTORY
+  app.get("/", function(req, res) {
+    query.view();
+  });
 
 
   // POST ROUTE FOR ADDING INVENTORY
