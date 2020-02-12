@@ -19,16 +19,16 @@ app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
 // Static directory
-app.use(express.static("app/public"));
-app.use(
-  session({ secret: "keyboard cat", resave: true, saveUninitialized: true })
-);
-app.use(passport.initialize());
-app.use(passport.session());
+app.use(express.static(__dirname + "/public"));
+
+app.engine("handlebars", exphb({ defaultLayout: "main" }));
+app.set("view engine", "handlebars");
 
 // Routes
 require("./app/routes/api-routes.js")(app, passport);
 require("./config/passport.js")(passport, db.User);
+
+
 
 // Updates DB before beginning the express service
 // force:true is essentially the same as DROP DATABASE IF EXISTS

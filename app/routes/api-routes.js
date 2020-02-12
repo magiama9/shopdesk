@@ -32,6 +32,10 @@ const query = require("../../db/lib/query");
 
 module.exports = function(app, passport) {
   // GET ROUTE FOR VIEWING INVENTORY
+  app.get("/", function(req, res) {
+    query.view(res);
+    console.log(res)
+  });
 
   // POST ROUTE FOR ADDING INVENTORY
   // FORM NEEDS TO HAVE A FILE INPUT FIELD NAMED PHOTO

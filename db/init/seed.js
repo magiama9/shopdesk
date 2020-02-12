@@ -11,4 +11,5 @@ module.exports = seedDB = () => {
   add.addItem(testItem);
   add.addItem(testItem);
   add.addItem(testItem);
+  add.addItem(testItem);
 };
