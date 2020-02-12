@@ -18,10 +18,15 @@ app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
 // Static directory
-app.use(express.static("app/public"));
+app.use(express.static(__dirname + "/public"));
+
+app.engine("handlebars", exphb({ defaultLayout: "main" }));
+app.set("view engine", "handlebars");
 
 // Routes
 require("./app/routes/api-routes.js")(app);
+
+
 
 // Updates DB before beginning the express service
 // force:true is essentially the same as DROP DATABASE IF EXISTS

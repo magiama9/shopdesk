@@ -2,14 +2,9 @@ const db = require("../../models");
 
 // Placeholder function to view all inventory using sequelize
 // Replace console logs with res.json once routes are implemented
-const viewInventory = () => {
+const viewInventory = (res) => {
   db.Items.findAll({}).then(dbItems => {
-    dbItems.forEach(idx => {
-      console.log(idx.description);
-      console.log(idx.name);
-      console.log(idx.price);
-      console.log(idx.img);
-    });
+    res.render("index", { items: dbItems });
   });
 };
 
@@ -95,7 +90,7 @@ const decreaseQty = id => {
   db.Items.decrement("qty", { where: { id: id } });
 };
 
-viewInventory();
+// viewInventory();
 
 module.exports = {
   view: viewInventory,

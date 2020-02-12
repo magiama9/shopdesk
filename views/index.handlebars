@@ -1,0 +1,200 @@
+  <nav class="grey darken-3">
+        <div class="nav-wrapper">
+            <ul>
+                <li>
+                    <div class="center row">
+                        <div class="col 12 ">
+                            <div class="row" id="topbarsearch">
+                                <div class="input-field col s12 s6 text">
+                                    <i class="green-text material-icons prefix">search</i>
+                                    <input type="text" placeholder="search" id="autocomplete-input"
+                                        class="autocomplete text">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </li>
+            </ul>
+            <ul class="right">
+                <li><a href="#"><i class="material-icons left">shopping_cart</i>Your cart</a></li>
+                <li><a href="#" class="green-text"><i class="material-icons left">input</i>Login</a></li>
+                <li><a href="#"><i class="material-icons left">person_add</i>Signup</li>
+            </ul>
+        </div>
+    </nav>
+    <!----->
+
+    <!--Second navbar-->
+    <nav class="white nav2">
+        <div class="nav-wrapper">
+            <a href="" class="brand-logo left"><img src="assets/images/logo.png" width="150px" height="60px" /></a>
+
+            <ul id="nav-mobile" class="right">
+                <li><a href="#" class="green-text menu">Kitchen</a></li>
+                <li><a href="#" class="black-text menu">Bedroom</a></li>
+                <li><a href="#" class="green-text menu">Living room</a></li>
+                <li><a href="#" class="black-text menu">Bathroom</a></li>
+                <li><a href="#" class="green-text menu">Outdoors</a></li>
+            </ul>
+        </div>
+    </nav>
+    
+
+    <!--landing page-->
+
+    <div class="row">
+        <div class="col s12 m12">
+            <div class="card initial">
+                <div class="card-image">
+                    <img src="assets/images/luxury-home-living-room-tray-ceiling.jpg">
+                </div>
+                <div class="card-action">
+                    <a href="#"><i class="material-icons left">phone</i>Call us</a>
+                </div>
+                <div class="card-action">
+                    <a href="#"><i class="material-icons left">mail_outline</i>Send us an email</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    
+
+
+    <div class="row">
+        <div class="col s12 m12">
+            <div class="card product-display hide">
+                <h5 style="color:black">Make your home elite and modern with our products</h5>
+                <div class="card-content">
+                  {{#each items}}
+                    <div class="row">
+                      <div class="col s12 m4">
+                        <div class="card main">
+                          <div class="card-image">
+                            {{!-- <img src="assets/images/luxury-home-living-room-tray-ceiling.jpg"> --}}
+                          </div>
+                          <div class="card-action">
+                            <p class="item product-name">Name: {{this.dataValues.name}}</p>
+                            <p class="item description">Description: {{this.dataValues.description}}</p>
+                            <p class="item price">Price: {{this.dataValues.price}}</p>
+                            <button class="btn waves-effect waves-light" type="submit" name="action">Add to cart
+                                <i class="material-icons right">add_shopping_cart</i>
+                              </button>    
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  {{/each}}
+                <ul>
+                        
+                </div>
+            </div>
+        </div>
+    </div>
+    </div>
+
+
+    <!-- Footer -->
+    <footer class="page-footer white">
+        <div class="container">
+            <div class="row center align">
+                <div class="col l12 s12">
+                    <img src="assets/images/logo.png" width="150px" height="60px" />
+                    <h5 class="green-text">Elegant living costs less with Elite Modern</h5>
+                </div>
+            </div>
+        </div>
+        <div class="footer-copyright black-text">
+            ©opyright Elite Modern
+
+        </div>
+    </footer>
+
+    
+{{!-- displays item info --}}
+
+
+
+<script type="text/javascript">
+  $(".productname").text()
+
+  $(".save").on("click", function(event) {
+    // Make sure to preventDefault on a submit event.
+    event.preventDefault();
+  
+    // Get the ID by finding an element with a "name" attribute equal to the string "id"
+    var id = $(this).data("id");
+    console.log(id);
+
+    let saveditem = {
+      saved: true
+    };
+
+    // Send the PUT request.
+    $.ajax("/api/items/" + id, {
+      type: "PUT",
+      data: saveditem
+    }).then(
+      function() {
+        console.log("updated id ", id);
+        // Reload the page to get the updated list
+        location.reload();
+      }
+    );
+  });
+
+  $(".addToCart").on("click", function(event) {
+    // Make sure to preventDefault on a submit event.
+    event.preventDefault();
+  
+    // Get the ID by finding an element with a "name" attribute equal to the string "id"
+    var id = $(this).data("id");
+    console.log(id);
+
+    let addeditem = {
+      inCart: true
+    };
+
+    // Send the PUT request.
+    $.ajax("/api/items/" + id, {
+      type: "PUT",
+      data: addeditem
+    }).then(
+      function() {
+        console.log("updated id ", id);
+        // Reload the page to get the updated list
+        location.reload();
+      }
+    );
+  });
+
+  /*$(".buyItem").on("click", function(event) {
+    // Make sure to preventDefault on a submit event.
+    event.preventDefault();
+  
+    // Get the ID by finding an element with a "name" attribute equal to the string "id"
+    var id = $(this).data("id");
+    console.log(id);
+
+    let boughtItem = {
+      quatity: 
+    };
+
+    // Send the PUT request.
+    $.ajax("/api/items/" + id, {
+      type: "PUT",
+      data: boughtItem
+    }).then(
+      function() {
+        console.log("updated id ", id);
+        // Reload the page to get the updated list
+        location.reload();
+      }
+    );
+  });*/
+
+  $(".menu").on("click", function () {
+  $(".initial").addClass("hide");
+  $(".product-display").removeClass("hide");
+  });
+</script>
