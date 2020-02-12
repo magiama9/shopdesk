@@ -4,6 +4,7 @@
 // =============================================================
 const multer = require("multer");
 
+// SETS STORAGE DESTINATION AND FILENAMES WHEN IMAGES ARE UPLOADED
 const storage = multer.diskStorage({
   destination: (req, file, cb) => {
     cb(null, "../public/uploads");
@@ -32,7 +33,11 @@ module.exports = function(app) {
   // FORM NEEDS TO HAVE A FILE INPUT FIELD NAMED PHOTO
   app.post("/inventory/upload", upload.single("photo"), (req, res, next) => {
     // req.file is the `photo` file
-    // req.body will hold the text fields of the form
+    // req.body holds the text fields of the form
+
+    // Adds an item to the database. req.file.path SHOULD be the correct file path
+    // Needs testing
+    query.addItem(req.body, req.file.path);
   });
 
   // PUT ROUTE FOR UPDATING INVENTORY QUANTITY

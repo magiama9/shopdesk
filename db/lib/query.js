@@ -15,12 +15,13 @@ const viewInventory = () => {
 
 // Placeholder function to add an item using sequelize
 // Replace console logs with res.json once routes are implemented
-const addItem = () => {
+const addItem = (obj, path) => {
   db.Items.create({
-    name: "Test",
-    description: "This is a test",
-    price: 100000,
-    img: "/assets/something.jpg"
+    name: obj.name,
+    description: obj.description,
+    qty: obj.qty,
+    price: obj.price,
+    img: path
   }).then(dbItems => {
     console.log(dbItems);
   });
