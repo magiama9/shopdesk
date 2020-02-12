@@ -74,3 +74,7 @@ const decreaseQty = id => {
 };
 
 viewInventory();
+
+module.exports = {
+  addItem: addItem
+};

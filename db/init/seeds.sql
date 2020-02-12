@@ -1,1 +1,0 @@
-INSERT INTO items (name, price, desc) VALUES ("Purple Pants", 100, "Pants that are purple"), ("Striped Sweater", 5, "Gary's best Bill Cosby cosplay sweater"), ("Lightly pre-smoked cigarettes", 1, "Still have plenty of life left! #nofilter"), ("Bootcamp Certificate", 10000, "Sure, you didn't learn that much, but at least you got a nice piece of paper out of the deal!");
