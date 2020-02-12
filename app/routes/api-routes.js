@@ -3,6 +3,10 @@
 //              https://www.npmjs.com/package/multer
 // =============================================================
 const multer = require("multer");
+const passport = require("passport");
+const path = require("path");
+const db = require("../../models");
+
 
 // SETS STORAGE DESTINATION AND FILENAMES WHEN IMAGES ARE UPLOADED
 const storage = multer.diskStorage({
@@ -26,7 +30,7 @@ const query = require("../../db/lib/query");
 //                          ROUTES
 // =============================================================
 
-module.exports = function(app) {
+module.exports = function(app, passport) {
   // GET ROUTE FOR VIEWING INVENTORY
 
   // POST ROUTE FOR ADDING INVENTORY
@@ -39,6 +43,22 @@ module.exports = function(app) {
     // Needs testing
     query.addItem(req.body, req.file.path);
   });
+
+  app.get("/authenticate", (req, res) => {
+    res.sendFile(path.join(__dirname, "../public/auth.html"));
+  });
+
+  app.post(
+    "/authenticate",
+    passport.authenticate("local-signin", { failureRedirect: "/error" }),
+    (req, res) => {
+      res.send("Thank you for logging in.");
+    }
+  );
+
+  app.get("/success", (req, res) => res.send("Welcome!"));
+
+  app.get("/error", (req, res) => res.send("error logging in"));
 
   // PUT ROUTE FOR UPDATING INVENTORY QUANTITY
 

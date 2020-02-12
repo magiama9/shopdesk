@@ -1,8 +1,9 @@
-
 // Express and Express Handlebars Dependencies
 const express = require("express");
+const session = require("express-session");
 const exphb = require("express-handlebars");
-
+const passport = require("passport");
+var LocalStrategy = require("passport-local").Strategy;
 // Requires in index file that sequelize helps us with (DO NOT TOUCH THAT INDEX.JS FILE GOD DAMNIT!)
 const db = require("./models");
 const seed = require("./db/init/seed");
@@ -19,13 +20,20 @@ app.use(express.json());
 
 // Static directory
 app.use(express.static("app/public"));
+app.use(
+  session({ secret: "keyboard cat", resave: true, saveUninitialized: true })
+);
+app.use(passport.initialize());
+app.use(passport.session());
 
 // Routes
-require("./app/routes/api-routes.js")(app);
+require("./app/routes/api-routes.js")(app, passport);
+require("./config/passport.js")(passport, db.User);
 
 // Updates DB before beginning the express service
 // force:true is essentially the same as DROP DATABASE IF EXISTS
 db.sequelize.sync({ force: true }).then(function() {
+  db.User.create({ username: "admin", password: "admin" });
   seed();
   app.listen(PORT, function() {
     console.log("Listening on port %s", PORT);
