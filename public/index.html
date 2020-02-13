@@ -38,7 +38,7 @@
             </ul>
             <ul class="right">
                 <li><a href="#"><i class="home green-text material-icons left">home</i>Home</a></li>
-                <li><a href="#"><i class="material-icons left">shopping_cart</i>Your cart</a></li>
+                <li><a href="#"><i class="material-icons left shopping-cart">shopping_cart</i>Your cart</a></li>
                 <li><a href="#" class="green-text"><i class="material-icons left">input</i>Login</a></li>
                 <li><a href="#"><i class="material-icons left">person_add</i>Signup</li>
             </ul>
@@ -62,19 +62,17 @@
     </nav>
     <!---------------------------------------------------------------------------------------------------->
 
-    <!--landing page-------------------------------------------------------------------------------------->
+    <!--home page----------------------------------------------------------------------------------------->
 
     <div class="row">
         <div class="col s12 m12">
             <div class="card initial">
                 <div class="card-image">
-                    <img src="assets/images/luxury-home-living-room-tray-ceiling.jpg">
+                    <img src="assets/images/homepic1.jpg">
                 </div>
                 <div class="card-action">
-                    <a href="#"><i class="material-icons left">phone</i>Call us</a>
-                </div>
-                <div class="card-action">
-                    <a href="#"><i class="material-icons left">mail_outline</i>Send us an email</a>
+                    <a href="#"><i class="left  material-icons">phone</i>+571 555 0000</a>
+                    <a href="#" class="right"><i class="right material-icons">mail_outline</i>EliteModern@gmail.com</a>
                 </div>
             </div>
         </div>
@@ -82,15 +80,16 @@
 
     <!-------------------------------------------------------------------------------------------------->
 
-
+    <!-- This is a placeholder for all products---------------------------------------------------------->
     <div class="row">
         <div class="col s12 m12">
             <div class="card product-display hide">
                 <div class="row">
-                <div class="col s12 m12 offset-2">
-                <h5 style="color:black">Make your home elite and modern with our products</h5>
-            </div>
-        </div>
+                    <div class="col s12 m12 offset-2">
+                        <h5 class="center" style="color:black">Make your home beautiful together with our elegant
+                            collections</h5>
+                    </div>
+                </div>
                 <div class="card-content">
                     <div class="row">
                         <div class="col s12 m4">
@@ -102,9 +101,10 @@
                                     <p class="item product-name">Product name</p>
                                     <p class="item description">Description</p>
                                     <p class="item price">$</p>
+                                    <br><br>
                                     <button class="btn waves-effect waves-light" type="submit" name="action">Add to cart
                                         <i class="material-icons right">add_shopping_cart</i>
-                                      </button>    
+                                    </button>
                                 </div>
                             </div>
                         </div>
@@ -117,9 +117,10 @@
                                     <p class="item product-name">Product name</p>
                                     <p class="item description">Description</p>
                                     <p class="item price">$</p>
+                                    <br>
                                     <button class="btn waves-effect waves-light" type="submit" name="action">Add to cart
                                         <i class="material-icons right">add_shopping_cart</i>
-                                      </button>    
+                                    </button>
                                 </div>
                             </div>
                         </div>
@@ -132,9 +133,10 @@
                                     <p class="item product-name">Product name</p>
                                     <p class="item description">Description</p>
                                     <p class="item price">$</p>
+                                    <br>
                                     <button class="btn waves-effect waves-light" type="submit" name="action">Add to cart
                                         <i class="material-icons right">add_shopping_cart</i>
-                                      </button>    
+                                    </button>
                                 </div>
                             </div>
                         </div>
@@ -143,10 +145,115 @@
             </div>
         </div>
     </div>
+
+    <!------------------------------------------------------------------------------------------------------->
+
+    <!--This is a shopping cart placeholder------------------------------------------------------------------>
+    <!--Class shopping-cart places chekout card at the right corner------------------------------------------>
+    <div class="container">
+        <div class="col s12 m12">
+            <div class="card cart hide">
+                <div class="row">
+                    <div class="col s12 m12">
+                        <div class="col s12 m8">
+                            <h2 class="header">Your Items</h2>
+                            <hr>
+                            <br>
+                   
+                        <!--First item in a cart-->
+                            <div class="shopping-cart">
+                                <div class="shopping-cart-header">
+                                    <div class="card horizontal">
+                                        <div class="card-image">
+                                            <img src="assets/images/shopping.png" width="100px" height="100px">
+                                        </div>
+                                        <div class="card-stacked">
+                                            <div class="card-content">
+                                                <p class="right green-text">Price: $ 300</p>
+                                                <br><br>
+                                                <p> Conversation Set with Coffee Table (Black) <p>
+                                            </div>
+                                            <div class="card-action">
+                                                <a href="#"><i class="left  material-icons">file_download</i>Save for
+                                                    later</a>
+                                                <a href="#" class="right"><i
+                                                        class="right  material-icons">clear</i>Remove
+                                                    item</a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+               <!--Proceed to chekout card-->
+                        <div class="card horizontal">
+                            <div class="row">
+                                <div class="col s12 m12">
+                                    <div class="card">
+                                        <div class="card-content">
+                                            <span class="card-title red-text">Order details</span>
+                                            <hr>
+                                         <p>Subtotal: <span class="right">$ 2300</span></p>   
+                                         <br>
+                                         <p>Tax:  <span class="right"> --</span></p>
+                                        <br>
+                                         <p>Shipping: <span class="right">--</span></p>
+                                        </div>
+                                        <div class="card-action">
+                                            <a class="waves-effect waves-light btn-small red">Proceed to checkout</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+
+<!--Next item in a cart, some extra rows and column added-->
+                        <div class="row">
+                            <div class="col s12 m12">
+                                <div class="col s12 m8">
+                                    <div class="card horizontal">
+                                        <div class="card-image">
+                                            <img src="assets/images/sofa.webp" width="100px" height="100px">
+                                        </div>
+                                        <div class="card-stacked">
+                                            <div class="card-content">
+                                                <p class="right green-text">Price: $ 2000</p>
+                                                <br><br>
+                                                <p> Modern Waves Large Leather Sectional Sofa With Love Seats And Chaise
+                                                    Lounge
+                                                    <p>
+                                            </div>
+                                            <div class="card-action">
+                                                <a href="#"><i class="left  material-icons">file_download</i>Save for
+                                                    later</a>
+                                                <a href="#" class="right"><i
+                                                        class="right  material-icons">clear</i>Remove
+                                                    item</a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        
+
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
+    
 
 
-    <!-- Footer ----------------------------------------------------------------------------------------->
+
+
+
+    <!------------------------------------------------------------------------------------------------------->
+
+    <!-- Footer --------------------------------------------------------------------------------------------->
     <footer class="page-footer white">
         <div class="container">
             <div class="row center align">
@@ -158,7 +265,6 @@
         </div>
         <div class="footer-copyright black-text">
             ©opyright Elite Modern
-
         </div>
     </footer>
 

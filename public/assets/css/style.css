@@ -1,3 +1,5 @@
+
+/*box-shadow removes borders from cards, makes design look cleaner*/
 .nav2{
     box-shadow: none;
 }
@@ -10,4 +12,32 @@
     font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
     font-weight: bolder;
     font-size: xx-large;
+}
+
+.initial{
+    box-shadow: none;
+}
+
+h5{
+    font-family: cursive;
+}
+
+.header{
+    font-size: xx-large;
+}
+
+p{
+    font-family: cursive;
+}
+
+.horizontal{
+    box-shadow: none;
+}
+
+.card-title{
+font-family: cursive;
+}
+
+.hr{
+    color: white;
 }
