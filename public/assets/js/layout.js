@@ -1,6 +1,7 @@
 $(document).ready(function () {
+  console.log("kanslkdf");
   $('select').formSelect(); // materialize plugin for form where user is selecting state
-});
+
 
 // All the content lives on one html page, so we're adding hide/show classes for all links and buttons
 
@@ -13,6 +14,7 @@ $(".menu").on("click", function () {
 
 // home page icon on a navbar
 $(".home").on("click", function () {
+  console.log("click");
   $(".product-display").addClass("hide");
   $(".initial").removeClass("hide");
   $(".cart").addClass("hide");
@@ -62,4 +64,5 @@ $(".place-order").on("click", function(){
 $(".continue-shopping").on("click", function (){
   $(".thank-you").addClass("hide");
   $(".initial").removeClass("hide");
+});
 });

@@ -75,12 +75,12 @@
           <div class="col s12 m3">
             <div class="card main item">
               <div class="card-image">
-                <img src="assets/images/shopping.png" width="90px" height="160px">
+                <img src="{{this.dataValues.img}}" width="90px" height="160px">
               </div>
               <div class="card-action">
                 <p class="item product-name">Name: {{this.dataValues.name}}</p>
                 <p class="item description">Description: {{this.dataValues.description}}</p>
-                <p class="item price">Price: {{this.dataValues.price}}</p>
+                <p class="item price">Price: {{this.dataValues.price}}</p>                
                 <br>
                 <button class="btn add-to-cart waves-effect waves-light" type="submit" name="action">Add to cart
                   <i class="material-icons right">add_shopping_cart</i>
@@ -596,7 +596,6 @@
     $(".initial").addClass("hide");
     $(".product-display").removeClass("hide");
   });
-
 // All the content lives on one html page, so we're adding hide/show classes for all links and buttons
 
 

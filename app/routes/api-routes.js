@@ -60,6 +60,9 @@ module.exports = function(app) {
   app.get("/error", (req, res) => res.send("error logging in"));
 
   // PUT ROUTE FOR UPDATING INVENTORY QUANTITY
+  app.put("/api/items/:id", function(req, res) {
+    query.decreaseQty(res);
+  });
 
   // PUT ROUTE FOR ADDING TO CART
 
