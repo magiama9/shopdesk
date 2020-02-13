@@ -2,7 +2,7 @@ const db = require("../../models");
 
 // Placeholder function to view all inventory using sequelize
 // Replace console logs with res.json once routes are implemented
-const viewInventory = (res) => {
+const viewInventory = res => {
   db.Items.findAll({}).then(dbItems => {
     res.render("index", { items: dbItems });
   });
@@ -32,24 +32,34 @@ const searchItem = searchTerm => {
       name: searchTerm
     }
   }).then(search => {
-    search.forEach(idx => {
-      console.log(idx.description);
-      console.log(idx.name);
-      console.log(idx.price);
-      console.log(idx.img);
-    });
+    res.render("index", { items: dbItems });
   });
 };
 
 // Placeholder function to add items to the cart using sequelize
 // Expects ID to be the ID of a selected item and valid
-const addToCart = id => {
-  db.Items.update(
-    {
-      inCart: true
-    },
-    { where: { id: id } }
-  );
+const addToCart = (sessionID, id) => {
+  db.Items.findAll({ where: { id: id } }).then(result => {
+    result.forEach(idx => {
+      db.Carts.create({
+        session: sessionID,
+        productID: id,
+        name: idx.name,
+        price: idx.price,
+        img: idx.img
+      });
+    });
+  });
+};
+
+const viewCart = (sessionID, res) => {
+  let array = [];
+  db.Carts.findAll({ where: { session: sessionID } }).then(result => {
+    result.forEach(idx => {
+      array.push(idx);
+    });
+    res.json(array);
+  });
 };
 
 // Placeholder function to add items to the cart using sequelize
@@ -96,6 +106,7 @@ module.exports = {
   view: viewInventory,
   addItem: addItem,
   addToCart: addToCart,
+  viewCart: viewCart,
   removeFromCart: removeFromCart,
   save: save,
   unSave: unSave,

@@ -24,6 +24,7 @@ const upload = multer({ storage: storage });
 // =============================================================
 
 const query = require("../../db/lib/query");
+const cart = require("../../db/lib/cart");
 
 // =============================================================
 //                          ROUTES
@@ -32,8 +33,9 @@ const query = require("../../db/lib/query");
 module.exports = function(app) {
   // GET ROUTE FOR VIEWING INVENTORY
   app.get("/", function(req, res) {
+    console.log(req.session.id);
+    cart.checkSession(req.session.id);
     query.view(res);
-    console.log(res);
   });
 
   // POST ROUTE FOR ADDING INVENTORY
@@ -55,9 +57,14 @@ module.exports = function(app) {
     res.send("Thank you for logging in.");
   });
 
-  app.get("/success", (req, res) => res.send("Welcome!"));
+  app.get("/addToCart", (req, res) => {
+    query.addToCart(req.session.id, 1);
+    res.send("Added to Cart");
+  });
 
-  app.get("/error", (req, res) => res.send("error logging in"));
+  app.get("/checkCart", (req, res) => {
+    query.viewCart(req.session.id, res);
+  });
 
   // PUT ROUTE FOR UPDATING INVENTORY QUANTITY
   app.put("/api/inventory/:id", function(req, res) {

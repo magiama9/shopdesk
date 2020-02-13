@@ -1,6 +1,6 @@
 // Express and Express Handlebars Dependencies
 const express = require("express");
-// const session = require("express-session");
+const session = require("express-session");
 const exphb = require("express-handlebars");
 // const passport = require("passport");
 // var LocalStrategy = require("passport-local").Strategy;
@@ -10,6 +10,23 @@ const seed = require("./db/init/seed");
 
 // Initializes Express
 const app = express();
+
+// DEFINES SESSION INFO FOR DEV/PRODUCTION
+const sess = {
+  secret: 'keyboard cat',
+  cookie: {}
+}
+ 
+if (app.get('env') === 'production') {
+  app.set('trust proxy', 1) // trust first proxy
+  sess.cookie.secure = true // serve secure cookies
+}
+
+
+// Initializes sessions stored in memory
+// N.B. MEMORY STORAGE IS VERY INSECURE AND LEAKY
+app.use(session(sess))
+
 
 // Sets port to use host server port or 8080 for development
 const PORT = process.env.PORT || 8080;
@@ -23,6 +40,7 @@ app.use(express.static(__dirname + "/public"));
 
 app.engine("handlebars", exphb({ defaultLayout: "main" }));
 app.set("view engine", "handlebars");
+
 
 // Routes
 require("./app/routes/api-routes.js")(app);
