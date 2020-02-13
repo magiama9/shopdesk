@@ -62,15 +62,12 @@ const viewCart = (sessionID, res) => {
   });
 };
 
-// Placeholder function to add items to the cart using sequelize
+// Remove items from the cart using sequelize
 // Expects ID to be the ID of a selected item and valid
 const removeFromCart = id => {
-  db.Items.update(
-    {
-      inCart: false
-    },
-    { where: { id: id } }
-  );
+  db.Carts.destroy({ where: { id: id } }).then(result => {
+    return result;
+  });
 };
 // Placeholder function to save items using sequelize
 // Expects ID to be the ID of a selected item and valid
