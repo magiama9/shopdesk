@@ -57,12 +57,14 @@ module.exports = function(app) {
     res.send("Thank you for logging in.");
   });
 
-  app.get("/success", (req, res) => {
-    cart.checkSession(req.session.id);
-    res.send("Welcome!");
+  app.get("/addToCart", (req, res) => {
+    query.addToCart(req.session.id, 1);
+    res.send("Added to Cart");
   });
 
-  app.get("/error", (req, res) => res.send("error logging in"));
+  app.get("/checkCart", (req, res) => {
+    query.viewCart(req.session.id, res);
+  });
 
   // PUT ROUTE FOR UPDATING INVENTORY QUANTITY
 
