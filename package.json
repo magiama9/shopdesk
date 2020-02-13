@@ -29,5 +29,8 @@
     "nodemon": "^2.0.2",
     "sequelize": "^5.21.4",
     "sequelize-cli": "^5.5.1"
+  },
+  "scripts" : {
+    "start": "node server.js"
   }
 }
