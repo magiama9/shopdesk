@@ -517,7 +517,7 @@
 <script type="text/javascript">
   $(".productname").text()
 
-  $(".save").on("click", function (event) {
+  $(".place-order").on("click", function (event) {
     // Make sure to preventDefault on a submit event.
     event.preventDefault();
 
@@ -525,14 +525,10 @@
     var id = $(this).data("id");
     console.log(id);
 
-    let saveditem = {
-      saved: true
-    };
-
     // Send the PUT request.
     $.ajax("/api/items/" + id, {
       type: "PUT",
-      data: saveditem
+      data: 
     }).then(
       function () {
         console.log("updated id ", id);
