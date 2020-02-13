@@ -1,116 +1,515 @@
-  <nav class="grey darken-3">
-        <div class="nav-wrapper">
-            <ul>
-                <li>
-                    <div class="center row">
-                        <div class="col 12 ">
-                            <div class="row" id="topbarsearch">
-                                <div class="input-field col s12 s6 text">
-                                    <i class="green-text material-icons prefix">search</i>
-                                    <input type="text" placeholder="search" id="autocomplete-input"
-                                        class="autocomplete text">
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </li>
-            </ul>
-            <ul class="right">
-                <li><a href="#"><i class="material-icons left">shopping_cart</i>Your cart</a></li>
-                <li><a href="#" class="green-text"><i class="material-icons left">input</i>Login</a></li>
-                <li><a href="#"><i class="material-icons left">person_add</i>Signup</li>
-            </ul>
+<nav class="grey darken-3">
+  <div class="nav-wrapper">
+    <ul>
+      <li>
+        <div class="center row">
+          <div class="col 12 ">
+            <div class="row" id="topbarsearch">
+              <div class="input-field col s12 s6 text">
+                <i class="green-text material-icons prefix">search</i>
+                <input type="text" placeholder="search" id="autocomplete-input" class="autocomplete text">
+              </div>
+            </div>
+          </div>
         </div>
-    </nav>
-    <!----->
+      </li>
+    </ul>
+    <ul class="right">
+      <li><a href="#"><i class="home green-text material-icons left" id="home">home</i>Home</a></li>
+      <li><a href="#"><i class="material-icons left shopping-cart">shopping_cart</i>Your cart</a></li>
+      <li><a href="#" class="green-text"><i class="material-icons left">input</i>Login</a></li>
+      <li><a href="#"><i class="material-icons left">person_add</i>Signup</li>
+    </ul>
+  </div>
+</nav>
+<!----->
 
-    <!--Second navbar-->
-    <nav class="white nav2">
-        <div class="nav-wrapper">
-            <a href="" class="brand-logo left"><img src="assets/images/logo.png" width="150px" height="60px" /></a>
+<!--Second navbar-->
+<nav class="white nav2">
+  <div class="nav-wrapper">
+    <a href="" class="brand-logo left"><img src="assets/images/logo.png" width="150px" height="60px" /></a>
 
-            <ul id="nav-mobile" class="right">
-                <li><a href="#" class="green-text menu">Kitchen</a></li>
-                <li><a href="#" class="black-text menu">Bedroom</a></li>
-                <li><a href="#" class="green-text menu">Living room</a></li>
-                <li><a href="#" class="black-text menu">Bathroom</a></li>
-                <li><a href="#" class="green-text menu">Outdoors</a></li>
-            </ul>
-        </div>
-    </nav>
-    
+    <ul id="nav-mobile" class="right">
+      <li><a href="#" class="green-text menu">Kitchen</a></li>
+      <li><a href="#" class="black-text menu">Bedroom</a></li>
+      <li><a href="#" class="green-text menu">Living room</a></li>
+      <li><a href="#" class="black-text menu">Bathroom</a></li>
+      <li><a href="#" class="green-text menu">Outdoors</a></li>
+    </ul>
+  </div>
+</nav>
 
-    <!--landing page-->
 
-    <div class="row">
+<!--landing page-->
+
+<div class="row">
+  <div class="col s12 m12">
+    <div class="card initial">
+      <div class="card-image">
+        <img src="assets/images/homepic1.jpg">
+      </div>
+      <div class="card-action">
+        <a href="#"><i class="left  material-icons">phone</i>+571 555 0000</a>
+        <a href="#" class="right"><i class="right material-icons">mail_outline</i>EliteModern@gmail.com</a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-------------------------------------------------------------------------------------------------->
+
+<!-- This is a placeholder for all products---------------------------------------------------------->
+<div class="row">
+  <div class="col s12 m12">
+    <div class="card product-display hide">
+      <div class="row">
         <div class="col s12 m12">
-            <div class="card initial">
-                <div class="card-image">
-                    <img src="assets/images/luxury-home-living-room-tray-ceiling.jpg">
-                </div>
-                <div class="card-action">
-                    <a href="#"><i class="material-icons left">phone</i>Call us</a>
-                </div>
-                <div class="card-action">
-                    <a href="#"><i class="material-icons left">mail_outline</i>Send us an email</a>
-                </div>
-            </div>
+          <h5 class="center" style="color:black">Make your home beautiful with our elegant
+            collections</h5>
+          <hr>
         </div>
+      </div>
+      <div class="card-content">
+        <div class="row">
+          {{#each items}}
+          <div class="col s12 m3">
+            <div class="card main item">
+              <div class="card-image">
+                <img src="{{this.dataValues.img}}" width="90px" height="160px">
+              </div>
+              <div class="card-action">
+                <p class="item product-name">Name: {{this.dataValues.name}}</p>
+                <p class="item description">Description: {{this.dataValues.description}}</p>
+                <p class="item price">Price: {{this.dataValues.price}}</p>                
+                <br>
+                <button class="btn add-to-cart waves-effect waves-light" type="submit" name="action">Add to cart
+                  <i class="material-icons right">add_shopping_cart</i>
+                </button>
+              </div>
+            </div>
+          </div>
+          {{/each}}
+        </div>
+      </div>
     </div>
+  </div>
+</div>
 
-    
+
+<!------------------------------------------------------------------------------------------------------->
 
 
-    <div class="row">
+
+
+<!--This is a shopping cart placeholder------------------------------------------------------------------>
+<!--Class shopping-cart places chekout card at the right corner------------------------------------------>
+<div class="container">
+  <div class="col s12 m12">
+    <div class="card cart hide">
+      <div class="row">
         <div class="col s12 m12">
-            <div class="card product-display hide">
-                <h5 style="color:black">Make your home elite and modern with our products</h5>
-                <div class="card-content">
-                  {{#each items}}
-                    <div class="row">
-                      <div class="col s12 m4">
-                        <div class="card main">
-                          <div class="card-image">
-                            {{!-- <img src="assets/images/luxury-home-living-room-tray-ceiling.jpg"> --}}
-                          </div>
-                          <div class="card-action">
-                            <p class="item product-name">Name: {{this.dataValues.name}}</p>
-                            <p class="item description">Description: {{this.dataValues.description}}</p>
-                            <p class="item price">Price: {{this.dataValues.price}}</p>
-                            <button class="btn waves-effect waves-light" type="submit" name="action">Add to cart
-                                <i class="material-icons right">add_shopping_cart</i>
-                              </button>    
-                          </div>
-                        </div>
-                      </div>
+          <div class="col s12 m8">
+            <h2 class="header">Your Items</h2>
+            <hr>
+            <br>
+
+            <!----Placeholder for each item  in a cart------------------------------------------------------------------>
+            <div class="shopping-cart">
+              <div class="shopping-cart-header">
+                <div class="card horizontal">
+                  <div class="card-image">
+                    <img src="assets/images/shopping.png" width="100px" height="100px">
+                  </div>
+                  <div class="card-stacked">
+                    <div class="card-content">
+                      <p class="right green-text">Price: $ 300.00</p>
+                      <br><br>
+                      <p> Conversation Set with Coffee Table (Black) <p>
                     </div>
-                  {{/each}}
-                <ul>
-                        
+                    <div class="card-action">
+                      <a href="#"><i class="left  material-icons">file_download</i>Save for
+                        later</a>
+                      <a href="#" class="right"><i class="right  material-icons">clear</i>Remove
+                        item</a>
+                    </div>
+                  </div>
                 </div>
+              </div>
             </div>
-        </div>
-    </div>
-    </div>
+          </div>
 
-
-    <!-- Footer -->
-    <footer class="page-footer white">
-        <div class="container">
-            <div class="row center align">
-                <div class="col l12 s12">
-                    <img src="assets/images/logo.png" width="150px" height="60px" />
-                    <h5 class="green-text">Elegant living costs less with Elite Modern</h5>
+          <!--Proceed to chekout card--------------------------------------------------------------------------------->
+          <div class="card horizontal">
+            <div class="row">
+              <div class="col s12 m12">
+                <div class="card">
+                  <div class="card-content">
+                    <span class="card-title red-text">Order details</span>
+                    <hr>
+                    <p>Subtotal: <span class="right">$ 2300.00</span></p>
+                    <br>
+                    <p>Tax: <span class="right"> --</span></p>
+                    <br>
+                    <p>Shipping: <span class="right">--</span></p>
+                  </div>
+                  <div class="card-action">
+                    <a class="waves-effect waves-light btn-small red chekout-btn">Proceed to
+                      checkout</a>
+                  </div>
                 </div>
+              </div>
             </div>
-        </div>
-        <div class="footer-copyright black-text">
-            ©opyright Elite Modern
+          </div>
+          <!------------------------------------------------------------------------------------------------------------->
+
+          <div class="card horizontal">
+            <div class="card-image">
+              <img src="assets/images/sofa.webp" width="100px" height="100px">
+            </div>
+            <div class="card-stacked">
+              <div class="card-content">
+                <p class="right green-text">Price: $ 2000.00</p>
+                <br><br>
+                <p> Modern Waves Large Leather Sectional Sofa With Love Seats And Chaise
+                  Lounge
+                  <p>
+              </div>
+              <div class="card-action">
+                <a href="#"><i class="left  material-icons">file_download</i>Save for
+                  later</a>
+                <a href="#" class="right"><i class="right  material-icons">clear</i>Remove
+                  item</a>
+              </div>
+            </div>
+          </div>
+
+
 
         </div>
-    </footer>
+      </div>
+    </div>
+  </div>
+</div>
+<!--End of shopping cart card----------------------------------------------------------------------------->
 
-    
+
+<!---Chekout form-------------------------------------------------------------------------------------------->
+<div class="container">
+  <div class="row">
+    <div class="col s12 m12">
+      <div class="card center align checkout-form hide">
+        <div class="col s12 m12">
+          <h2 class="header center red-text">Enter Your Shipping Information</h2>
+          <hr>
+          <br>
+
+          <div class="row">
+            <form class="col s12 m12">
+              <div class="row">
+                <div class="input-field col s6">
+                  <input id="first_name" type="text" class="validate">
+                  <label for="first_name">First Name</label>
+                </div>
+                <div class="input-field col s6">
+                  <input id="last_name" type="text" class="validate">
+                  <label for="last_name">Last Name</label>
+                </div>
+              </div>
+          </div>
+
+          <div class="row">
+            <form class="col s12">
+              <div class="row">
+                <div class="input-field col s12">
+                  <textarea id="textarea1" class="materialize-textarea"></textarea>
+                  <label for="textarea1">Address line 1<span class="red-text">*</span></label>
+                </div>
+              </div>
+            </form>
+          </div>
+
+          <div class="row">
+            <form class="col s12">
+              <div class="row">
+                <div class="input-field col s12">
+                  <textarea id="textarea1" class="materialize-textarea"></textarea>
+                  <label for="textarea1">Address line 2</label>
+                </div>
+              </div>
+            </form>
+          </div>
+
+
+          <div class="row">
+            <form class="col s12 m12">
+              <div class="row">
+                <div class="input-field col s6">
+                  <input id="first_name" type="text" class="validate">
+                  <label for="first_name">City <span class="red-text">*</span></label>
+                </div>
+                <div class="input-field col s6">
+                  <select id="state">
+                    <option value="" disabled selected>Select state</option>
+                    <option>Alabama</option>
+                    <option>Alaska</option>
+                    <option>Arizona</option>
+                    <option>Arkansas</option>
+                    <option>California</option>
+                    <option>Colorado</option>
+                    <option>Connecticut</option>
+                    <option>Delaware</option>
+                    <option>Florida</option>
+                    <option>Georgia</option>
+                    <option>Hawaii</option>
+                    <!--to be continued:)-->
+                  </select>
+
+                  </select>
+                </div>
+              </div>
+            </form>
+          </div>
+
+          <div class="row">
+            <form class="col s12 m12">
+              <div class="row">
+                <div class="input-field col s6">
+                  <input id="first_name" type="text" class="validate">
+                  <label for="first_name">Postal code<span class="red-text">*</span></label>
+                </div>
+                <div class="input-field col s6">
+                  <input id="last_name" type="text" class="validate">
+                  <label for="last_name">Phone number<span class="red-text">*</span></label>
+                </div>
+              </div>
+          </div>
+          <div class="row">
+            <div class="input-field col s12">
+              <input id="email" type="email" class="validate">
+              <label for="email">Email</label>
+            </div>
+          </div>
+
+          <a class="waves-effect waves-light btn-small red payment-btn">Continue to payment</a>
+
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<!--Payment info form----------------------------------------------------------------------------------------->
+
+<div class="container">
+  <div class="row">
+    <div class="col s12 m12">
+      <div class="card center align payment-form hide">
+        <div class="col s12 m12">
+          <h2 class="header center red-text">Enter Your Credit Card Information</h2>
+          <hr>
+          <br>
+
+
+          <div class="row">
+            <form class="col s12 m12">
+              <div class="row">
+                <div class="input-field col s6">
+                  <input id="first_name" type="text" class="validate">
+                  <label for="first_name">First Name <span class="red-text">*</label>
+                </div>
+                <div class="input-field col s6">
+                  <input id="last_name" type="text" class="validate">
+                  <label for="last_name">Last Name <span class="red-text">*</label>
+                </div>
+              </div>
+          </div>
+          <div class="row">
+            <form class="col s12 m12">
+              <div class="row">
+                <div class="input-field col s6">
+                  <input id="password" type="password" class="validate">
+                  <label for="first_name">Card number <span class="red-text">*</label>
+                </div>
+                <div class="input-field col s6">
+                  <input id="password" type="password" class="validate">
+                  <label for="last_name">Security code <span class="red-text">*</label>
+                </div>
+              </div>
+          </div>
+
+
+          <div class="row">
+            <div class="input-field col s12">
+              <select>
+                <option value="" disabled selected>Select month</option>
+                <option>01</option>
+                <option>02</option>
+                <option>03</option>
+                <option>04</option>
+                <option>05</option>
+                <option>06</option>
+                <option>07</option>
+                <option>08</option>
+                <option>09</option>
+                <option>10</option>
+                <option>11</option>
+                <option>12</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="input-field col s12">
+              <select>
+                <option value="" disabled selected>Select year</option>
+                <option>20</option>
+                <option>21</option>
+                <option>22</option>
+                <option>23</option>
+                <option>24</option>
+                <option>25</option>
+                <option>26</option>
+                <option>27</option>
+                <option>28</option>
+                <option>29</option>
+                <option>30</option>
+              </select>
+            </div>
+          </div>
+
+          <form action="#">
+            <p>
+              <label>
+                <input type="checkbox" />
+                <span class="left black-text">Billing is the same as shipping address</span>
+              </label>
+            </p>
+          </form>
+          <br><br>
+
+          <div class="row">
+            <form class="col s12">
+              <div class="row">
+                <div class="input-field col s12">
+                  <textarea id="textarea1" class="materialize-textarea"></textarea>
+                  <label for="textarea1">Address line 1<span class="red-text">*</span></label>
+                </div>
+              </div>
+            </form>
+          </div>
+
+          <div class="row">
+            <form class="col s12">
+              <div class="row">
+                <div class="input-field col s12">
+                  <textarea id="textarea1" class="materialize-textarea"></textarea>
+                  <label for="textarea1">Address line 2</label>
+                </div>
+              </div>
+            </form>
+          </div>
+
+
+          <div class="row">
+            <form class="col s12 m12">
+              <div class="row">
+                <div class="input-field col s6">
+                  <input id="first_name" type="text" class="validate">
+                  <label for="first_name">City <span class="red-text">*</span></label>
+                </div>
+                <div class="input-field col s6">
+                  <select id="state">
+                    <option value="" disabled selected>Select state</option>
+                    <option>Alabama</option>
+                    <option>Alaska</option>
+                    <option>Arizona</option>
+                    <option>Arkansas</option>
+                    <option>California</option>
+                    <option>Colorado</option>
+                    <option>Connecticut</option>
+                    <option>Delaware</option>
+                    <option>Florida</option>
+                    <option>Georgia</option>
+                    <option>Hawaii</option>
+                    <!--to be continued:)-->
+                  </select>
+
+                  </select>
+                </div>
+              </div>
+            </form>
+          </div>
+
+          <div class="row">
+            <form class="col s12 m12">
+              <div class="row">
+                <div class="input-field col s6">
+                  <input id="first_name" type="text" class="validate">
+                  <label for="first_name">Postal code<span class="red-text">*</span></label>
+                </div>
+                <div class="input-field col s6">
+                  <input id="last_name" type="text" class="validate">
+                  <label for="last_name">Phone number<span class="red-text">*</span></label>
+                </div>
+              </div>
+          </div>
+          <div class="row">
+            <div class="input-field col s12">
+              <input id="email" type="email" class="validate">
+              <label for="email">Email</label>
+            </div>
+          </div>
+
+          <a class="waves-effect waves-light btn-small red place-order">Place order</a>
+
+
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="container">
+  <div class="row">
+    <div class="col s12 8">
+      <div class="card thank-you center blue-grey darken-1 hide">
+        <div class="card-content white-text center">
+          <span class="card-title"></span>
+          <h1>Thank you! Your order has been placed!</h1>
+          <p class="green-text">Please check your email for order confirmation and tracking number</p>
+        </div>
+        <div class="card-action">
+          <a href="#" class="center continue-shopping">Continue shopping</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<!----------------------------------------------------------------------------------------------------------->
+
+<!-- Footer --------------------------------------------------------------------------------------------->
+
+<footer class="page-footer white">
+  <div class="container">
+    <div class="row center align">
+      <div class="col l12 s12">
+        <img src="assets/images/logo.png" width="150px" height="60px" />
+        <h5 class="green-text">Elegant living costs less with Elite Modern</h5>
+      </div>
+    </div>
+  </div>
+  <div class="footer-copyright black-text">
+    ©opyright Elite Modern
+  </div>
+</footer>
+
+
+
+
+</div>
+
+
 {{!-- displays item info --}}
 
 
@@ -118,10 +517,10 @@
 <script type="text/javascript">
   $(".productname").text()
 
-  $(".save").on("click", function(event) {
+  $(".save").on("click", function (event) {
     // Make sure to preventDefault on a submit event.
     event.preventDefault();
-  
+
     // Get the ID by finding an element with a "name" attribute equal to the string "id"
     var id = $(this).data("id");
     console.log(id);
@@ -135,7 +534,7 @@
       type: "PUT",
       data: saveditem
     }).then(
-      function() {
+      function () {
         console.log("updated id ", id);
         // Reload the page to get the updated list
         location.reload();
@@ -143,10 +542,10 @@
     );
   });
 
-  $(".addToCart").on("click", function(event) {
+  $(".addToCart").on("click", function (event) {
     // Make sure to preventDefault on a submit event.
     event.preventDefault();
-  
+
     // Get the ID by finding an element with a "name" attribute equal to the string "id"
     var id = $(this).data("id");
     console.log(id);
@@ -160,7 +559,7 @@
       type: "PUT",
       data: addeditem
     }).then(
-      function() {
+      function () {
         console.log("updated id ", id);
         // Reload the page to get the updated list
         location.reload();
@@ -175,11 +574,11 @@
     // Get the ID by finding an element with a "name" attribute equal to the string "id"
     var id = $(this).data("id");
     console.log(id);
-
+ 
     let boughtItem = {
       quatity: 
     };
-
+ 
     // Send the PUT request.
     $.ajax("/api/items/" + id, {
       type: "PUT",
@@ -194,7 +593,12 @@
   });*/
 
   $(".menu").on("click", function () {
-  $(".initial").addClass("hide");
-  $(".product-display").removeClass("hide");
+    $(".initial").addClass("hide");
+    $(".product-display").removeClass("hide");
   });
+// All the content lives on one html page, so we're adding hide/show classes for all links and buttons
+
+
+
+
 </script>
