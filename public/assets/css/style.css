@@ -14,6 +14,11 @@
     font-size: xx-large;
 }
 
+.product-display{
+    box-shadow: none;
+}
+
+
 .initial{
     box-shadow: none;
 }
@@ -38,6 +43,6 @@ p{
 font-family: cursive;
 }
 
-.hr{
-    color: white;
+.item{
+    box-shadow: none;
 }
