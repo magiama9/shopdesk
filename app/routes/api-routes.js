@@ -71,6 +71,9 @@ module.exports = function(app) {
     query.decreaseQty(res);
   });
 
+  app.post("/cart/remove/:id", (req, res) => {
+    query.removeFromCart(req.params.id);
+  })
   // PUT ROUTE FOR ADDING TO CART
 
   // PUT ROUTE FOR ADDING TO SAVED ITEMS
