@@ -1,9 +1,9 @@
 // Express and Express Handlebars Dependencies
 const express = require("express");
-const session = require("express-session");
+// const session = require("express-session");
 const exphb = require("express-handlebars");
-const passport = require("passport");
-var LocalStrategy = require("passport-local").Strategy;
+// const passport = require("passport");
+// var LocalStrategy = require("passport-local").Strategy;
 // Requires in index file that sequelize helps us with (DO NOT TOUCH THAT INDEX.JS FILE GOD DAMNIT!)
 const db = require("./models");
 const seed = require("./db/init/seed");
@@ -25,8 +25,8 @@ app.engine("handlebars", exphb({ defaultLayout: "main" }));
 app.set("view engine", "handlebars");
 
 // Routes
-require("./app/routes/api-routes.js")(app, passport);
-require("./config/passport.js")(passport, db.User);
+require("./app/routes/api-routes.js")(app);
+// require("./config/passport.js")(passport, db.User);
 
 
 

@@ -3,7 +3,7 @@
 //              https://www.npmjs.com/package/multer
 // =============================================================
 const multer = require("multer");
-const passport = require("passport");
+// const passport = require("passport");
 const path = require("path");
 const db = require("../../models");
 
@@ -29,7 +29,7 @@ const query = require("../../db/lib/query");
 //                          ROUTES
 // =============================================================
 
-module.exports = function(app, passport) {
+module.exports = function(app) {
   // GET ROUTE FOR VIEWING INVENTORY
   app.get("/", function(req, res) {
     query.view(res);
