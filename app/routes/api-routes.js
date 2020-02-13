@@ -51,13 +51,9 @@ module.exports = function(app) {
     res.sendFile(path.join(__dirname, "../public/auth.html"));
   });
 
-  app.post(
-    "/authenticate",
-    passport.authenticate("local-signin", { failureRedirect: "/error" }),
-    (req, res) => {
-      res.send("Thank you for logging in.");
-    }
-  );
+  app.post("/authenticate", (req, res) => {
+    res.send("Thank you for logging in.");
+  });
 
   app.get("/success", (req, res) => res.send("Welcome!"));
 
