@@ -57,8 +57,8 @@ module.exports = function(app) {
     res.send("Thank you for logging in.");
   });
 
-  app.get("/addToCart", (req, res) => {
-    query.addToCart(req.session.id, 1);
+  app.post("/addToCart/:id", (req, res) => {
+    query.addToCart(req.session.id, req.params.id);
     res.send("Added to Cart");
   });
 
@@ -68,10 +68,10 @@ module.exports = function(app) {
 
   // PUT ROUTE FOR UPDATING INVENTORY QUANTITY
   app.put("/api/items/:id", function(req, res) {
-    query.decreaseQty(res);
+    query.decreaseQty(req.params.id);
   });
 
-  // PUT ROUTE FOR ADDING TO CART
+// ROUTE TO VIEW CART
 
   // PUT ROUTE FOR ADDING TO SAVED ITEMS
 };

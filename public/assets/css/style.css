@@ -1,8 +1,4 @@
 
-/*box-shadow removes borders from cards, makes design look cleaner*/
-.nav2{
-    box-shadow: none;
-}
 .menu{
     font-family: 'Times New Roman', Times, serif;
     font-size: x-large;
@@ -14,35 +10,25 @@
     font-size: xx-large;
 }
 
-.product-display{
-    box-shadow: none;
-}
-
-
-.initial{
-    box-shadow: none;
-}
-
-h5{
-    font-family: Arial, Helvetica, sans-serif;
-}
-
 .header{
     font-size: xx-large;
 }
 
-p{
-    font-family: Arial, Helvetica, sans-serif;
-}
-
-.horizontal{
-    box-shadow: none;
-}
-
-.card-title{
+.card-title {
 font-family: Arial, Helvetica, sans-serif;
 }
 
-.item{
+/*box-shadow removes borders from cards, makes design look cleaner*/
+.item, .login, .horizontal, .initial, .product-display, .nav2{
     box-shadow: none;
 }
+
+.login-form{
+ margin-top: -50px;
+}
+
+.thank-you, .checkout-form, .payment-form{
+    margin-top: -30px;
+}
+
+
