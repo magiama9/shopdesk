@@ -14,15 +14,18 @@
         </div>
       </li>
     </ul>
+    
     <ul class="right">
       <li><a href="#" class="green-text home"><i class="home material-icons left">home</i>Home</a></li>
       <li><a href="#" class="shopping-cart"><i class="material-icons left shopping-cart">shopping_cart</i>Your cart</a>
       </li>
       <li><a href="#" class="green-text login"><i class="material-icons left login">input</i>Login</a></li>
-      <li><a href="#" class="signup"><i class="signup material-icons left">person_add</i>Signup</li>
+      <li><a href="#" class="signup"><i class="signup material-icons left">person_add</i>Sign up</li>
     </ul>
   </div>
 </nav>
+
+ {{!-- <li><a href="#" class="green-text upload"><i class="upload material-icons left">file_upload</i>Upload item</li> --}}
 <!----->
 
 <!--Second navbar-->
@@ -58,23 +61,37 @@
 </div>
 
 
+
 <!-- This is a placeholder for all products---------------------------------------------------------->
 <div class="row">
   <div class="col s12 m12">
-    <div class="card center product-display hide">
+    <div class="card product-display hide">
       <div class="row">
         <div class="col s12 m12">
-          <h2 class="header">Make your home beautiful with our elegant collection</h2>
-          <hr>
-           
-          
+          <div class="col s12 m12">
+            <div class="card horizontal">
+
+              <div class="card-image">
+                <div class="card-action"></div>
+                <img src="assets/images/1.jpeg">
+              </div>
+              <div class="card-stacked">
+                <div class="card-content">
+                  <h5>Let's make your home beautiful together</h5>
+                  <div class="card-action"></div>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
+
+
       <div class="card-content">
         <div class="row">
           {{#each items}}
           <div class="col s12 m3">
-            <div class="card center main item">
+            <div class="card main item">
               <div class="card-image">
                 <img src="{{this.dataValues.img}}" width="90px" height="160px">
               </div>
@@ -96,7 +113,6 @@
   </div>
 </div>
 
-
 <!------------------------------------------------------------------------------------------------------->
 
 <!--This is a shopping cart placeholder------------------------------------------------------------------>
@@ -114,7 +130,7 @@
             <!----Placeholder for each item  in a cart------------------------------------------------------------------>
             <div class="shopping-cart">
               <div class="shopping-cart-header">
-                <div class="card horizontal">
+                <div class="card horizontal show-on-small">
                   <div class="card-image">
                     <img src="assets/images/shopping.png" width="100px" height="100px">
                   </div>
@@ -132,15 +148,39 @@
                     </div>
                   </div>
                 </div>
+                <div class="card horizontal">
+                  <div class="row">
+                    <div class="col s12 m12">
+                      <div class="card  show-on-small hide-on-med-and-up">
+                        <div class="card-content">
+                          <span class="card-title center red-text">Order details</span>
+                          <hr>
+                          <p>Subtotal: <span class="right">$ 2300.00</span></p>
+                          <br>
+                          <p>Tax: <span class="right"> --</span></p>
+                          <br>
+                          <p>Shipping: <span class="right">--</span></p>
+                        </div>
+                        <div class="card-action">
+                          <a class="waves-effect waves-light btn-small red chekout-btn">Proceed to
+                            checkout</a>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
               </div>
             </div>
           </div>
 
           <!--Proceed to chekout card--------------------------------------------------------------------------------->
-          <div class="card horizontal">
+
+
+          
+            <div class="card  horizontal">
             <div class="row">
               <div class="col s12 m12">
-                <div class="card">
+                <div class="card  hide-on-small-only ">
                   <div class="card-content">
                     <span class="card-title center red-text">Order details</span>
                     <hr>
@@ -157,10 +197,15 @@
                 </div>
               </div>
             </div>
-          </div>
-          <!------------------------------------------------------------------------------------------------------------->
+            </div>
+         
 
-          <div class="card horizontal">
+
+        </div>
+
+        <!------------------------------------------------------------------------------------------------------------->
+        <!--second item in a cart testing-->
+        {{!-- <div class="card horizontal">
             <div class="card-image">
               <img src="assets/images/sofa.webp" width="100px" height="100px">
             </div>
@@ -179,14 +224,14 @@
                   item</a>
               </div>
             </div>
-          </div>
+          </div> --}}
 
 
 
-        </div>
       </div>
     </div>
   </div>
+</div>
 </div>
 
 <!--End of shopping cart card----------------------------------------------------------------------------->
@@ -468,11 +513,15 @@
             <a class="waves-effect waves-light btn-small red place-order">Place order</a>
           </div>
 
+
+
+
         </div>
       </div>
     </div>
   </div>
 </div>
+
 
 <!--Confirmation order card-->
 <div class="container">
@@ -492,6 +541,7 @@
   </div>
 </div>
 <!----------------------------------------------------------------------------------------------------------->
+
 
 <!--Log in form------------------------------------------------------------------------------------------->
 <div class="container">
@@ -520,7 +570,7 @@
           </div>
 
 
-          <a class="waves-effect login waves-light btn-small red place-order">Login</a>
+          <a class="waves-effect login-btn waves-light btn-small red place-order">Login</a>
           <br><br>
 
         </div>
@@ -531,6 +581,69 @@
 
 <!-------------------------------------------------------------------------------------------------->
 
+<!--Sign up form-->
+<div class="container">
+  <div class="row ">
+    <div class="col s12 m12">
+      <div class="card center align signup-form hide">
+        <div class="col s12 m12">
+          <h2 class="header center red-text ">Create your account</h2>
+          <hr>
+          <br>
+
+
+          <div class="container">
+            <div class="row">
+              <form class="col s10 m10">
+                <div class="input-field col s6">
+                  <input id="first_name" type="text" class="validate">
+                  <label for="first_name">First Name </label>
+                </div>
+                <div class="input-field col s6">
+                  <input id="last_name" type="text" class="validate">
+                  <label for="last_name">Last Name </label>
+                </div>
+            </div>
+          </div>
+
+          <div class="container">
+            <div class="row">
+              <div class="input-field col s12">
+                <input id="email" type="email" class="validate">
+                <label for="email">Email</label>
+              </div>
+            </div>
+          </div>
+
+          <div class="container">
+            <div class="row">
+              <form class="col s10 m10">
+                <div class="input-field col s6">
+                  <input type="text" class="validate">
+                  <label for="password">Username </label>
+                </div>
+                <div class="input-field col s6">
+                  <input id="password" type="text" class="validate">
+                  <label for="password">Password <span class="red-text">*</label>
+                </div>
+
+            </div>
+          </div>
+
+
+          <div class="center">
+            <a class="waves-effect signupbtn waves-light btn-small red place-order">Sign up</a>
+            <br><br>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<!------------------------------------------------------------------------------------------------------>
 <!-- Footer --------------------------------------------------------------------------------------------->
 
 <footer class="page-footer white">
@@ -550,7 +663,7 @@
 
 
 
-</div>
+
 
 
 {{!-- displays item info --}}

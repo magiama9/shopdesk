@@ -19,7 +19,7 @@ font-family: Arial, Helvetica, sans-serif;
 }
 
 /*box-shadow removes borders from cards, makes design look cleaner*/
-.item, .login, .horizontal, .initial, .product-display, .nav2{
+.item, .login, .horizontal, .initial, .product-display, .nav2 {
     box-shadow: none;
 }
 
@@ -27,8 +27,24 @@ font-family: Arial, Helvetica, sans-serif;
  margin-top: -50px;
 }
 
-.thank-you, .checkout-form, .payment-form{
+.thank-you, .checkout-form {
     margin-top: -30px;
 }
 
+.payment-form {
+    margin-top: -60px;
+}
 
+
+h5{
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    color:goldenrod;
+}
+
+.signup-form{
+    margin-top: -100px;
+}
+
+.check{
+    box-shadow:none;
+}
