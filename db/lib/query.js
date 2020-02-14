@@ -10,15 +10,15 @@ const viewInventory = res => {
 
 // Placeholder function to add an item using sequelize
 // Replace console logs with res.json once routes are implemented
-const addItem = (obj, path) => {
+const addItem = (obj) => {
   db.Items.create({
     name: obj.name,
     description: obj.description,
     qty: obj.qty,
     price: obj.price,
-    img: path
+    img: obj.img
   }).then(dbItems => {
-    console.log(dbItems);
+
   });
 };
 
@@ -32,7 +32,7 @@ const searchItem = searchTerm => {
       name: searchTerm
     }
   }).then(search => {
-    res.render("index", { items: dbItems });
+    res.render("index", { items: search });
   });
 };
 
@@ -62,15 +62,12 @@ const viewCart = (sessionID, res) => {
   });
 };
 
-// Placeholder function to add items to the cart using sequelize
+// Remove items from the cart using sequelize
 // Expects ID to be the ID of a selected item and valid
 const removeFromCart = id => {
-  db.Items.update(
-    {
-      inCart: false
-    },
-    { where: { id: id } }
-  );
+  db.Carts.destroy({ where: { id: id } }).then(result => {
+    return result;
+  });
 };
 // Placeholder function to save items using sequelize
 // Expects ID to be the ID of a selected item and valid
