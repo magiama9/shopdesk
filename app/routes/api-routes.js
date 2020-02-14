@@ -98,8 +98,8 @@ module.exports = function(app) {
     res.send("Thank you for logging in.");
   });
 
-  app.get("/addToCart", (req, res) => {
-    query.addToCart(req.session.id, 1);
+  app.put("/add/cart/:id", (req, res) => {
+    query.addToCart(req.session.id, req.params.id);
     res.send("Added to Cart");
   });
 
@@ -112,9 +112,10 @@ module.exports = function(app) {
     query.decreaseQty(res);
   });
 
-  app.post("/cart/remove/:id", (req, res) => {
-    query.removeFromCart(req.params.id);
+  app.get("/cart", function(req, res) {
+    query.viewCart(req.session.id, res);
   });
+
   // PUT ROUTE FOR ADDING TO CART
 
   // PUT ROUTE FOR ADDING TO SAVED ITEMS

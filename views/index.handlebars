@@ -15,8 +15,8 @@
       </li>
     </ul>
     <ul class="right">
-      <li><a href="#"><i class="home green-text material-icons left" id="home">home</i>Home</a></li>
-      <li><a href="#"><i class="material-icons left shopping-cart">shopping_cart</i>Your cart</a></li>
+      <li><a href="/"><i class="home green-text material-icons left" id="home">home</i>Home</a></li>
+      <li><a href="/cart"><i class="material-icons left shopping-cart">shopping_cart</i>Your cart</a></li>
       <li><a href="#" class="green-text"><i class="material-icons left">input</i>Login</a></li>
       <li><a href="#"><i class="material-icons left">person_add</i>Signup</li>
     </ul>
@@ -56,9 +56,9 @@
   </div>
 </div>
 
-<!-------------------------------------------------------------------------------------------------->
+<!---->
 
-<!-- This is a placeholder for all products---------------------------------------------------------->
+<!-- This is a placeholder for all products-->
 <div class="row">
   <div class="col s12 m12">
     <div class="card product-display hide">
@@ -82,7 +82,7 @@
                 <p class="item description">Description: {{this.dataValues.description}}</p>
                 <p class="item price">Price: {{this.dataValues.price}}</p>                
                 <br>
-                <button class="btn add-to-cart waves-effect waves-light" type="submit" name="action">Add to cart
+                <button class="btn add-to-cart waves-effect waves-light" id="add-to-cart" type="submit" name="action" data-id="{{this.dataValues.id}}">Add to cart
                   <i class="material-icons right">add_shopping_cart</i>
                 </button>
               </div>
@@ -96,104 +96,7 @@
 </div>
 
 
-<!------------------------------------------------------------------------------------------------------->
-
-
-
-
-<!--This is a shopping cart placeholder------------------------------------------------------------------>
-<!--Class shopping-cart places chekout card at the right corner------------------------------------------>
-<div class="container">
-  <div class="col s12 m12">
-    <div class="card cart hide">
-      <div class="row">
-        <div class="col s12 m12">
-          <div class="col s12 m8">
-            <h2 class="header">Your Items</h2>
-            <hr>
-            <br>
-
-            <!----Placeholder for each item  in a cart------------------------------------------------------------------>
-            <div class="shopping-cart">
-              <div class="shopping-cart-header">
-                <div class="card horizontal">
-                  <div class="card-image">
-                    <img src="assets/images/shopping.png" width="100px" height="100px">
-                  </div>
-                  <div class="card-stacked">
-                    <div class="card-content">
-                      <p class="right green-text">Price: $ 300.00</p>
-                      <br><br>
-                      <p> Conversation Set with Coffee Table (Black) <p>
-                    </div>
-                    <div class="card-action">
-                      <a href="#"><i class="left  material-icons">file_download</i>Save for
-                        later</a>
-                      <a href="#" class="right"><i class="right  material-icons">clear</i>Remove
-                        item</a>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <!--Proceed to chekout card--------------------------------------------------------------------------------->
-          <div class="card horizontal">
-            <div class="row">
-              <div class="col s12 m12">
-                <div class="card">
-                  <div class="card-content">
-                    <span class="card-title red-text">Order details</span>
-                    <hr>
-                    <p>Subtotal: <span class="right">$ 2300.00</span></p>
-                    <br>
-                    <p>Tax: <span class="right"> --</span></p>
-                    <br>
-                    <p>Shipping: <span class="right">--</span></p>
-                  </div>
-                  <div class="card-action">
-                    <a class="waves-effect waves-light btn-small red chekout-btn">Proceed to
-                      checkout</a>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-          <!------------------------------------------------------------------------------------------------------------->
-
-          <div class="card horizontal">
-            <div class="card-image">
-              <img src="assets/images/sofa.webp" width="100px" height="100px">
-            </div>
-            <div class="card-stacked">
-              <div class="card-content">
-                <p class="right green-text">Price: $ 2000.00</p>
-                <br><br>
-                <p> Modern Waves Large Leather Sectional Sofa With Love Seats And Chaise
-                  Lounge
-                  <p>
-              </div>
-              <div class="card-action">
-                <a href="#"><i class="left  material-icons">file_download</i>Save for
-                  later</a>
-                <a href="#" class="right"><i class="right  material-icons">clear</i>Remove
-                  item</a>
-              </div>
-            </div>
-          </div>
-
-
-
-        </div>
-      </div>
-    </div>
-  </div>
-</div>
-<!--End of shopping cart card----------------------------------------------------------------------------->
-
-
-<!---Chekout form-------------------------------------------------------------------------------------------->
+<!---Chekout form-->
 <div class="container">
   <div class="row">
     <div class="col s12 m12">
@@ -299,7 +202,7 @@
 
 </div>
 
-<!--Payment info form----------------------------------------------------------------------------------------->
+<!--Payment info form]--->
 
 <div class="container">
   <div class="row">
@@ -486,9 +389,9 @@
     </div>
   </div>
 </div>
-<!----------------------------------------------------------------------------------------------------------->
+<!----->
 
-<!-- Footer --------------------------------------------------------------------------------------------->
+<!-- Footer --->
 
 <footer class="page-footer white">
   <div class="container">
@@ -509,92 +412,3 @@
 
 </div>
 
-
-{{!-- displays item info --}}
-
-
-
-<script type="text/javascript">
-  $(".productname").text()
-
-  $(".place-order").on("click", function (event) {
-    // Make sure to preventDefault on a submit event.
-    event.preventDefault();
-
-    // Get the ID by finding an element with a "name" attribute equal to the string "id"
-    var id = $(this).data("id");
-    console.log(id);
-
-    // Send the PUT request.
-    $.ajax("/api/items/" + id, {
-      type: "PUT",
-      data: 
-    }).then(
-      function () {
-        console.log("updated id ", id);
-        // Reload the page to get the updated list
-        location.reload();
-      }
-    );
-  });
-
-  $(".addToCart").on("click", function (event) {
-    // Make sure to preventDefault on a submit event.
-    event.preventDefault();
-
-    // Get the ID by finding an element with a "name" attribute equal to the string "id"
-    var id = $(this).data("id");
-    console.log(id);
-
-    let addeditem = {
-      inCart: true
-    };
-
-    // Send the PUT request.
-    $.ajax("/api/items/" + id, {
-      type: "PUT",
-      data: addeditem
-    }).then(
-      function () {
-        console.log("updated id ", id);
-        // Reload the page to get the updated list
-        location.reload();
-      }
-    );
-  });
-
-  /*$(".buyItem").on("click", function(event) {
-    // Make sure to preventDefault on a submit event.
-    event.preventDefault();
-  
-    // Get the ID by finding an element with a "name" attribute equal to the string "id"
-    var id = $(this).data("id");
-    console.log(id);
- 
-    let boughtItem = {
-      quatity: 
-    };
- 
-    // Send the PUT request.
-    $.ajax("/api/items/" + id, {
-      type: "PUT",
-      data: boughtItem
-    }).then(
-      function() {
-        console.log("updated id ", id);
-        // Reload the page to get the updated list
-        location.reload();
-      }
-    );
-  });*/
-
-  $(".menu").on("click", function () {
-    $(".initial").addClass("hide");
-    $(".product-display").removeClass("hide");
-  });
-// All the content lives on one html page, so we're adding hide/show classes for all links and buttons
-
-
-
-
-</script>
