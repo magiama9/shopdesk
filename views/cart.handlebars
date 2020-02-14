@@ -1,0 +1,101 @@
+<nav class="grey darken-3">
+  <div class="nav-wrapper">
+    <ul>
+      <li>
+        <div class="center row">
+          <div class="col 12 ">
+            <div class="row" id="topbarsearch">
+              <div class="input-field col s12 s6 text">
+                <i class="green-text material-icons prefix">search</i>
+                <input type="text" placeholder="search" id="autocomplete-input" class="autocomplete text">
+              </div>
+            </div>
+          </div>
+        </div>
+      </li>
+    </ul>
+    <ul class="right">
+      <li><a href="/"><i class="home green-text material-icons left" id="home">home</i>Home</a></li>
+      <li><a href="/cart"><i class="material-icons left shopping-cart">shopping_cart</i>Your cart</a></li>
+      <li><a href="#" class="green-text"><i class="material-icons left">input</i>Login</a></li>
+      <li><a href="#"><i class="material-icons left">person_add</i>Signup</li>
+    </ul>
+  </div>
+</nav>
+<!----->
+
+<!--Second navbar-->
+<nav class="white nav2">
+  <div class="nav-wrapper">
+    <a href="" class="brand-logo left"><img src="assets/images/logo.png" width="150px" height="60px" /></a>
+
+    <ul id="nav-mobile" class="right">
+      <li><a href="#" class="green-text menu">Kitchen</a></li>
+      <li><a href="#" class="black-text menu">Bedroom</a></li>
+      <li><a href="#" class="green-text menu">Living room</a></li>
+      <li><a href="#" class="black-text menu">Bathroom</a></li>
+      <li><a href="#" class="green-text menu">Outdoors</a></li>
+    </ul>
+  </div>
+</nav>
+<!--This is a shopping cart placeholder-->
+<!--Class shopping-cart places chekout card at the right corner-->
+<div class="container">
+  <div class="col s12 m12">
+    <div class="card cart">
+      <div class="row">
+        <div class="col s12 m12">
+          <div class="col s12 m8">
+            <h2 class="header">Your Items</h2>
+            
+            <br>
+
+            <!--Placeholder for each item  in a cart-->
+            <div class="shopping-cart">
+              <div class="shopping-cart-header">
+                <div class="card horizontal">
+                  {{#each cart}}
+                    <p>Item Id: {{this.dataValues.id}}</p>
+                  <div class="card-image">
+                    <img src="assets/images/shopping.png" width="100px" height="100px">
+                  </div>
+                  <div class="card-stacked">
+                    <div class="card-content">
+                      <p class="right green-text">Price: {{this.dataValues.price}}</p>
+                      <br><br>
+                      <p> {{this.dataValues.name}} <p>
+                    </div>
+                    <div class="card-action">
+                      <a href="#"><i class="left  material-icons">file_download</i>Save for
+                        later</a>
+                      <a href="#" class="right"><i class="right  material-icons">clear</i>Remove
+                        item</a>
+                    </div>
+                  </div>
+                  {{/each}}
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!--Proceed to chekout card--->
+          <!----->
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<footer class="page-footer white">
+  <div class="container">
+    <div class="row center align">
+      <div class="col l12 s12">
+        <img src="assets/images/logo.png" width="150px" height="60px" />
+        <h5 class="green-text">Elegant living costs less with Elite Modern</h5>
+      </div>
+    </div>
+  </div>
+  <div class="footer-copyright black-text">
+    ©opyright Elite Modern
+  </div>
+</footer>

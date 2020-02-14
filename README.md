@@ -1,8 +1,12 @@
-# group-project-02
+# ShopDesk
 
 ## About
 
 This is an e-commerce application to manage and interact with an online storefront. Customers are able to view items for sale, add items to their shopping cart and make purchases. Store owners are able to manage their inventory, add and remove items for sale, and alter existing items.
+
+When adding items, administrators are able to upload images associated with the product, which are then stored on our server and served to end-users dynamically.
+
+The deployed application is an example of a storefront that can be created with ShopDesk. ShopDesk allows the creation of a store with any products, design language, and features a user desires.
 
 ### Project Scope
 
@@ -11,6 +15,8 @@ This project was completed over the course of 4 working days. Collaborators are 
 ### Business Context
 
 E-commerce is the fastest growing sector of the US retail market. In 2018, total retail sales in the US grew by 3.0% while e-commerce sales in the US grew by 15.0%. Small businesses see the greatest customer acquisition and revenue growth from implementing e-commerce.
+
+ShopDesk doesn't charge fees or add our branding to a user's site so their brand remains strong and their net income remains robust.
 
 ### User Stories
 
@@ -28,9 +34,7 @@ Application is currently deployed using Heroku. The site front-end is built on t
 
 ### DB Schema
 
-Product inventory and management is handled with a table of items. Determining whether items are saved for later or in a user's cart is handled with a boolean column for each item. Because of that, the entire inventory and product display functionality can be handled with only one table.
-
-Authentication is handled with a users table. Current implementation is non-secure. In the future, authentication will be handled with Passport.
+Product inventory and management is handled with a table of items. Sessions tokens are assigned and stored in a sessions table. When a user adds a product to their cart, it is connected with their session token and persisted.
 
 Products are initially seeded for testing, but can by dynamically added and updated by administrator users.
 
