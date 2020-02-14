@@ -10,16 +10,14 @@ const viewInventory = res => {
 
 // Placeholder function to add an item using sequelize
 // Replace console logs with res.json once routes are implemented
-const addItem = (obj) => {
+const addItem = obj => {
   db.Items.create({
     name: obj.name,
     description: obj.description,
     qty: obj.qty,
     price: obj.price,
     img: obj.img
-  }).then(dbItems => {
-
-  });
+  }).then(dbItems => {});
 };
 
 // Placeholder function to view items matching search using sequelize
@@ -53,12 +51,8 @@ const addToCart = (sessionID, id) => {
 };
 
 const viewCart = (sessionID, res) => {
-  let array = [];
   db.Carts.findAll({ where: { session: sessionID } }).then(result => {
-    result.forEach(idx => {
-      array.push(idx);
-    });
-    res.json(array);
+    res.render("cart", result);
   });
 };
 
