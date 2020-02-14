@@ -108,7 +108,7 @@ module.exports = function(app) {
   });
 
   // PUT ROUTE FOR UPDATING INVENTORY QUANTITY
-  app.put("/api/items/:id", function(req, res) {
+  app.put("/api/inventory/:id", function(req, res) {
     query.decreaseQty(res);
   });
 
