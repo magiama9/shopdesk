@@ -50,28 +50,28 @@ module.exports = function(app) {
     // req.file is the `photo` file
     // req.body holds the text fields of the form
     console.log(req.file.path);
-
+    
     // initializes filepath variable
     let filepath;
 
     // Returns the file path on windows machines that use the \ for filepaths
     if (
       req.file.path.substring(
-        req.file.path.toLowerCase().lastIndexOf("\\public\\")
+        req.file.path.toLowerCase().lastIndexOf("\\assets\\")
       ) != -1
     ) {
       filepath = req.file.path.substring(
-        req.file.path.toLowerCase().lastIndexOf("\\public\\")
+        req.file.path.toLowerCase().lastIndexOf("\\assets\\")
       );
     } else if (
 
       // Returns the correct file path on mac/unix systems that use / for filepaths
       req.file.path.substring(
-        req.file.path.toLowerCase().lastIndexOf("/public/")
+        req.file.path.toLowerCase().lastIndexOf("/assets/")
       ) != -1
     ) {
       filepath = req.file.path.substring(
-        req.file.path.toLowerCase().lastIndexOf("/public/")
+        req.file.path.toLowerCase().lastIndexOf("/assets/")
       );
     }
 
@@ -83,30 +83,18 @@ module.exports = function(app) {
 
     // Sets the img property of the new object to a filepath
     obj.img = filepath2;
-
-    console.log(obj);
     
     // Adds an item to the database.
     query.addItem(obj);
   });
 
-  app.get("/authenticate", (req, res) => {
-    res.sendFile(path.join(__dirname, "../public/auth.html"));
-  });
-
-  app.post("/authenticate", (req, res) => {
-    res.send("Thank you for logging in.");
-  });
-
+  // PUT ROUTE FOR ADDING TO CART
+  // YEAH, THIS SHOULD PROBABLY BE A POST ROUTE
   app.put("/add/cart/:id", (req, res) => {
-
     query.addToCart(req.session.id, req.params.id);
     res.send("Added to Cart");
   });
 
-  app.get("/checkCart", (req, res) => {
-    query.viewCart(req.session.id, res);
-  });
 
   // PUT ROUTE FOR UPDATING INVENTORY QUANTITY
 
@@ -114,12 +102,10 @@ module.exports = function(app) {
     query.decreaseQty(res);
   });
 
+
+  // GET ROUTE FOR VIEWING CART
   app.get("/cart", function(req, res) {
     query.viewCart(req.session.id, res);
   });
 
-  // PUT ROUTE FOR ADDING TO CART
-
-
-  // PUT ROUTE FOR ADDING TO SAVED ITEMS
 };
