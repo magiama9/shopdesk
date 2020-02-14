@@ -21,11 +21,12 @@ $(".home").on("click", function () {
 });
 
 // shopping-cart icon on a navbar
-$(".shopping-cart").on("click", function () {
-  $(".product-display").addClass("hide");
-  $(".initial").addClass("hide");
-  $(".cart").removeClass("hide");
-});
+// $(".shopping-cart").on("click", function () {
+  
+//   $(".product-display").addClass("hide");
+//   $(".initial").addClass("hide");
+//   $(".cart").removeClass("hide");
+// });
 
 // Proceed to checkout button
 $(".chekout-btn").on("click", function () {

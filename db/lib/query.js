@@ -52,6 +52,12 @@ const addToCart = id => {
   );
 };
 
+const viewCart = (sessionID, res) => {
+  db.Carts.findAll({ where: { session: sessionID } }).then(result => {
+    res.render("cart", result);
+  });
+};
+
 // Placeholder function to add items to the cart using sequelize
 // Expects ID to be the ID of a selected item and valid
 const removeFromCart = id => {
@@ -100,5 +106,6 @@ module.exports = {
   save: save,
   unSave: unSave,
   search: searchItem,
-  decreaseQty: decreaseQty
+  decreaseQty: decreaseQty,
+  viewCart:viewCart
 };

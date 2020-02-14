@@ -64,6 +64,10 @@ module.exports = function(app) {
     query.decreaseQty(res);
   });
 
+  app.get("/cart", function(req, res) {
+    query.viewCart();
+  });
+
   // PUT ROUTE FOR ADDING TO CART
 
   // PUT ROUTE FOR ADDING TO SAVED ITEMS
