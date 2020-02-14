@@ -14,15 +14,25 @@
         </div>
       </li>
     </ul>
+
     <ul class="right">
+
       <li><a href="/"><i class="home green-text material-icons left" id="home">home</i>Home</a></li>
       <li><a href="/cart"><i class="material-icons left shopping-cart">shopping_cart</i>Your cart</a></li>
       <li><a href="#" class="green-text"><i class="material-icons left">input</i>Login</a></li>
       <li><a href="#"><i class="material-icons left">person_add</i>Signup</li>
+      <a class='dropdown-trigger btn red small-text' href='#' data-target='dropdown1'><i
+          class="material-icons left shopping-cart">people_outline</i>My account</a>
+      <ul id='dropdown1' class='dropdown-content'>
+        <li><a href="#" class="red-text login">Login</a></li>
+        <li><a href="#" class="red-text signup">Sign up</a></li>
+        <li><a href="/productupload" class="red-text upload">Admin</a></li>
+      </ul>
     </ul>
   </div>
 </nav>
 <!----->
+
 
 <!--Second navbar-->
 <nav class="white nav2">
@@ -56,19 +66,31 @@
   </div>
 </div>
 
-<!---->
-
 <!-- This is a placeholder for all products-->
 <div class="row">
   <div class="col s12 m12">
     <div class="card product-display hide">
       <div class="row">
         <div class="col s12 m12">
-          <h5 class="center" style="color:black">Make your home beautiful with our elegant
-            collections</h5>
-          <hr>
+          <div class="col s12 m12">
+            <div class="card horizontal">
+
+              <div class="card-image">
+                <div class="card-action"></div>
+                <img src="assets/images/1.jpeg">
+              </div>
+              <div class="card-stacked">
+                <div class="card-content">
+                  <h5>Let's make your home beautiful together</h5>
+                  <div class="card-action"></div>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
+
+
       <div class="card-content">
         <div class="row">
           {{#each items}}
@@ -80,7 +102,7 @@
               <div class="card-action">
                 <p class="item product-name">Name: {{this.dataValues.name}}</p>
                 <p class="item description">Description: {{this.dataValues.description}}</p>
-                <p class="item price">Price: {{this.dataValues.price}}</p>                
+                <p class="item price">Price: {{this.dataValues.price}}</p>
                 <br>
                 <button class="btn add-to-cart waves-effect waves-light" id="add-to-cart" type="submit" name="action" data-id="{{this.dataValues.id}}">Add to cart
                   <i class="material-icons right">add_shopping_cart</i>
@@ -95,8 +117,6 @@
   </div>
 </div>
 
-
-<!---Chekout form-->
 <div class="container">
   <div class="row">
     <div class="col s12 m12">
@@ -106,94 +126,98 @@
           <hr>
           <br>
 
-          <div class="row">
-            <form class="col s12 m12">
-              <div class="row">
-                <div class="input-field col s6">
-                  <input id="first_name" type="text" class="validate">
-                  <label for="first_name">First Name</label>
-                </div>
-                <div class="input-field col s6">
-                  <input id="last_name" type="text" class="validate">
-                  <label for="last_name">Last Name</label>
-                </div>
-              </div>
-          </div>
+          <div class="container">
 
-          <div class="row">
-            <form class="col s12">
-              <div class="row">
-                <div class="input-field col s12">
-                  <textarea id="textarea1" class="materialize-textarea"></textarea>
-                  <label for="textarea1">Address line 1<span class="red-text">*</span></label>
+            <div class="row">
+              <form class="col s12 m12">
+                <div class="row">
+                  <div class="input-field col s6">
+                    <input id="first_name" type="text" class="validate">
+                    <label for="first_name">First Name</label>
+                  </div>
+                  <div class="input-field col s6">
+                    <input id="last_name" type="text" class="validate">
+                    <label for="last_name">Last Name</label>
+                  </div>
                 </div>
-              </div>
-            </form>
-          </div>
-
-          <div class="row">
-            <form class="col s12">
-              <div class="row">
-                <div class="input-field col s12">
-                  <textarea id="textarea1" class="materialize-textarea"></textarea>
-                  <label for="textarea1">Address line 2</label>
-                </div>
-              </div>
-            </form>
-          </div>
-
-
-          <div class="row">
-            <form class="col s12 m12">
-              <div class="row">
-                <div class="input-field col s6">
-                  <input id="first_name" type="text" class="validate">
-                  <label for="first_name">City <span class="red-text">*</span></label>
-                </div>
-                <div class="input-field col s6">
-                  <select id="state">
-                    <option value="" disabled selected>Select state</option>
-                    <option>Alabama</option>
-                    <option>Alaska</option>
-                    <option>Arizona</option>
-                    <option>Arkansas</option>
-                    <option>California</option>
-                    <option>Colorado</option>
-                    <option>Connecticut</option>
-                    <option>Delaware</option>
-                    <option>Florida</option>
-                    <option>Georgia</option>
-                    <option>Hawaii</option>
-                    <!--to be continued:)-->
-                  </select>
-
-                  </select>
-                </div>
-              </div>
-            </form>
-          </div>
-
-          <div class="row">
-            <form class="col s12 m12">
-              <div class="row">
-                <div class="input-field col s6">
-                  <input id="first_name" type="text" class="validate">
-                  <label for="first_name">Postal code<span class="red-text">*</span></label>
-                </div>
-                <div class="input-field col s6">
-                  <input id="last_name" type="text" class="validate">
-                  <label for="last_name">Phone number<span class="red-text">*</span></label>
-                </div>
-              </div>
-          </div>
-          <div class="row">
-            <div class="input-field col s12">
-              <input id="email" type="email" class="validate">
-              <label for="email">Email</label>
             </div>
-          </div>
 
-          <a class="waves-effect waves-light btn-small red payment-btn">Continue to payment</a>
+
+            <div class="row">
+              <form class="col s12">
+                <div class="row">
+                  <div class="input-field col s12 m12">
+                    <textarea id="textarea1" class="materialize-textarea"></textarea>
+                    <label for="textarea1">Address line 1<span class="red-text">*</span></label>
+                  </div>
+                </div>
+              </form>
+            </div>
+
+            <div class="row">
+              <form class="col s12">
+                <div class="row">
+                  <div class="input-field col s12 m12">
+                    <textarea id="textarea1" class="materialize-textarea"></textarea>
+                    <label for="textarea1">Address line 2</label>
+                  </div>
+                </div>
+              </form>
+            </div>
+
+
+            <div class="row">
+              <form class="col s12 m12">
+                <div class="row">
+                  <div class="input-field col s6">
+                    <input id="first_name" type="text" class="validate">
+                    <label for="first_name">City <span class="red-text">*</span></label>
+                  </div>
+                  <div class="input-field col s6">
+                    <select id="state">
+                      <option value="" disabled selected>Select state</option>
+                      <option>Alabama</option>
+                      <option>Alaska</option>
+                      <option>Arizona</option>
+                      <option>Arkansas</option>
+                      <option>California</option>
+                      <option>Colorado</option>
+                      <option>Connecticut</option>
+                      <option>Delaware</option>
+                      <option>Florida</option>
+                      <option>Georgia</option>
+                      <option>Hawaii</option>
+                      <!--to be continued:)-->
+                    </select>
+
+                    </select>
+                  </div>
+                </div>
+              </form>
+            </div>
+
+            <div class="row">
+              <form class="col s12 m12">
+                <div class="row">
+                  <div class="input-field col s6">
+                    <input id="first_name" type="text" class="validate">
+                    <label for="first_name">Postal code<span class="red-text">*</span></label>
+                  </div>
+                  <div class="input-field col s6">
+                    <input id="last_name" type="text" class="validate">
+                    <label for="last_name">Phone number<span class="red-text">*</span></label>
+                  </div>
+                </div>
+            </div>
+            <div class="row">
+              <div class="input-field col s12">
+                <input id="email" type="email" class="validate">
+                <label for="email">Email</label>
+              </div>
+            </div>
+
+            <a class="waves-effect waves-light btn-small red payment-btn">Continue to payment</a>
+          </div>
 
         </div>
       </div>
@@ -201,6 +225,7 @@
   </div>
 
 </div>
+<!-------------------------------------------------------------------------------------------------------->
 
 <!--Payment info form]--->
 
@@ -214,9 +239,9 @@
           <br>
 
 
-          <div class="row">
-            <form class="col s12 m12">
-              <div class="row">
+          <div class="container">
+            <div class="row">
+              <form class="col s10 m10">
                 <div class="input-field col s6">
                   <input id="first_name" type="text" class="validate">
                   <label for="first_name">First Name <span class="red-text">*</label>
@@ -225,146 +250,149 @@
                   <input id="last_name" type="text" class="validate">
                   <label for="last_name">Last Name <span class="red-text">*</label>
                 </div>
-              </div>
-          </div>
-          <div class="row">
-            <form class="col s12 m12">
-              <div class="row">
-                <div class="input-field col s6">
-                  <input id="password" type="password" class="validate">
-                  <label for="first_name">Card number <span class="red-text">*</label>
-                </div>
-                <div class="input-field col s6">
-                  <input id="password" type="password" class="validate">
-                  <label for="last_name">Security code <span class="red-text">*</label>
-                </div>
-              </div>
-          </div>
-
-
-          <div class="row">
-            <div class="input-field col s12">
-              <select>
-                <option value="" disabled selected>Select month</option>
-                <option>01</option>
-                <option>02</option>
-                <option>03</option>
-                <option>04</option>
-                <option>05</option>
-                <option>06</option>
-                <option>07</option>
-                <option>08</option>
-                <option>09</option>
-                <option>10</option>
-                <option>11</option>
-                <option>12</option>
-              </select>
             </div>
-          </div>
-
-          <div class="row">
-            <div class="input-field col s12">
-              <select>
-                <option value="" disabled selected>Select year</option>
-                <option>20</option>
-                <option>21</option>
-                <option>22</option>
-                <option>23</option>
-                <option>24</option>
-                <option>25</option>
-                <option>26</option>
-                <option>27</option>
-                <option>28</option>
-                <option>29</option>
-                <option>30</option>
-              </select>
+            <div class="row">
+              <form class="col s12 m12">
+                <div class="row">
+                  <div class="input-field col s6">
+                    <input id="password" type="password" class="validate">
+                    <label for="first_name">Card number <span class="red-text">*</label>
+                  </div>
+                  <div class="input-field col s6">
+                    <input id="password" type="password" class="validate">
+                    <label for="last_name">Security code <span class="red-text">*</label>
+                  </div>
+                </div>
             </div>
-          </div>
 
-          <form action="#">
-            <p>
-              <label>
-                <input type="checkbox" />
-                <span class="left black-text">Billing is the same as shipping address</span>
-              </label>
-            </p>
-          </form>
-          <br><br>
 
-          <div class="row">
-            <form class="col s12">
-              <div class="row">
-                <div class="input-field col s12">
-                  <textarea id="textarea1" class="materialize-textarea"></textarea>
-                  <label for="textarea1">Address line 1<span class="red-text">*</span></label>
-                </div>
+            <div class="row">
+              <div class="input-field col s12">
+                <select>
+                  <option value="" disabled selected>Select month</option>
+                  <option>01</option>
+                  <option>02</option>
+                  <option>03</option>
+                  <option>04</option>
+                  <option>05</option>
+                  <option>06</option>
+                  <option>07</option>
+                  <option>08</option>
+                  <option>09</option>
+                  <option>10</option>
+                  <option>11</option>
+                  <option>12</option>
+                </select>
               </div>
-            </form>
-          </div>
-
-          <div class="row">
-            <form class="col s12">
-              <div class="row">
-                <div class="input-field col s12">
-                  <textarea id="textarea1" class="materialize-textarea"></textarea>
-                  <label for="textarea1">Address line 2</label>
-                </div>
-              </div>
-            </form>
-          </div>
-
-
-          <div class="row">
-            <form class="col s12 m12">
-              <div class="row">
-                <div class="input-field col s6">
-                  <input id="first_name" type="text" class="validate">
-                  <label for="first_name">City <span class="red-text">*</span></label>
-                </div>
-                <div class="input-field col s6">
-                  <select id="state">
-                    <option value="" disabled selected>Select state</option>
-                    <option>Alabama</option>
-                    <option>Alaska</option>
-                    <option>Arizona</option>
-                    <option>Arkansas</option>
-                    <option>California</option>
-                    <option>Colorado</option>
-                    <option>Connecticut</option>
-                    <option>Delaware</option>
-                    <option>Florida</option>
-                    <option>Georgia</option>
-                    <option>Hawaii</option>
-                    <!--to be continued:)-->
-                  </select>
-
-                  </select>
-                </div>
-              </div>
-            </form>
-          </div>
-
-          <div class="row">
-            <form class="col s12 m12">
-              <div class="row">
-                <div class="input-field col s6">
-                  <input id="first_name" type="text" class="validate">
-                  <label for="first_name">Postal code<span class="red-text">*</span></label>
-                </div>
-                <div class="input-field col s6">
-                  <input id="last_name" type="text" class="validate">
-                  <label for="last_name">Phone number<span class="red-text">*</span></label>
-                </div>
-              </div>
-          </div>
-          <div class="row">
-            <div class="input-field col s12">
-              <input id="email" type="email" class="validate">
-              <label for="email">Email</label>
             </div>
+
+            <div class="row">
+              <div class="input-field col s12">
+                <select>
+                  <option value="" disabled selected>Select year</option>
+                  <option>20</option>
+                  <option>21</option>
+                  <option>22</option>
+                  <option>23</option>
+                  <option>24</option>
+                  <option>25</option>
+                  <option>26</option>
+                  <option>27</option>
+                  <option>28</option>
+                  <option>29</option>
+                  <option>30</option>
+                </select>
+              </div>
+            </div>
+
+
+            <form action="#">
+              <p>
+                <label>
+                  <input type="checkbox" />
+                  <span class="left black-text">Billing is the same as shipping address</span>
+                </label>
+              </p>
+            </form>
+            <br><br>
+
+            <div class="row">
+              <form class="col s12">
+                <div class="row">
+                  <div class="input-field col s12">
+                    <textarea id="textarea1" class="materialize-textarea"></textarea>
+                    <label for="textarea1">Address line 1<span class="red-text">*</span></label>
+                  </div>
+                </div>
+              </form>
+            </div>
+
+            <div class="row">
+              <form class="col s12">
+                <div class="row">
+                  <div class="input-field col s12">
+                    <textarea id="textarea1" class="materialize-textarea"></textarea>
+                    <label for="textarea1">Address line 2</label>
+                  </div>
+                </div>
+              </form>
+            </div>
+
+
+            <div class="row">
+              <form class="col s12 m12">
+                <div class="row">
+                  <div class="input-field col s6">
+                    <input id="first_name" type="text" class="validate">
+                    <label for="first_name">City <span class="red-text">*</span></label>
+                  </div>
+                  <div class="input-field col s6">
+                    <select id="state">
+                      <option value="" disabled selected>Select state</option>
+                      <option>Alabama</option>
+                      <option>Alaska</option>
+                      <option>Arizona</option>
+                      <option>Arkansas</option>
+                      <option>California</option>
+                      <option>Colorado</option>
+                      <option>Connecticut</option>
+                      <option>Delaware</option>
+                      <option>Florida</option>
+                      <option>Georgia</option>
+                      <option>Hawaii</option>
+                      <!--to be continued:)-->
+                    </select>
+
+                    </select>
+                  </div>
+                </div>
+              </form>
+            </div>
+
+            <div class="row">
+              <form class="col s12 m12">
+                <div class="row">
+                  <div class="input-field col s6">
+                    <input id="first_name" type="text" class="validate">
+                    <label for="first_name">Postal code<span class="red-text">*</span></label>
+                  </div>
+                  <div class="input-field col s6">
+                    <input id="last_name" type="text" class="validate">
+                    <label for="last_name">Phone number<span class="red-text">*</span></label>
+                  </div>
+                </div>
+            </div>
+            <div class="row">
+              <div class="input-field col s12">
+                <input id="email" type="email" class="validate">
+                <label for="email">Email</label>
+              </div>
+            </div>
+
+            <a class="waves-effect waves-light btn-small red place-order">Place order</a>
           </div>
 
-          <a class="waves-effect waves-light btn-small red place-order">Place order</a>
+
 
 
         </div>
@@ -373,6 +401,8 @@
   </div>
 </div>
 
+
+<!--Confirmation order card-->
 <div class="container">
   <div class="row">
     <div class="col s12 8">
@@ -391,7 +421,109 @@
 </div>
 <!----->
 
+<!--Log in form------------------------------------------------------------------------------------------->
+<div class="container">
+  <div class="row ">
+    <div class="col s12 m12">
+      <div class="card center align login-form hide">
+        <div class="col s12 m12">
+          <h2 class="header center red-text ">Log in to your account</h2>
+          <hr>
+          <br>
+
+
+          <div class="container">
+            <div class="row">
+              <div class="col s10 m10">
+                <div class="input-field col s12">
+                  <input id="username" type="text" class="validate">
+                  <label for="username">Username <span class="red-text">*</label>
+                </div>
+                <div class="input-field col s12">
+                  <input id="password" type="password" class="validate">
+                  <label for="first_name">Password<span class="red-text">*</label>
+                </div>
+              </div>
+            </div>
+          </div>
+
+
+          <a class="waves-effect login-btn waves-light btn-small red place-order">Login</a>
+          <br><br>
+
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-------------------------------------------------------------------------------------------------->
+
+<!--Sign up form-->
+<div class="container">
+  <div class="row ">
+    <div class="col s12 m12">
+      <div class="card center align signup-form hide">
+        <div class="col s12 m12">
+          <h2 class="header center red-text ">Create your account</h2>
+          <hr>
+          <br>
+
+
+          <div class="container">
+            <div class="row">
+              <form class="col s10 m10">
+                <div class="input-field col s6">
+                  <input id="first_name" type="text" class="validate">
+                  <label for="first_name">First Name </label>
+                </div>
+                <div class="input-field col s6">
+                  <input id="last_name" type="text" class="validate">
+                  <label for="last_name">Last Name </label>
+                </div>
+            </div>
+          </div>
+
+          <div class="container">
+            <div class="row">
+              <div class="input-field col s12">
+                <input id="email" type="email" class="validate">
+                <label for="email">Email</label>
+              </div>
+            </div>
+          </div>
+
+          <div class="container">
+            <div class="row">
+              <form class="col s10 m10">
+                <div class="input-field col s6">
+                  <input type="text" class="validate">
+                  <label for="password">Username </label>
+                </div>
+                <div class="input-field col s6">
+                  <input id="password" type="text" class="validate">
+                  <label for="password">Password <span class="red-text">*</label>
+                </div>
+
+            </div>
+          </div>
+
+
+          <div class="center">
+            <a class="waves-effect signupbtn waves-light btn-small red place-order">Sign up</a>
+            <br><br>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
 <!-- Footer --->
+
 
 <footer class="page-footer white">
   <div class="container">
@@ -410,5 +542,5 @@
 
 
 
-</div>
+
 

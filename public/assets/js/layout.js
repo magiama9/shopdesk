@@ -1,12 +1,13 @@
 $(document).ready(function () {
   console.log("kanslkdf");
   $('select').formSelect(); // materialize plugin for form where user is selecting state
-
+	$('.dropdown-trigger').dropdown(); // materialize plugin for 'my account' button
 
 // All the content lives on one html page, so we're adding hide/show classes for all links and buttons
 
 // Class menu added to these buttons: kitchen, bedroom, bathroom, living room, outdoors
 $(".menu").on("click", function () {
+
   // $(".initial").addClass("hide");
   $(".product-display").removeClass("hide");
 });
@@ -64,5 +65,49 @@ $(".add-to-cart").on("click", function () {
   $.ajax("/add/cart/" + id, {
     type: "PUT"
   })
+
 });
+
+// login icon/ or "login" on a navbar
+$(".login").on("click", function (){
+$(".login-form").removeClass("hide");
+$(".product-display").addClass("hide");
+$(".initial").addClass("hide");
+$(".checkout-form").addClass("hide");
+$(".payment-form").addClass("hide");
+$(".thank-you").addClass("hide");
+$(".cart").addClass("hide");
+$(".signup-form").addClass("hide");
 });
+
+
+// login button
+$(".login-btn").on("click", function () {
+  $(".cart").removeClass("hide");
+  $(".login-form").addClass("hide");
+  $(".thank-you").addClass("hide");
+  $(".signup-form").addClass("hide");
+});
+
+// signup icon/ or "sign up" on a navbar
+$(".signup").on("click", function (){
+  $(".signup-form").removeClass("hide");
+  $(".login-form").addClass("hide");
+  $(".product-display").addClass("hide");
+  $(".initial").addClass("hide");
+  $(".checkout-form").addClass("hide");
+  $(".payment-form").addClass("hide");
+  $(".thank-you").addClass("hide");
+  $(".cart").addClass("hide");
+});
+
+$(".signupbtn").on("click", function () {
+  window.scrollTo(0,0);
+  $(".signup-form").addClass("hide");
+  $(".initial").removeClass("hide");
+  $(".thank-you").addClass("hide");
+});
+
+
+});
+

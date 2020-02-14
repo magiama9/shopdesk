@@ -99,6 +99,7 @@ module.exports = function(app) {
   });
 
   app.put("/add/cart/:id", (req, res) => {
+
     query.addToCart(req.session.id, req.params.id);
     res.send("Added to Cart");
   });
@@ -108,6 +109,7 @@ module.exports = function(app) {
   });
 
   // PUT ROUTE FOR UPDATING INVENTORY QUANTITY
+
   app.put("/api/inventory/:id", function(req, res) {
     query.decreaseQty(res);
   });
@@ -117,6 +119,7 @@ module.exports = function(app) {
   });
 
   // PUT ROUTE FOR ADDING TO CART
+
 
   // PUT ROUTE FOR ADDING TO SAVED ITEMS
 };
