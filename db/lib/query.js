@@ -2,7 +2,7 @@ const db = require("../../models");
 
 // Placeholder function to view all inventory using sequelize
 // Replace console logs with res.json once routes are implemented
-const viewInventory = (res) => {
+const viewInventory = res => {
   db.Items.findAll({}).then(dbItems => {
     res.render("index", { items: dbItems });
   });
@@ -10,16 +10,14 @@ const viewInventory = (res) => {
 
 // Placeholder function to add an item using sequelize
 // Replace console logs with res.json once routes are implemented
-const addItem = (obj, path) => {
+const addItem = obj => {
   db.Items.create({
     name: obj.name,
     description: obj.description,
     qty: obj.qty,
     price: obj.price,
-    img: path
-  }).then(dbItems => {
-    console.log(dbItems);
-  });
+    img: obj.img
+  }).then(dbItems => {});
 };
 
 // Placeholder function to view items matching search using sequelize
@@ -32,41 +30,39 @@ const searchItem = searchTerm => {
       name: searchTerm
     }
   }).then(search => {
-    search.forEach(idx => {
-      console.log(idx.description);
-      console.log(idx.name);
-      console.log(idx.price);
-      console.log(idx.img);
+    res.render("index", { items: search });
+  });
+};
+
+// Placeholder function to add items to the cart using sequelize
+// Expects ID to be the ID of a selected item and valid
+const addToCart = (sessionID, id) => {
+  db.Items.findAll({ where: { id: id } }).then(result => {
+    result.forEach(idx => {
+      db.Carts.create({
+        session: sessionID,
+        productID: id,
+        name: idx.name,
+        price: idx.price,
+        img: idx.img
+      });
     });
   });
 };
 
-// Placeholder function to add items to the cart using sequelize
-// Expects ID to be the ID of a selected item and valid
-const addToCart = id => {
-  db.Items.update(
-    {
-      inCart: true
-    },
-    { where: { id: id } }
-  );
-};
-
 const viewCart = (sessionID, res) => {
   db.Carts.findAll({ where: { session: sessionID } }).then(result => {
+    console.log(result)
     res.render("cart", result);
   });
 };
 
-// Placeholder function to add items to the cart using sequelize
+// Remove items from the cart using sequelize
 // Expects ID to be the ID of a selected item and valid
 const removeFromCart = id => {
-  db.Items.update(
-    {
-      inCart: false
-    },
-    { where: { id: id } }
-  );
+  db.Carts.destroy({ where: { id: id } }).then(result => {
+    return result;
+  });
 };
 // Placeholder function to save items using sequelize
 // Expects ID to be the ID of a selected item and valid
@@ -102,6 +98,7 @@ module.exports = {
   view: viewInventory,
   addItem: addItem,
   addToCart: addToCart,
+  viewCart: viewCart,
   removeFromCart: removeFromCart,
   save: save,
   unSave: unSave,

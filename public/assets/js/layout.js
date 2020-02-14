@@ -13,12 +13,12 @@ $(".menu").on("click", function () {
 });
 
 // home page icon on a navbar
-$(".home").on("click", function () {
-  console.log("click");
-  $(".product-display").addClass("hide");
-  $(".initial").removeClass("hide");
-  $(".cart").addClass("hide");
-});
+// $(".home").on("click", function () {
+//   console.log("click");
+//   $(".product-display").addClass("hide");
+//   $(".initial").removeClass("hide");
+//   $(".cart").addClass("hide");
+// });
 
 // shopping-cart icon on a navbar
 // $(".shopping-cart").on("click", function () {
@@ -37,12 +37,12 @@ $(".chekout-btn").on("click", function () {
 });
 
 // add-to cart button
-$(".add-to-cart").on("click", function () {
-  $(".cart").removeClass("hide");
-  $(".product-display").addClass("hide");
-  $(".initial").addClass("hide");
-  $(".checkout-form").addClass("hide");
-});
+// $(".add-to-cart").on("click", function () {
+//   $(".cart").removeClass("hide");
+//   $(".product-display").addClass("hide");
+//   $(".initial").addClass("hide");
+//   $(".checkout-form").addClass("hide");
+// });
 
 // checkout button
 $(".payment-btn").on("click", function (){
@@ -65,5 +65,12 @@ $(".place-order").on("click", function(){
 $(".continue-shopping").on("click", function (){
   $(".thank-you").addClass("hide");
   $(".initial").removeClass("hide");
+});
+
+$(".add-to-cart").on("click", function () {
+  let id = $(this).data("id");
+  $.ajax("/add/cart/" + id, {
+    type: "PUT"
+  })
 });
 });
