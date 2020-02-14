@@ -14,19 +14,24 @@
         </div>
       </li>
     </ul>
-    
+
     <ul class="right">
-      <li><a href="#" class="green-text home"><i class="home material-icons left">home</i>Home</a></li>
-      <li><a href="#" class="shopping-cart"><i class="material-icons left shopping-cart">shopping_cart</i>Your cart</a>
-      </li>
-      <li><a href="#" class="green-text login"><i class="material-icons left login">input</i>Login</a></li>
-      <li><a href="#" class="signup"><i class="signup material-icons left">person_add</i>Sign up</li>
+      <li><a href="/" class="green-text home"><i class="home material-icons left">home</i>Home</a></li>
+      <li><a href="cart" class="shopping-cart"><i class="material-icons left shopping-cart">shopping_cart</i>Your
+          cart</a></li>
+
+      <a class='dropdown-trigger btn red small-text' href='#' data-target='dropdown1'><i
+          class="material-icons left shopping-cart">people_outline</i>My account</a>
+      <ul id='dropdown1' class='dropdown-content'>
+        <li><a href="#" class="red-text login">Login</a></li>
+        <li><a href="#" class="red-text signup">Sign up</a></li>
+        <li><a href="/productupload" class="red-text upload">Admin</a></li>
+      </ul>
     </ul>
   </div>
 </nav>
-
- {{!-- <li><a href="#" class="green-text upload"><i class="upload material-icons left">file_upload</i>Upload item</li> --}}
 <!----->
+
 
 <!--Second navbar-->
 <nav class="white nav2">
@@ -176,8 +181,8 @@
           <!--Proceed to chekout card--------------------------------------------------------------------------------->
 
 
-          
-            <div class="card  horizontal">
+
+          <div class="card  horizontal">
             <div class="row">
               <div class="col s12 m12">
                 <div class="card  hide-on-small-only ">
@@ -197,8 +202,8 @@
                 </div>
               </div>
             </div>
-            </div>
-         
+          </div>
+
 
 
         </div>
@@ -644,6 +649,8 @@
 
 
 <!------------------------------------------------------------------------------------------------------>
+
+
 <!-- Footer --------------------------------------------------------------------------------------------->
 
 <footer class="page-footer white">

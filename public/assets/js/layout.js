@@ -1,7 +1,7 @@
 $(document).ready(function () {
   console.log("kanslkdf");
   $('select').formSelect(); // materialize plugin for form where user is selecting state
-
+	$('.dropdown-trigger').dropdown(); // materialize plugin for 'my account' button
 
 // All the content lives on one html page, so we're adding hide/show classes for all links and buttons
 
@@ -128,6 +128,7 @@ $(".signupbtn").on("click", function () {
   $(".initial").removeClass("hide");
   $(".thank-you").addClass("hide");
 });
+
 
 });
 
