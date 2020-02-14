@@ -1,0 +1,26 @@
+{
+  "development": {
+    "username": "root",
+    "password": "admin",
+    "database": "coolstoredb",
+    "host": "127.0.0.1",
+    "dialect": "mysql",
+    "operatorsAliases": "false"
+  },
+  "test": {
+    "username": "root",
+    "password": "admin",
+    "database": "coolstoredb",
+    "host": "127.0.0.1",
+    "dialect": "mysql",
+    "operatorsAliases": "false"
+  },
+  "production": {
+    "username": "x7ponw950gecnkcy",
+    "password": "kpfhiq2pvackrhuw",
+    "database": "f5xdtcnq4rvrf9bv",
+    "host": "tuy8t6uuvh43khkk.cbetxkdyhwsb.us-east-1.rds.amazonaws.com",
+    "dialect": "mysql",
+    "operatorsAliases": "false"
+  }
+}
