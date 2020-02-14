@@ -18,7 +18,7 @@ const addItem = (obj) => {
     price: obj.price,
     img: obj.img
   }).then(dbItems => {
-    console.log(dbItems);
+
   });
 };
 
@@ -32,7 +32,7 @@ const searchItem = searchTerm => {
       name: searchTerm
     }
   }).then(search => {
-    res.render("index", { items: dbItems });
+    res.render("index", { items: search });
   });
 };
 
