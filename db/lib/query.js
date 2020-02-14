@@ -53,7 +53,7 @@ const addToCart = (sessionID, id) => {
 const viewCart = (sessionID, res) => {
   db.Carts.findAll({ where: { session: sessionID } }).then(result => {
     console.log(result)
-    res.render("cart", result);
+    res.render("cart", { cart: result });
   });
 };
 
