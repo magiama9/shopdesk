@@ -10,10 +10,10 @@ const db = require("../../models");
 // SETS STORAGE DESTINATION AND FILENAMES WHEN IMAGES ARE UPLOADED
 const storage = multer.diskStorage({
   destination: (req, file, cb) => {
-    cb(null, "../public/uploads");
+    cb(null, path.join(__dirname, "../../public/assets/images/uploads"));
   },
   filename: (req, file, cb) => {
-    cb(null, file.filename + "-" + Date.now());
+    cb(null, Date.now() + "-" + file.originalname);
   }
 });
 
@@ -38,15 +38,25 @@ module.exports = function(app) {
     query.view(res);
   });
 
+  app.get("/inventory", (req, res) => {
+    res.sendFile(path.join(__dirname, "../../public/upload.html"));
+  });
   // POST ROUTE FOR ADDING INVENTORY
   // FORM NEEDS TO HAVE A FILE INPUT FIELD NAMED PHOTO
   app.post("/inventory/upload", upload.single("photo"), (req, res, next) => {
     // req.file is the `photo` file
     // req.body holds the text fields of the form
-
+    console.log(req.file.path);
+    let filepath = req.file.path.substring(
+      req.file.path.toLowerCase().indexOf("\\public\\")
+    );
+    let filepath2 = filepath.replace(/\\/g, "/");
+    let obj = req.body;
+    obj.img = filepath2;
+    console.log(obj);
     // Adds an item to the database. req.file.path SHOULD be the correct file path
     // Needs testing
-    query.addItem(req.body, req.file.path);
+    query.addItem(obj);
   });
 
   app.get("/authenticate", (req, res) => {
@@ -73,7 +83,7 @@ module.exports = function(app) {
 
   app.post("/cart/remove/:id", (req, res) => {
     query.removeFromCart(req.params.id);
-  })
+  });
   // PUT ROUTE FOR ADDING TO CART
 
   // PUT ROUTE FOR ADDING TO SAVED ITEMS
