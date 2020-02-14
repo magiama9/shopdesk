@@ -8,7 +8,7 @@ $(document).ready(function () {
 // Class menu added to these buttons: kitchen, bedroom, bathroom, living room, outdoors
 $(".menu").on("click", function () {
 
-  // $(".initial").addClass("hide");
+  $(".initial").addClass("hide");
   $(".product-display").removeClass("hide");
 });
 
