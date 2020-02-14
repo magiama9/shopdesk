@@ -1,6 +1,6 @@
 module.exports = function(sequelize, DataTypes) {
-  const Session = sequelize.define("Session", {
+  const Sessions = sequelize.define("Sessions", {
     session: DataTypes.STRING,
   });
-  return Session;
+  return Sessions;
 };
