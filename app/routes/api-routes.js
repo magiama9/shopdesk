@@ -95,6 +95,7 @@ module.exports = function(app) {
     res.send("Added to Cart");
   });
 
+  // Post route for searching
   app.post("/search/:name", (req, res) => {
     console.log("stuff")
     query.search(req.params.name, res);
