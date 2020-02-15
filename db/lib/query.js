@@ -24,12 +24,13 @@ const addItem = obj => {
 // Replace console logs with res.json once routes are implemented
 
 // SEARCH TERM IS NOT CASE SENSITIVE, THANK GOD.
-const searchItem = searchTerm => {
+const searchItem = (searchTerm, res) => {
   db.Items.findAll({
     where: {
       name: searchTerm
     }
   }).then(search => {
+    console.log(search);
     res.render("index", { items: search });
   });
 };
@@ -52,7 +53,7 @@ const addToCart = (sessionID, id) => {
 
 const viewCart = (sessionID, res) => {
   db.Carts.findAll({ where: { session: sessionID } }).then(result => {
-    console.log(result)
+    console.log(result);
     res.render("cart", { cart: result });
   });
 };
@@ -104,5 +105,5 @@ module.exports = {
   unSave: unSave,
   search: searchItem,
   decreaseQty: decreaseQty,
-  viewCart:viewCart
+  viewCart: viewCart
 };

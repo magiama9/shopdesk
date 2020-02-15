@@ -95,7 +95,10 @@ module.exports = function(app) {
     res.send("Added to Cart");
   });
 
-
+  app.post("/search/:name", (req, res) => {
+    console.log("stuff")
+    query.search(req.params.name, res);
+  })
   // PUT ROUTE FOR UPDATING INVENTORY QUANTITY
 
   app.put("/api/inventory/:id", function(req, res) {
