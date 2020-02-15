@@ -14,6 +14,8 @@ This project was completed over the course of 4 working days. Collaborators are 
 
 ### Business Context
 
+Our [pitch deck](https://docs.google.com/presentation/d/1NrNWlxYCQ4QATR659-QfrsXOXH5aKYEky6Sua3D21Lw/edit?usp=sharing "ShopDesk") is hosted on Google Slides.
+
 E-commerce is the fastest growing sector of the US retail market. In 2018, total retail sales in the US grew by 3.0% while e-commerce sales in the US grew by 15.0%. Small businesses see the greatest customer acquisition and revenue growth from implementing e-commerce.
 
 ShopDesk doesn't charge fees or add our branding to a user's site so their brand remains strong and their net income remains robust.
@@ -62,21 +64,21 @@ Products are initially seeded for testing, but can by dynamically added and upda
 
 ### TODO
 
-* All items for sale display with an item name, price, description, and image
+* ~~All items for sale display with an item name, price, description, and image~~
 
-* Customers are able to view all items for sale
+* ~~Customers are able to view all items for sale~~
 
-* Customers are able to add items to their cart
+* ~~Customers are able to add items to their cart~~
 
-* Customers are able to purchase items from their cart
+* ~~Customers are able to purchase items from their cart~~
 
 * Customers are able to convert prices to their local currency
 
 * Purchasing an item updates the available quantity in the DB
 
-* Store owners are able to view inventory
+* ~~Store owners are able to view inventory~~
 
-* Store owners are able to add products to the inventory
+* ~~Store owners are able to add products to the inventory~~
 
 ### WISHLIST
 
@@ -84,9 +86,9 @@ Products are initially seeded for testing, but can by dynamically added and upda
 
 * Implement secure authentication using Passport and Passport-Local
 
-* Out of stock items aren't displayed and aren't allowed to be purchased.
+* Out of stock items aren't displayed and aren't allowed to be purchased
 
-* Inventory management handled through deployed UI instead of command line interface
+* ~~Inventory management handled through deployed UI instead of command line interface~~
 
 * Users are able to search the site for a specific product
 
