@@ -5,7 +5,7 @@ const testItem = {
   description: "This is a test",
   qty: 5,
   price: 100,
-  img: "/public/assets/uploads/test.jpg"
+  img: "/assets/images/uploads/test.jpg"
 }
 
 const otherItem = {
@@ -13,7 +13,7 @@ const otherItem = {
   description: "More items",
   qty: 3,
   price: 200,
-  img: "/public/assets/uploads/shopping.png"
+  img: "/assets/images/uploads/shopping.png"
 }
 
 module.exports = seedDB = () => {
