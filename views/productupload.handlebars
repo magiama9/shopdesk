@@ -50,46 +50,34 @@
       <div class="card center align add-item-form">
         <div class="col s12 m12">
           <h2 class="header center red-text ">Fill out the form to add a new product</h2>
-          <hr>
-          <br>
 
 
-          <div class="container">
-            <div class="row">
-              <form class="col s10 m10">
-                <div class="input-field col s6">
-                  <input id="name" type="text" >
-                  <label for="name">Name </label>
-                </div>
-                <div class="input-field col s6">
-                  <input id="price" type="text" >
-                  <label for="price">Price</label>
-                </div>
-            </div>
-          </div>
 
-          <div class="container">
-            <div class="row">
-              <div class="input-field col s12">
-                <input id="description" >
-                <label for="description">Description</label>
+          <div class="row">
+            <form action="/inventory/upload" method="POST" enctype="multipart/form-data" class="col s10 m10">
+              <div class="input-field col s6">
+                <input id="name" type="text">
+                <label for="name">Name </label>
               </div>
-            </div>
-          </div>
+              <div class="input-field col s6">
+                <input id="price" type="text">
+                <label for="price">Price</label>
+              </div>
 
-          <div class="container">
-            <div class="row">
-              <form class="col s10 m10">
-                <div class="input-field col s6">
-                  <input type="text" class="validate">
-                  <label for="password">Quantity </label>
-                </div>
-                <div class="input-field col s6">
-                  <input id="photo" type="file">
-                  <label for="photo"></label>
-                </div>
+              <div class="input-field col s12">
+                <label for="description">Description</label>
+                <input type="text" id="describe">
+              </div>
 
-            </div>
+              <div class="input-field col s6">
+                <input type="text" id="quantity">
+                <label for="quantity">Quantity</label>
+              </div>
+              <div class="input-field col s6">
+                <input id="photo" type="file">
+                <label for="photo"></label>
+              </div>
+
           </div>
 
 
