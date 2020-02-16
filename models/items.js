@@ -9,10 +9,7 @@ module.exports = function(sequelize, DataTypes) {
       type: DataTypes.BOOLEAN,
       defaultValue: false
     },
-    saved: {
-      type: DataTypes.BOOLEAN,
-      defaultValue: false
-    }
+    category: DataTypes.STRING
   });
   return Items;
 };
