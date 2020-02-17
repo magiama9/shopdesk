@@ -1,5 +1,6 @@
+
 $(document).ready(function () {
-  
+
   $("select").formSelect(); // materialize plugin for form where user is selecting state
   $(".dropdown-trigger").dropdown();
 
@@ -114,97 +115,82 @@ $(document).ready(function () {
   // converting prices to different currencies
 
 
-//this is for testing and it works
-  // let testingPrice = $(".testing").text();
-  // let expressions = /[-]{0,1}[\d]*[.]{0,1}[\d]+/g;
-  // let numb = testingPrice.match(expressions);
-  // console.log(numb);
- 
-
   let price = $(".price").text();
-  // using regular expression match method to grab a number from a string, in this case a price
+  // using regular expression match method to extract a number from a string, in this case a price
   let characters = /[-]{0,1}[\d]*[.]{0,1}[\d]+/g;
   let numb = price.match(characters);
-  console.log(numb);
-
-
+  price = numb;
+  console.log(price);
+  
 
   const currency = ["EUR", "CAD", "USD"];
 
   var settings = {
     "async": true,
     "crossDomain": true,
-    "url": `https://currency-converter5.p.rapidapi.com/currency/convert?format=json&from=USD&to=${currency}&amount=${numb}`,
+    "url": `https://currency-converter5.p.rapidapi.com/currency/convert?format=json&from=USD&to=${currency}&amount=1`,
     "method": "GET",
     "headers": {
       "x-rapidapi-host": "currency-converter5.p.rapidapi.com",
       "x-rapidapi-key": "0f8b4936e4msh4b12f41af486daap16e507jsn846907cf2bfd"
     }
   }
-  
+
   $.ajax(settings).done(function (res) {
     console.log(res);
- 
- 
-// this is for testing, and it works
-    let newPrice = "Price: EUR " + res.rates.EUR.rate_for_amount;
-    $(".testing").text(newPrice);
+
+    let currentRate = res.rates.EUR.rate_for_amount;
+
+    const euroExchange = function () {
+
+      let arrayPrice = price[0] * currentRate / numb[0];
+      
+
+      convertedPrice = price.map(newPrice => {
+        return JSON.stringify(newPrice * arrayPrice);
+      });
+      console.log(convertedPrice); // this returns array of new prices
 
 
-    $(".currency").on("click", function (e) {
-      e.preventDefault();
+//      let conditionalPrice = convertedPrice[0] / currentRate;
+// console.log(conditionalPrice);
+    
+//      divided = convertedPrice.map(dividedPrice => {
+//       return JSON.stringify(dividedPrice  );
+//     });
 
-      switch (currency) {
-        case "EUR":
-          euroExchange();
-          break;
-        case "CAD":
-          canadianExchange();
-          break;
-        case "USD":
-          dollarExchange();
-          break;
-        default:
-      };
-    });
+//      console.log(divided);
+
+      for (let i = 0; i < price.length; i++) {
+        price[i] === convertedPrice[i] / currentRate;
+        $(".price").text("Price: EUR " + convertedPrice[i]);
+      }
+  }
 
 
     $(".eur").on("click", function (e) {
-      e.preventDefault();
-      euroExchange();
-    });
+    e.preventDefault();
+    euroExchange();
+  });
 
-    const euroExchange = function (e) {
 
-      // for (i = 0; i < numb.length; i++) {
+  $(".currency").on("click", function (e) {
+    e.preventDefault();
 
-      numb.forEach(exchangedPrice => {
-        let newPrice = exchangedPrice.newPrice = "Price: EUR " + res.rates.EUR.rate_for_amount;
-        $(".price").text(newPrice);
-      })
+    switch (currency) {
+      case "EUR":
+        euroExchange();
+        break;
+      case "CAD":
+        canadianExchange();
+        break;
+      case "USD":
+        dollarExchange();
+        break;
+      default: "USD"
     };
-    // };
-
-  
+  });
 
 
-  // $(".cad").on("click", function (e) {
-  //   e.preventDefault();
-  //   canadianExchange();
-  // });
-
-  // const canadianExchange = function () {
-
-  //   for (i = 0; i < length; i++) {
-
-  //     price = "Price: C$ " + res.rates.CAD.rate;
-  //     $(".price").text(price);
-
-  //   };
-  // };
-
-
- 
 });
-
 });
