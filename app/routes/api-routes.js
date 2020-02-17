@@ -3,18 +3,39 @@
 //              https://www.npmjs.com/package/multer
 // =============================================================
 const multer = require("multer");
-// const passport = require("passport");
 const path = require("path");
-const db = require("../../models");
+
+// SETS STORAGE DESTINATION AND FILENAMES WHEN IMAGES ARE UPLOADED
+const storage = multer.diskStorage({
+  destination: (req, file, cb) => {
+    cb(null, path.join(__dirname, "../../public/assets/images/uploads"));
+  },
+  filename: (req, file, cb) => {
+    cb(null, Date.now() + "-" + file.originalname);
+  }
+});
+
+// INITIALIZES MULTER FOR UPLOADING
+const upload = multer({ storage: storage });
+
+// =============================================================
+// =============================================================
+//                  AUTHENTICATION HANDLING
+//                  AUTH IS HANDLED BY AUTH0
+// =============================================================
 const jwt = require("express-jwt");
 const jwks = require("jwks-rsa");
-const secured = require("../lib/secured");
+const secured = require("../lib/secured"); // Checks whether user is authenticated when secured routes are hit
 const passport = require("passport");
 const dotenv = require("dotenv");
+
+// I'm pretty sure we don't have to require in "util" and "url" in local versions of node.
+// It breaks sometimes on heroku deploys if I don't
 const util = require("util");
 const url = require("url");
 const querystring = require("querystring");
-dotenv.config();
+
+// Handles JSON Token authentication
 const jwtCheck = jwt({
   secret: jwks.expressJwtSecret({
     cache: true,
@@ -27,31 +48,23 @@ const jwtCheck = jwt({
   algorithms: ["RS256"]
 });
 
-// SETS STORAGE DESTINATION AND FILENAMES WHEN IMAGES ARE UPLOADED
-const storage = multer.diskStorage({
-  destination: (req, file, cb) => {
-    cb(null, path.join(__dirname, "../../public/assets/images/uploads"));
-  },
-  filename: (req, file, cb) => {
-    cb(null, Date.now() + "-" + file.originalname);
-  }
-});
-
-const upload = multer({ storage: storage });
-
 // =============================================================
-//                  REQUIRE IN QUERY FUNCTIONS
+// =============================================================
+//                  QUERYING AND CONFIG SETUP
 // =============================================================
 
 const query = require("../../db/lib/query");
 const cart = require("../../db/lib/cart");
 
+// INITIALIZE DOTENV
+dotenv.config();
+
+// =============================================================
 // =============================================================
 //                          ROUTES
 // =============================================================
 
 module.exports = function(app) {
-  //app.use(jwtCheck);
   // GET ROUTE FOR VIEWING INVENTORY
   app.get("/", function(req, res) {
     console.log(req.session.id);
@@ -59,63 +72,72 @@ module.exports = function(app) {
     query.view(res);
   });
 
-  // Test route for item adding
-  // upload.html is a placeholder form
-  app.get("/inventory", (req, res) => {
+  // ROUTE FOR SERVING INVENTORY UPLOAD PAGE
+  app.get("/inventory", secured(), (req, res) => {
     //res.sendFile(path.join(__dirname, "../../public/upload.html"));
     res.render("productupload");
   });
 
   // POST ROUTE FOR ADDING INVENTORY
-  // FORM NEEDS TO HAVE A FILE INPUT FIELD NAMED PHOTO
-  app.post("/inventory/upload", upload.single("photo"), (req, res, next) => {
-    // req.file is the `photo` file
-    // req.body holds the text fields of the form
+  // ROUTE IS SECURED. POST WILL FAIL IF USER IS NOT LOGGED IN
+  app.post(
+    "/inventory/upload",
+    secured(),
+    upload.single("photo"),
+    (req, res, next) => {
+      // req.file is the `photo` file
+      // req.body holds the text fields of the form
 
-    // stores the req.body as a new object
-    let obj = req.body;
+      // stores the req.body as a new object
+      let obj = req.body;
 
-    // initializes filepath variable
-    let filepath;
-   
-    // Only performs operations on the file path if the file exists
-    if (typeof req.file !== "undefined") {
-      // Returns the file path on windows machines that use the \ for filepaths
-      if (
-        req.file.path.substring(
-          req.file.path.toLowerCase().lastIndexOf("\\assets\\")
-        ) != -1
-      ) {
-        filepath = req.file.path.substring(
-          req.file.path.toLowerCase().lastIndexOf("\\assets\\")
-        );
-      } else if (
-        // Returns the correct file path on mac/unix systems that use / for filepaths
-        req.file.path.substring(
-          req.file.path.toLowerCase().lastIndexOf("/assets/")
-        ) != -1
-      ) {
-        filepath = req.file.path.substring(
-          req.file.path.toLowerCase().lastIndexOf("/assets/")
-        );
+      // initializes filepath variable
+      let filepath;
+
+      // Only performs operations on the file path if the file exists
+      if (typeof req.file !== "undefined") {
+        // Returns the file path on windows machines that use the \ for filepaths
+        if (
+          req.file.path.substring(
+            req.file.path.toLowerCase().lastIndexOf("\\assets\\")
+          ) != -1
+        ) {
+          filepath = req.file.path.substring(
+            req.file.path.toLowerCase().lastIndexOf("\\assets\\")
+          );
+        } else if (
+          // Returns the correct file path on mac/unix systems that use / for filepaths
+          req.file.path.substring(
+            req.file.path.toLowerCase().lastIndexOf("/assets/")
+          ) != -1
+        ) {
+          filepath = req.file.path.substring(
+            req.file.path.toLowerCase().lastIndexOf("/assets/")
+          );
+        }
+
+        // replaces \ globally with / for storing in the db
+        let filepath2 = filepath.replace(/\\/g, "/");
+
+        // Sets the img property of the new object to a filepath
+        obj.img = filepath2;
       }
 
-      // replaces \ globally with / for storing in the db
-      let filepath2 = filepath.replace(/\\/g, "/");
-
-      // Sets the img property of the new object to a filepath
-      obj.img = filepath2;
+      // Adds an item to the database.
+      query.addItem(obj);
     }
-
-    // Adds an item to the database.
-    query.addItem(obj);
-  });
+  );
 
   // PUT ROUTE FOR ADDING TO CART
   // YEAH, THIS SHOULD PROBABLY BE A POST ROUTE
   app.put("/add/cart/:id", (req, res) => {
     query.addToCart(req.session.id, req.params.id);
     res.send("Added to Cart");
+  });
+
+  app.delete("/delete/cart/:id", (req, res) => {
+    query.removeFromCart(req.session.id, req.params.id);
+    res.send("back");
   });
 
   // Post route for searching
@@ -171,7 +193,7 @@ module.exports = function(app) {
         }
         const returnTo = req.session.returnTo;
         delete req.session.returnTo;
-        res.redirect(returnTo || "/user");
+        res.redirect(returnTo || "/inventory");
       });
     })(req, res, next);
   });

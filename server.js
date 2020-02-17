@@ -19,7 +19,7 @@ const app = express();
 
 // DEFINES SESSION INFO FOR DEV/PRODUCTION
 const sess = {
-  secret: "katie durga is one cool cat",
+  secret: process.env.SESSION_SECRET,
   cookie: {}
 };
 

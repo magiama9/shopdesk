@@ -18,57 +18,25 @@ $(document).ready(function() {
     }
   });
 
-  // // home page icon on a navbar
-  // // $(".home").on("click", function () {
-  // //   console.log("click");
-  // //   $(".product-display").addClass("hide");
-  // //   $(".initial").removeClass("hide");
-  // //   $(".cart").addClass("hide");
-  // // });
-
-  // // Proceed to checkout button
-  // $(".chekout-btn").on("click", function () {
-  //   $(".cart").addClass("hide");
-  //   $(".product-display").addClass("hide");
-  //   $(".initial").addClass("hide");
-  //   $(".checkout-form").removeClass("hide");
-  // });
-
-  // // add-to cart button
-  // // $(".add-to-cart").on("click", function () {
-  // //   $(".cart").removeClass("hide");
-  // //   $(".product-display").addClass("hide");
-  // //   $(".initial").addClass("hide");
-  // //   $(".checkout-form").addClass("hide");
-  // // });
-
-  // // checkout button
-  // $(".payment-btn").on("click", function (){
-  //   $(".checkout-form").addClass("hide");
-  //   $(".payment-form").removeClass("hide");
-  //   $(".cart").addClass("hide");
-
-  // });
-
-  // // place order button
-  // $(".place-order").on("click", function(){
-  //   $(".product-display").addClass("hide");
-  //   $(".initial").addClass("hide");
-  //   $(".checkout-form").addClass("hide");
-  //   $(".payment-form").addClass("hide");
-  //   $(".thank-you").removeClass("hide");
-  // });
-
-  // // continue-shopping
-  // $(".continue-shopping").on("click", function (){
-  //   $(".thank-you").addClass("hide");
-  //   $(".initial").removeClass("hide");
-  // });
-
   $(".add-to-cart").on("click", function() {
     let id = $(this).data("id");
     $.ajax("/add/cart/" + id, {
       type: "PUT"
+    });
+  });
+
+  $(".removeFromCart").on("click", function() {
+    console.log("clicked");
+    let id = $(this).attr("id");
+    console.log(id);
+    $.ajax("/delete/cart/" + id, {
+      type: "delete"
+    }).then(() => {
+
+      // THIS IS A HACKY WAY TO DO THIS
+      // WE SHOULD REALLY BE ABLE TO DYNAMICALLY RENDER NEW CONTENT
+      // MAYBE WHEN WE LEARN REACT :{
+      location.reload(); // Reloads page so handlebars can refresh content
     });
   });
 
@@ -103,17 +71,6 @@ $(document).ready(function() {
     $(".thank-you").addClass("hide");
     $(".cart").addClass("hide");
   });
-
-  // $("#submit").on("click", () => {
-  //   $.post("/inventory/upload"),
-  //     $("#item-upload").serialize(),
-  //     (err, data) => {
-  //       if (err) {
-  //         console.log(err);
-  //       }
-  //       console.log(data);
-  //     };
-  // });
 
   $(".signupbtn").on("click", function() {
     window.scrollTo(0, 0);
