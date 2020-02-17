@@ -3,6 +3,7 @@ const express = require("express");
 const session = require("express-session");
 const exphb = require("express-handlebars");
 const dotenv = require("dotenv");
+const userInViews = require("./app/lib/userInViews");
 
 dotenv.config();
 
@@ -24,7 +25,6 @@ const sess = {
 };
 
 if (app.get("env") === "production") {
-
   // N.B. DON'T REMOVE THE PROXY TRUST FOR HEROKU DEPLOYMENT
   app.set("trust proxy", 1); // trust first proxy
   sess.cookie.secure = true; // serve secure cookies
@@ -34,13 +34,16 @@ if (app.get("env") === "production") {
 // N.B. MEMORY STORAGE IS VERY INSECURE AND LEAKY
 app.use(session(sess));
 
+// RETURNS USER OBJECT AS PART OF THE RESPONSE
+// LETS CONTENT BE DYNAMICALLY UPDATED DEPENDING ON USER STATE
+app.use(userInViews());
+
 // Sets port to use host server port or 8080 for development
 const PORT = process.env.PORT || 8080;
 
 // Sets up the Express app to handle data parsing
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
-
 
 // AUTHENTICATION STRATEGY
 // USES AUTH0 AS A SERVICE
@@ -60,15 +63,12 @@ const strategy = new Auth0Strategy(
   }
 );
 
-
 // INITIALIZES AUTH STRATEGY
 passport.use(strategy);
-
 
 // MAKES EXPRESS USE PASSPORT AND PASSPORT USE SESSIONS
 app.use(passport.initialize());
 app.use(passport.session());
-
 
 // DEALS WITH LOGGING USERS IN AND OUT
 // I'LL BE HONEST, I DON'T ENTIRELY UNDERSTAND WHAT THIS DOES
@@ -81,10 +81,8 @@ passport.deserializeUser(function(user, done) {
   done(null, user);
 });
 
-
 // Static directory
 app.use(express.static(__dirname + "/public"));
-
 
 // Sets view enging to use handlebars
 app.engine("handlebars", exphb({ defaultLayout: "main" }));

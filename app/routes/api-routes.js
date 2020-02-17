@@ -72,9 +72,12 @@ module.exports = function(app) {
     query.view(res);
   });
 
+  // =============================================================
+  //                       INVENTORY ROUTES
+  // =============================================================
+
   // ROUTE FOR SERVING INVENTORY UPLOAD PAGE
   app.get("/inventory", secured(), (req, res) => {
-    //res.sendFile(path.join(__dirname, "../../public/upload.html"));
     res.render("productupload");
   });
 
@@ -128,6 +131,21 @@ module.exports = function(app) {
     }
   );
 
+  // PUT ROUTE FOR UPDATING INVENTORY QUANTITY
+  app.put("/api/inventory/:id", function(req, res) {
+    query.decreaseQty(res);
+  });
+
+  // =============================================================
+  // =============================================================
+  //                        CART ROUTES
+  // =============================================================
+
+  // GET ROUTE FOR VIEWING CART
+  app.get("/cart", function(req, res) {
+    query.viewCart(req.session.id, res);
+  });
+
   // PUT ROUTE FOR ADDING TO CART
   // YEAH, THIS SHOULD PROBABLY BE A POST ROUTE
   app.put("/add/cart/:id", (req, res) => {
@@ -135,6 +153,8 @@ module.exports = function(app) {
     res.send("Added to Cart");
   });
 
+  // DELETE ROUTE FOR REMOVING FROM CART
+  // RESPONSE IS SENT SO PROMISES CAN BE USED
   app.delete("/delete/cart/:id", (req, res) => {
     query.removeFromCart(req.session.id, req.params.id);
     res.send("back");
@@ -145,33 +165,17 @@ module.exports = function(app) {
     console.log("stuff");
     query.search(req.params.name, res);
   });
-  // PUT ROUTE FOR UPDATING INVENTORY QUANTITY
 
-  app.put("/api/inventory/:id", function(req, res) {
-    query.decreaseQty(res);
-  });
-
-  // GET ROUTE FOR VIEWING CART
-  app.get("/cart", function(req, res) {
-    query.viewCart(req.session.id, res);
-  });
-
-  /* GET user profile. */
-  app.get("/user", secured(), function(req, res, next) {
-    const { _raw, _json, ...userProfile } = req.user;
-    res.json(userProfile);
-  });
-
-  /* GET home page. */
-  app.get("/testauth", function(req, res, next) {
-    res.send("This is pretty cool");
-  });
+  // =============================================================
+  // =============================================================
+  //                     AUTHENTICATION ROUTES
+  // =============================================================
 
   // Perform the login, after login Auth0 will redirect to callback
   app.get(
     "/login",
     passport.authenticate("auth0", {
-      scope: "openid email profile"
+      scope: "openid"
     }),
     function(req, res) {
       res.redirect("/callback");
@@ -219,4 +223,6 @@ module.exports = function(app) {
 
     res.redirect(logoutURL);
   });
+
+  // =============================================================
 };
