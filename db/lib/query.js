@@ -16,7 +16,8 @@ const addItem = obj => {
     description: obj.description,
     qty: obj.qty,
     price: obj.price,
-    img: obj.img
+    img: obj.img,
+    category: obj.category
   }).then(dbItems => {});
 };
 
