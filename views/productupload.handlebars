@@ -53,47 +53,57 @@
 
 
 
-          <div class="row">
-            <form id="item-upload" action="/inventory/upload" method="POST" enctype="multipart/form-data"
-              class="col s10 m10">
+          <!--Upload product form-->
+
+          <form id="item-upload" action="/inventory/upload" method="POST" enctype="multipart/form-data"
+            class="col s10 m10">
+            <div class="row">
               <div class="input-field col s6">
-                <input id="name" type="text">
+                <input name="name" type="text" />
                 <label for="name">Name </label>
               </div>
+
               <div class="input-field col s6">
-                <input id="price" type="text">
+                <label for="description">Description</label>
+                <input type="text" name="description" />
+              </div>
+            </div>
+            <div class="row">
+              <div class="input-field col s6">
+                <input name="price" type="number" />
                 <label for="price">Price</label>
               </div>
-
-              <div class="input-field col s12">
-                <label for="description">Description</label>
-                <input type="text" id="describe">
-              </div>
-
               <div class="input-field col s6">
-                <input type="text" id="quantity">
-                <label for="quantity">Quantity</label>
+                <input type="number" name="qty" />
+                <label for="qty">Quantity</label>
               </div>
+            </div>
+            <div class="row">
               <div class="input-field col s6">
-                <input id="photo" type="file">
-                <label for="photo"></label>
+                <input type="text" name="category" />
+                <label for="category">Product Category</label>
               </div>
+              <div class="file-field input-field col s6">
+                <div class="btn">
+                  <span>File</span>
+                  <input type="file">
+                </div>
+                <div class="file-path-wrapper">
+                  <input class="file-path validate" type="text">
+                </div>
+              </div>
+            </div>
 
-          </div>
-
-
-          <div class="center">
-            <button type="submit"><a id="submit"
-                class="waves-effect submit waves-light btn-small red place-order">Submit</a>
+            <button class="btn waves-effect waves-light" type="submit" name="submit">
+              Submit
+              <i class="material-icons right">send</i>
             </button>
-          </div>
           </form>
-        </div>
 
+        </div>
       </div>
     </div>
   </div>
-</div>
 </div>
 
 <!-- Footer -->
