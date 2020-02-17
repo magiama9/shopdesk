@@ -3,9 +3,7 @@ const express = require("express");
 const session = require("express-session");
 const exphb = require("express-handlebars");
 const dotenv = require("dotenv");
-const userInViews = require('./app/lib/userInViews');
-const authRouter = require('./app/routes/auth');
-const usersRouter = require('./app/routes/users');
+
 dotenv.config();
 
 const passport = require("passport");

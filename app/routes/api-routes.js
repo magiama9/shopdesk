@@ -62,7 +62,7 @@ module.exports = function(app) {
   // Test route for item adding
   // upload.html is a placeholder form
   app.get("/inventory", (req, res) => {
-    res.sendFile(path.join(__dirname, "../../public/upload.html"));
+    res.render("productupload");
   });
 
   // POST ROUTE FOR ADDING INVENTORY
@@ -70,39 +70,39 @@ module.exports = function(app) {
   app.post("/inventory/upload", upload.single("photo"), (req, res, next) => {
     // req.file is the `photo` file
     // req.body holds the text fields of the form
-    console.log(req.file.path);
+    console.log(req.body);
 
     // initializes filepath variable
     let filepath;
 
     // Returns the file path on windows machines that use the \ for filepaths
-    if (
-      req.file.path.substring(
-        req.file.path.toLowerCase().lastIndexOf("\\assets\\")
-      ) != -1
-    ) {
-      filepath = req.file.path.substring(
-        req.file.path.toLowerCase().lastIndexOf("\\assets\\")
-      );
-    } else if (
-      // Returns the correct file path on mac/unix systems that use / for filepaths
-      req.file.path.substring(
-        req.file.path.toLowerCase().lastIndexOf("/assets/")
-      ) != -1
-    ) {
-      filepath = req.file.path.substring(
-        req.file.path.toLowerCase().lastIndexOf("/assets/")
-      );
-    }
+    // if (
+    //   req.file.path.substring(
+    //     req.file.path.toLowerCase().lastIndexOf("\\assets\\")
+    //   ) != -1
+    // ) {
+    //   filepath = req.file.path.substring(
+    //     req.file.path.toLowerCase().lastIndexOf("\\assets\\")
+    //   );
+    // } else if (
+    //   // Returns the correct file path on mac/unix systems that use / for filepaths
+    //   req.file.path.substring(
+    //     req.file.path.toLowerCase().lastIndexOf("/assets/")
+    //   ) != -1
+    // ) {
+    //   filepath = req.file.path.substring(
+    //     req.file.path.toLowerCase().lastIndexOf("/assets/")
+    //   );
+    // }
 
     // replaces \ globally with / for storing in the db
-    let filepath2 = filepath.replace(/\\/g, "/");
+    // let filepath2 = filepath.replace(/\\/g, "/");
 
     // stores the req.body as a new object
     let obj = req.body;
 
     // Sets the img property of the new object to a filepath
-    obj.img = filepath2;
+   //  obj.img = filepath2;
 
     // Adds an item to the database.
     query.addItem(obj);

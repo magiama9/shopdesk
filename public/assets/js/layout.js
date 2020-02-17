@@ -104,6 +104,17 @@ $(document).ready(function() {
     $(".cart").addClass("hide");
   });
 
+  // $("#submit").on("click", () => {
+  //   $.post("/inventory/upload"),
+  //     $("#item-upload").serialize(),
+  //     (err, data) => {
+  //       if (err) {
+  //         console.log(err);
+  //       }
+  //       console.log(data);
+  //     };
+  // });
+
   $(".signupbtn").on("click", function() {
     window.scrollTo(0, 0);
     $(".signup-form").addClass("hide");
