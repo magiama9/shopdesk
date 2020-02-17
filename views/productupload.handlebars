@@ -54,7 +54,8 @@
 
 
           <div class="row">
-            <form action="/inventory/upload" method="POST" enctype="multipart/form-data" class="col s10 m10">
+            <form id="item-upload" action="/inventory/upload" method="POST" enctype="multipart/form-data"
+              class="col s10 m10">
               <div class="input-field col s6">
                 <input id="name" type="text">
                 <label for="name">Name </label>
@@ -82,14 +83,17 @@
 
 
           <div class="center">
-            <a class="waves-effect submit waves-light btn-small red place-order">Submit</a>
-            <br><br>
+            <button type="submit"><a id="submit"
+                class="waves-effect submit waves-light btn-small red place-order">Submit</a>
+            </button>
           </div>
-
+          </form>
         </div>
+
       </div>
     </div>
   </div>
+</div>
 </div>
 
 <!-- Footer -->

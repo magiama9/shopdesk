@@ -3,3 +3,116 @@
   <input type="file" name="photo" />
   <button type="submit">Submit</button>
 </form>
+<nav class="grey darken-3">
+  <div class="nav-wrapper">
+    <ul>
+      <li>
+        <div class="center row">
+          <div class="col 12 ">
+            <div class="row" id="topbarsearch">
+              <div class="input-field col s12 s6 text">
+                <i class="green-text material-icons prefix">search</i>
+                <input type="text" placeholder="search" id="autocomplete-input" class="autocomplete text">
+              </div>
+            </div>
+          </div>
+        </div>
+      </li>
+    </ul>
+    <ul class="right">
+      <li><a href="#" class="green-text home"><i class="home material-icons left">home</i>Home</a></li>
+      <li><a href="#" class="shopping-cart"><i class="material-icons left shopping-cart">shopping_cart</i>Your cart</a>
+      </li>
+      <li><a href="#" class="green-text login"><i class="material-icons left login">input</i>Login</a></li>
+      <li><a href="#" class="signup"><i class="signup material-icons left">person_add</i>Sign up</li>
+    </ul>
+  </div>
+</nav>
+
+<!----->
+
+<!--Second navbar-->
+<nav class="white nav2">
+  <div class="nav-wrapper">
+    <a href="" class="brand-logo left"><img src="assets/images/logo.png" width="150px" height="60px" /></a>
+
+    <ul id="nav-mobile" class="right">
+      <li><a href="#" class="green-text menu">Kitchen</a></li>
+      <li><a href="#" class="black-text menu">Bedroom</a></li>
+      <li><a href="#" class="green-text menu">Living room</a></li>
+      <li><a href="#" class="black-text menu">Bathroom</a></li>
+      <li><a href="#" class="green-text menu">Outdoors</a></li>
+    </ul>
+  </div>
+</nav>
+
+
+<!--Upload product form-->
+
+<div class="container">
+  <div class="row ">
+    <div class="col s12 m12">
+      <div class="card center align add-item-form">
+        <div class="col s12 m12">
+          <h2 class="header center red-text ">Fill out the form to add a new product</h2>
+
+
+
+          <div class="row">
+            <form id="item-upload" action="/inventory/upload" method="POST" enctype="multipart/form-data"
+              class="col s10 m10">
+              <div class="input-field col s6">
+                <input id="name" type="text">
+                <label for="name">Name </label>
+              </div>
+              <div class="input-field col s6">
+                <input id="price" type="text">
+                <label for="price">Price</label>
+              </div>
+
+              <div class="input-field col s12">
+                <label for="description">Description</label>
+                <input type="text" id="describe">
+              </div>
+
+              <div class="input-field col s6">
+                <input type="text" id="quantity">
+                <label for="quantity">Quantity</label>
+              </div>
+              <div class="input-field col s6">
+                <input id="photo" type="file">
+                <label for="photo"></label>
+              </div>
+
+          </div>
+
+
+          <div class="center">
+            <button type="submit"><a id="submit"
+              class="waves-effect submit waves-light btn-small red place-order">Submit</a>
+              </button>
+          </div>
+          </form>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</div>
+</div>
+
+<!-- Footer -->
+
+<footer class="page-footer white">
+  <div class="container">
+    <div class="row center align">
+      <div class="col l12 s12">
+        <img src="assets/images/logo.png" width="150px" height="60px" />
+        <h5 class="green-text">Elegant living costs less with Elite Modern</h5>
+      </div>
+    </div>
+  </div>
+  <div class="footer-copyright black-text">
+    © Copyright Elite Modern
+  </div>
+</footer>
