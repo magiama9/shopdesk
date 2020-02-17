@@ -16,13 +16,12 @@
     </ul>
 
     <ul class="right">
-
-      <li><a href="/"><i class="home green-text material-icons left" id="home">home</i>Home</a></li>
-      <li><a href="/cart"><i class="material-icons left shopping-cart">shopping_cart</i>Your cart</a></li>
-      <li><a href="#" class="green-text"><i class="material-icons left">input</i>Login</a></li>
-      <li><a href="#"><i class="material-icons left">person_add</i>Signup</li>
-      <a class='dropdown-trigger btn red small-text' href='#' data-target='dropdown1'><i
-          class="material-icons left shopping-cart">people_outline</i>My account</a>
+ 
+      <li><a href="/" class="green-text"><i class="home green-text material-icons left" id="home">home</i>Home</a></li>
+      <li><a href="/cart" class="green-text"><i class="material-icons green-text left shopping-cart">shopping_cart</i>Your cart</a></li>
+      {{!-- <li><a href="#" class="green-text"><i class="material-icons left">input</i>Login</a></li>
+      <li><a href="#"><i class="material-icons left">person_add</i>Signup</li> --}}
+      <a class='dropdown-trigger btn red account small-text' href='#' data-target='dropdown1'>My account</a>
       <ul id='dropdown1' class='dropdown-content'>
         <li><a href="#" class="red-text login">Login</a></li>
         <li><a href="#" class="red-text signup">Sign up</a></li>
@@ -35,11 +34,18 @@
 
 
 <!--Second navbar-->
-<nav class="white nav2">
+
+<nav class="white nav2 ">
   <div class="nav-wrapper">
     <a href="" class="brand-logo left"><img src="assets/images/logo.png" width="150px" height="60px" /></a>
-
+  
     <ul id="nav-mobile" class="right">
+     <a class='dropdown-trigger btn white currency small-text black-text' href='#' data-target='dropdown2'><img src="assets/images/$.png" width="30px" height="30px" /></a>
+        <ul id='dropdown2' class='dropdown-content'>
+        <li><a href="#" class="red-text eur">EUR</a></li>
+        <li><a href="#" class="red-text cad">CAD</a></li>
+        <li><a href="#" class="red-text usd">USD</a></li>
+      </ul>
       <li><a href="#" class="green-text menu">Kitchen</a></li>
       <li><a href="#" class="black-text menu">Bedroom</a></li>
       <li><a href="#" class="green-text menu">Living room</a></li>
@@ -50,6 +56,7 @@
 </nav>
 
 
+
 <!--landing page-->
 
 <div class="row">
@@ -58,9 +65,14 @@
       <div class="card-image">
         <img src="assets/images/homepic1.jpg">
       </div>
-      <div class="card-action">
-        <a href="#"><i class="left  material-icons">phone</i>+571 555 0000</a>
+      <div class="card-action hide-on-small-only">
+        <a href="#"><i class="left material-icons">phone</i>+571 555 0000</a>
         <a href="#" class="right"><i class="right material-icons">mail_outline</i>EliteModern@gmail.com</a>
+         <p class="testing">Price: $ 100 </p>
+      </div>
+       <div class="card-action hide-on-med-and-up">
+        <a href="#"><i class="left  material-icons">phone</i></a>
+        <a href="#" class="right"><i class="right material-icons">mail_outline</i></a>
       </div>
     </div>
   </div>
