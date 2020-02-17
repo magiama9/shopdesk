@@ -58,6 +58,61 @@ const viewCart = (sessionID, res) => {
   });
 };
 
+const viewKitchen = (category, res) => {
+  db.Items.findAll({
+    where: {
+      category: category
+    }
+  }).then(catItems => {
+    // console.log(catItems)
+    res.render("kitchen", { items: catItems});
+  });
+};
+
+const viewBathroom = (category, res) => {
+  db.Items.findAll({
+    where: {
+      category: category
+    }
+  }).then(catItems => {
+    // console.log(catItems)
+    res.render("bathroom", { items: catItems});
+  });
+};
+
+const viewOutdoors = (category, res) => {
+  db.Items.findAll({
+    where: {
+      category: category
+    }
+  }).then(result => {
+    console.log(result)
+    res.render("outdoors", { outdoors: result});
+  });
+};
+
+const viewBedroom = (category, res) => {
+  db.Items.findAll({
+    where: {
+      category: category
+    }
+  }).then(catItems => {
+    console.log(catItems)
+    res.render("bedroom", { items: catItems});
+  });
+};
+
+const viewLivingroom = (category, res) => {
+  db.Items.findAll({
+    where: {
+      category: category
+    }
+  }).then(catItems => {
+    // console.log(catItems)
+    res.render("living-room", { items: catItems});
+  });
+};
+
 // Remove items from the cart using sequelize
 // Expects ID to be the ID of a selected item and valid
 const removeFromCart = id => {
@@ -93,7 +148,6 @@ const decreaseQty = id => {
   db.Items.decrement("qty", { where: { id: id } });
 };
 
-
 // viewInventory();
 
 module.exports = {
@@ -106,5 +160,10 @@ module.exports = {
   unSave: unSave,
   search: searchItem,
   decreaseQty: decreaseQty,
-  viewCart: viewCart
+  viewCart: viewCart,
+  viewKitchen: viewKitchen,
+  viewBathroom: viewBathroom,
+  viewLivingroom: viewLivingroom,
+  viewOutdoors: viewOutdoors,
+  viewBedroom: viewBedroom
 };
