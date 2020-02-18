@@ -1,0 +1,69 @@
+<nav class="grey darken-3">
+  <div class="nav-wrapper">
+    <ul>
+      <li>
+        <div class="center row">
+          <div class="col 12 ">
+            <div class="row" id="topbarsearch">
+              <div class="input-field col s12 s6 text">
+                <i class="green-text material-icons prefix">search</i>
+                <input type="text" placeholder="search" id="autocomplete-input" class="autocomplete text">
+              </div>
+            </div>
+          </div>
+        </div>
+      </li>
+    </ul>
+
+    <ul class="right">
+      <li><a href="/"><i class="home green-text material-icons left" id="home">home</i>Home</a></li>
+      <li><a href="/cart"><i class="material-icons left shopping-cart">shopping_cart</i>Your cart</a></li>
+      <li><a class='btn red small-text' href='/inventory'><i
+            class="material-icons left shopping-cart">people_outline</i>Admin</a></li>
+    </ul>
+  </div>
+</nav>
+
+<nav class="white nav2">
+  <div class="nav-wrapper">
+    <a href="/" class="brand-logo left"><img src="assets/images/logo.png" width="150px" height="60px" /></a>
+
+    <ul id="nav-mobile" class="right">
+      <li><a href="/kitchen" class="green-text menu">Kitchen</a></li>
+      <li><a href="/bedroom" class="black-text menu">Bedroom</a></li>
+      <li><a href="/living-room" class="green-text menu">Living room</a></li>
+      <li><a href="/bathroom" class="black-text menu">Bathroom</a></li>
+      <li><a href="/outdoors" class="green-text menu">Outdoors</a></li>
+    </ul>
+  </div>
+</nav>
+
+<div>
+  <a href="/inventory/upload" class="btn-floating pulse btn-large waves-effect waves-light red"><i
+      class="material-icons">add</i></a>
+</div>
+<ul class="collection">
+  {{#each items}}
+  <li class="collection-item avatar">
+    <img src="{{this.dataValues.img}}" alt="" class="circle">
+    <span class="title">Name: {{this.dataValues.name}}</span>
+    <p>Description: {{this.dataValues.description}} <br>
+      Price: {{this.dataValues.price}} <br>
+      Quantity: {{this.dataValues.qty}}
+    </p>
+  </li>
+  {{/each}}
+</ul>
+<footer class="page-footer white">
+  <div class="container">
+    <div class="row center align">
+      <div class="col l12 s12">
+        <img src="assets/images/logo.png" width="150px" height="60px" />
+        <h5 class="green-text">Elegant living costs less with Elite Modern</h5>
+      </div>
+    </div>
+  </div>
+  <div class="footer-copyright black-text">
+    © Copyright Elite Modern
+  </div>
+</footer>

@@ -69,7 +69,7 @@ module.exports = function(app) {
   app.get("/", function(req, res) {
     console.log(req.session.id);
     cart.checkSession(req.session.id);
-    query.view(res);
+    query.view("index", res);
   });
 
   // =============================================================
@@ -78,6 +78,10 @@ module.exports = function(app) {
 
   // ROUTE FOR SERVING INVENTORY UPLOAD PAGE
   app.get("/inventory", secured(), (req, res) => {
+    query.view("inventory", res);
+  });
+
+  app.get("/inventory/upload", secured(), (req, res) => {
     res.render("productupload");
   });
 
@@ -128,6 +132,7 @@ module.exports = function(app) {
 
       // Adds an item to the database.
       query.addItem(obj);
+      res.redirect("/inventory");
     }
   );
 

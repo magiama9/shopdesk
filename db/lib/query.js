@@ -1,12 +1,12 @@
 const db = require("../../models");
 
 // Function to view all available inventory
-const viewInventory = res => {
+const viewInventory = (renderWhich, res) => {
   db.Items.findAll({}).then(dbItems => {
     // THESE RENDER FUNCTIONS SHOULD REALLY HAPPEN IN THE ROUTES, NOT HERE
     // WE SHOULD RETURN VALUES OUT OF THESE FUNCTIONS TO USE IN THE RENDER
     // ASYNCHRONICITY BECOMES AN ISSUE IF WE DO SO
-    res.render("index", { items: dbItems });
+    res.render(renderWhich, { items: dbItems });
   });
 };
 
@@ -20,7 +20,8 @@ const addItem = obj => {
     price: obj.price,
     img: obj.img,
     category: obj.category
-  }).then(dbItems => {});
+  }).then(dbItems => {
+  });
 };
 
 // Function to search items and display the result
