@@ -1,29 +1,29 @@
 const db = require("../../models");
 
-// Placeholder function to view all inventory using sequelize
-// Replace console logs with res.json once routes are implemented
+// Function to view all available inventory
 const viewInventory = res => {
   db.Items.findAll({}).then(dbItems => {
+    // THESE RENDER FUNCTIONS SHOULD REALLY HAPPEN IN THE ROUTES, NOT HERE
+    // WE SHOULD RETURN VALUES OUT OF THESE FUNCTIONS TO USE IN THE RENDER
+    // ASYNCHRONICITY BECOMES AN ISSUE IF WE DO SO
     res.render("index", { items: dbItems });
   });
 };
 
-// Placeholder function to add an item using sequelize
-// Replace console logs with res.json once routes are implemented
+// Function to add an object representing an item to the DB
 const addItem = obj => {
   db.Items.create({
     name: obj.name,
     description: obj.description,
     qty: obj.qty,
+    category: obj.category,
     price: obj.price,
     img: obj.img,
     category: obj.category
   }).then(dbItems => {});
 };
 
-// Placeholder function to view items matching search using sequelize
-// Replace console logs with res.json once routes are implemented
-
+// Function to search items and display the result
 // SEARCH TERM IS NOT CASE SENSITIVE, THANK GOD.
 const searchItem = (searchTerm, res) => {
   db.Items.findAll({
@@ -32,11 +32,15 @@ const searchItem = (searchTerm, res) => {
     }
   }).then(search => {
     console.log(search);
+
+    // THESE RENDER FUNCTIONS SHOULD REALLY HAPPEN IN THE ROUTES, NOT HERE
+    // WE SHOULD RETURN VALUES OUT OF THESE FUNCTIONS TO USE IN THE RENDER
+    // ASYNCHRONICITY BECOMES AN ISSUE IF WE DO SO
     res.render("index", { items: search });
   });
 };
 
-// Placeholder function to add items to the cart using sequelize
+// Function to add items to a user's cart and associate it with their session token
 // Expects ID to be the ID of a selected item and valid
 const addToCart = (sessionID, id) => {
   db.Items.findAll({ where: { id: id } }).then(result => {
@@ -52,12 +56,18 @@ const addToCart = (sessionID, id) => {
   });
 };
 
+// Function to view what's in a given session's cart
 const viewCart = (sessionID, res) => {
   db.Carts.findAll({ where: { session: sessionID } }).then(result => {
     console.log(result);
+
+    // THESE RENDER FUNCTIONS SHOULD REALLY HAPPEN IN THE ROUTES, NOT HERE
+    // WE SHOULD RETURN VALUES OUT OF THESE FUNCTIONS TO USE IN THE RENDER
+    // ASYNCHRONICITY BECOMES AN ISSUE IF WE DO SO
     res.render("cart", { cart: result });
   });
 };
+
 
 const viewKitchen = (category, res) => {
   db.Items.findAll({
@@ -114,10 +124,11 @@ const viewLivingroom = (category, res) => {
   });
 };
 
-// Remove items from the cart using sequelize
-// Expects ID to be the ID of a selected item and valid
-const removeFromCart = id => {
-  db.Carts.destroy({ where: { id: id } }).then(result => {
+
+// Remove items from the cart
+// Makes sure it only deletes items for the given session
+const removeFromCart = (sessionID, id) => {
+  db.Carts.destroy({ where: { session: sessionID, id: id } }).then(result => {
     return result;
   });
 };
@@ -157,8 +168,6 @@ module.exports = {
   addToCart: addToCart,
   viewCart: viewCart,
   removeFromCart: removeFromCart,
-  save: save,
-  unSave: unSave,
   search: searchItem,
   decreaseQty: decreaseQty,
   viewCart: viewCart,
