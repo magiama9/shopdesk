@@ -32,7 +32,6 @@ const searchItem = (searchTerm, res) => {
       name: searchTerm
     }
   }).then(search => {
-    console.log(search);
 
     // THESE RENDER FUNCTIONS SHOULD REALLY HAPPEN IN THE ROUTES, NOT HERE
     // WE SHOULD RETURN VALUES OUT OF THESE FUNCTIONS TO USE IN THE RENDER
@@ -60,7 +59,6 @@ const addToCart = (sessionID, id) => {
 // Function to view what's in a given session's cart
 const viewCart = (sessionID, res) => {
   db.Carts.findAll({ where: { session: sessionID } }).then(result => {
-    console.log(result);
 
     // THESE RENDER FUNCTIONS SHOULD REALLY HAPPEN IN THE ROUTES, NOT HERE
     // WE SHOULD RETURN VALUES OUT OF THESE FUNCTIONS TO USE IN THE RENDER
@@ -69,7 +67,10 @@ const viewCart = (sessionID, res) => {
   });
 };
 
-
+//======================================================
+//             Functions to view by category
+//            TODO -- REFACTOR INTO ONE FUNCTION
+//======================================================
 const viewKitchen = (category, res) => {
   db.Items.findAll({
     where: {
