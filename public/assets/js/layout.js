@@ -75,7 +75,7 @@ $(document).ready(function() {
   //   $(".thank-you").addClass("hide");
   // });
 
-   // =============================================================================================================//
+  // =============================================================================================================//
   // converting prices to different currencies
   let price = $(".price").text();
   // using regular expression match method to extract a number from a string, in this case a price
@@ -96,44 +96,78 @@ $(document).ready(function() {
     }
   };
   $.ajax(settings).done(function(res) {
-    console.log("test" + res);
-    let currentRate = res.rates.EUR.rate_for_amount; // current rate exchange dolar to euro
+    let euroRate = res.rates.EUR.rate_for_amount; // current rate exchange dollar to EUR
+    let cadRate = res.rates.CAD.rate_for_amount; // current rate exchange dollar to CAD
+    let usdRate = res.rates.USD.rate_for_amount; // current rate exchange dollar to USD
     const euroExchange = function() {
       // converting all prices into euros
-      let arrayPrice = (price[0] * currentRate) / numb[0];
+      let arrayPrice = (price[0] * euroRate) / numb[0];
 
       convertedPrice = price.map(newPrice => {
         return JSON.stringify(newPrice * arrayPrice);
       });
       console.log(convertedPrice); // this returns array of new prices
       // =====================================================//
-      // HERE IS THE ISSUE. I CAN'T MATCH PRICES TO DISPLAY WHERE THEY BELONG
+
+      // LOOPS THROUGH EACH PRICE VALUE AND SETS THE TEXT TO THE REQUESTED VALUE
+      // CONVERTS TO A FLOATING POINT NUMBER AND BACK TO A STRING TO GET THE CORRECT NUMBER OF DECIMALS
+      price.forEach((val, idx) => {
+        let selector = `#price${idx}`;
+        $(selector).text(
+          "Price: \u20AC" + parseFloat(convertedPrice[idx]).toFixed(2)
+        );
+      });
+    };
+
+    const canadianExchange = function() {
+      // converting all prices into euros
+      let arrayPrice = (price[0] * cadRate) / numb[0];
+
+      convertedPrice = price.map(newPrice => {
+        return JSON.stringify(newPrice * arrayPrice);
+      });
+      console.log(convertedPrice); // this returns array of new prices
+      // =====================================================//
+
+      // LOOPS THROUGH EACH PRICE VALUE AND SETS THE TEXT TO THE REQUESTED VALUE
 
       price.forEach((val, idx) => {
-        let selector = `#price${idx + 1}`;
-        console.log(selector);
-        $(selector).text("Price: \u20AC" + convertedPrice[idx]);
+        let selector = `#price${idx}`;
+        $(selector).text(
+          "Price: CAD " + parseFloat(convertedPrice[idx]).toFixed(2)
+        );
+      });
+    };
+
+    const dollarExchange = function() {
+      // converting all prices into euros
+      let arrayPrice = (price[0] * usdRate) / numb[0];
+
+      convertedPrice = price.map(newPrice => {
+        return JSON.stringify(newPrice * arrayPrice);
+      });
+      console.log(convertedPrice); // this returns array of new prices
+      // =====================================================//
+
+      // LOOPS THROUGH EACH PRICE VALUE AND SETS THE TEXT TO THE REQUESTED VALUE
+
+      price.forEach((val, idx) => {
+        let selector = `#price${idx}`;
+        $(selector).text("Price: $" + convertedPrice[idx]);
       });
     };
     $(".eur").on("click", function(e) {
       e.preventDefault();
       euroExchange();
     });
-    $(".currency").on("click", function(e) {
+    $(".cad").on("click", function(e) {
       e.preventDefault();
-      switch (currency) {
-        case "EUR":
-          euroExchange();
-          break;
-        case "CAD":
-          canadianExchange();
-          break;
-        case "USD":
-          dollarExchange();
-          break;
-        default:
-          "USD";
-      }
+
+      canadianExchange();
+    });
+    $(".usd").on("click", function(e) {
+      e.preventDefault();
+      dollarExchange();
     });
   });
 });
