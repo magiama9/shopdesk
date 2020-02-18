@@ -153,7 +153,9 @@ module.exports = function(app) {
 
     // Adds an item to the database.
     query.addItem(obj);
-    res.redirect("/inventory");
+
+    // ADDING THE # MAKES THE BROWSER LOAD AN UNCACHED VERSION. OR AT LEAST IT SEEMS TO
+    res.redirect("/inventory/#");
   });
 
   // PUT ROUTE FOR UPDATING INVENTORY QUANTITY
