@@ -180,7 +180,11 @@ $(document).ready(function() {
       e.preventDefault();
       dollarExchange();
     });
+    dollarExchange();
   });
+
+
+  
 
   // Calculates subtotal
   // Each price is coerced into a number before being added to the subtotal
