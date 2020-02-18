@@ -15,12 +15,25 @@ $(document).ready(function() {
     }
   });
 
-
-
   $(".add-to-cart").on("click", function() {
     let id = $(this).data("id");
     $.ajax("/add/cart/" + id, {
       type: "PUT"
+    });
+  });
+
+  $(".removeFromCart").on("click", function() {
+    console.log("clicked");
+    let id = $(this).attr("id");
+    console.log(id);
+    $.ajax("/delete/cart/" + id, {
+      type: "delete"
+    }).then(() => {
+
+      // THIS IS A HACKY WAY TO DO THIS
+      // WE SHOULD REALLY BE ABLE TO DYNAMICALLY RENDER NEW CONTENT
+      // MAYBE WHEN WE LEARN REACT :{
+      location.reload(); // Reloads page so handlebars can refresh content
     });
   });
 

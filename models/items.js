@@ -6,10 +6,6 @@ module.exports = function(sequelize, DataTypes) {
     qty: DataTypes.INTEGER,
     category: DataTypes.STRING,
     img: DataTypes.STRING,
-    inCart: {
-      type: DataTypes.BOOLEAN,
-      defaultValue: false
-    },
   });
   return Items;
 };

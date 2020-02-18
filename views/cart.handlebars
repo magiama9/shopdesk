@@ -60,12 +60,14 @@
                   <div class="card-image">
                     <img src="{{this.dataValues.img}}" width="90px" height="160px">
                   </div>
+
                   <div class="card-action">
                     <p class="item product-name">Name: {{this.dataValues.name}}</p>
                     <p class="item description">Description: {{this.dataValues.description}}</p>
                     <p class="item price">Price: {{this.dataValues.price}}</p>
                     <br>
-                    <a href="#" class="right"><i class="right material-icons">clear</i>Remove Item</a>
+                    <a href="#" id={{this.dataValues.id}} class="right"><i class="right material-icons">clear</i>Remove Item</a>
+
                   </div>
                 {{!-- </div> --}}
 
