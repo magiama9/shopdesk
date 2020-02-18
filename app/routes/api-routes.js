@@ -112,9 +112,10 @@ module.exports = function(app) {
   app.post("/inventory/upload", upload.single("photo"), (req, res, next) => {
     // req.file is the `photo` file
     // req.body holds the text fields of the form
-
+    console.log("POST ROUTE HIT")
     // stores the req.body as a new object
     let obj = req.body;
+
     // initializes filepath variable
     let filepath;
 
