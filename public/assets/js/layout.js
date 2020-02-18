@@ -87,6 +87,7 @@ $(document).ready(function() {
   const currency = ["EUR", "CAD", "USD"];
   const settings = {
     async: true,
+    origin:"https://guarded-brook-11312.herokuapp.com",
     crossDomain: true,
     url: `https://currency-converter5.p.rapidapi.com/currency/convert?format=json&from=USD&to=${currency}&amount=1`,
     method: "GET",
