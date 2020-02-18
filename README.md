@@ -4,7 +4,7 @@
 
 This is an e-commerce application to manage and interact with an online storefront. Customers are able to view items for sale, add items to their shopping cart and make purchases. Store owners are able to manage their inventory, add and remove items for sale, and alter existing items.
 
-When adding items, administrators are able to upload images associated with the product, which are then stored on our server and served to end-users dynamically.
+When adding items, administrators are able to upload images associated with the product, which are then stored on an AWS s3 bucket and served to end-users dynamically.
 
 The deployed application is an example of a storefront that can be created with ShopDesk. ShopDesk allows the creation of a store with any products, design language, and features a user desires.
 
@@ -48,11 +48,21 @@ Products are initially seeded for testing, but can by dynamically added and upda
 
 * Express -- Handles routing and server functionality
 
+* Express Session -- Handles user sessions and persistence
+
 * Handlebars -- Controls views & dynamic content updating
 
 * Passport -- Authentication manager
 
-* Passport-local -- Handles authentication pass/fail using a local DB
+* ~~Passport-local -- Handles authentication pass/fail using a local DB~~
+
+* Passport Auth0 -- Handles authentication for inventory management
+
+* AWS S3 -- Enables access to Amazon S3 buckets
+
+* Multer -- Handles image uploading
+
+* Multer S3 -- Allows user uploaded images to be stored on an S3 bucket
 
 ### APIs
 
@@ -62,8 +72,6 @@ Products are initially seeded for testing, but can by dynamically added and upda
 
 ### COMPLETED
 
-### TODO
-
 * ~~All items for sale display with an item name, price, description, and image~~
 
 * ~~Customers are able to view all items for sale~~
@@ -72,26 +80,30 @@ Products are initially seeded for testing, but can by dynamically added and upda
 
 * ~~Customers are able to purchase items from their cart~~
 
-* Customers are able to convert prices to their local currency
+* ~~Customers are able to convert prices to their local currency~~
 
-* Purchasing an item updates the available quantity in the DB
+* ~~Purchasing an item updates the available quantity in the DB~~
 
 * ~~Store owners are able to view inventory~~
 
 * ~~Store owners are able to add products to the inventory~~
 
-### WISHLIST
-
-* Allow users to save items for later without adding them to their cart
-
-* Implement secure authentication using Passport and Passport-Local
-
-* Out of stock items aren't displayed and aren't allowed to be purchased
-
 * ~~Inventory management handled through deployed UI instead of command line interface~~
 
-* Users are able to search the site for a specific product
+* ~~Users are able to search the site for a specific product~~
 
-* Users are able to sort and view products by category
+* ~~Users are able to sort and view products by category~~
+
+* ~~Implement secure authentication using Passport and Passport-Local~~
+
+  * Actual implementation used Auth0 as a passport strategy
+
+### TODO
+
+* NONE
+
+### WISHLIST
+
+* Out of stock items aren't displayed and aren't allowed to be purchased
 
 * Users are able to filter products based on certain criteria (price, quantity available, etc)
