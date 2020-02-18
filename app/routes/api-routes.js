@@ -1,22 +1,45 @@
+const dotenv = require("dotenv");
+// INITIALIZE DOTENV
+dotenv.config();
+
 // =============================================================
 //                  SET UP IMAGE UPLOADING
 //              https://www.npmjs.com/package/multer
 // =============================================================
 const multer = require("multer");
+const multerS3 = require("multer-s3");
+const aws = require("aws-sdk");
 const path = require("path");
 
 // SETS STORAGE DESTINATION AND FILENAMES WHEN IMAGES ARE UPLOADED
-const storage = multer.diskStorage({
-  destination: (req, file, cb) => {
-    cb(null, path.join(__dirname, "../../public/assets/images/uploads"));
-  },
-  filename: (req, file, cb) => {
-    cb(null, Date.now() + "-" + file.originalname);
-  }
-});
+// const storage = multer.diskStorage({
+//   destination: (req, file, cb) => {
+//     cb(null, path.join(__dirname, "../../public/assets/images/uploads"));
+//   },
+//   filename: (req, file, cb) => {
+//     cb(null, Date.now() + "-" + file.originalname);
+//   }
+// });
 
 // INITIALIZES MULTER FOR UPLOADING
-const upload = multer({ storage: storage });
+// const upload = multer({ storage: storage });
+
+const s3 = new aws.S3({});
+
+const upload = multer({
+  storage: multerS3({
+    s3: s3,
+    bucket: "shopdesk-fjord",
+    contentType: multerS3.AUTO_CONTENT_TYPE,
+    acl: "public-read",
+    metadata: function(req, file, cb) {
+      cb(null, { fieldName: file.fieldname });
+    },
+    key: function(req, file, cb) {
+      cb(null, Date.now().toString());
+    }
+  })
+});
 
 // =============================================================
 // =============================================================
@@ -27,7 +50,6 @@ const jwt = require("express-jwt");
 const jwks = require("jwks-rsa");
 const secured = require("../lib/secured"); // Checks whether user is authenticated when secured routes are hit
 const passport = require("passport");
-const dotenv = require("dotenv");
 
 // I'm pretty sure we don't have to require in "util" and "url" in local versions of node.
 // It breaks sometimes on heroku deploys if I don't
@@ -55,9 +77,6 @@ const jwtCheck = jwt({
 
 const query = require("../../db/lib/query");
 const cart = require("../../db/lib/cart");
-
-// INITIALIZE DOTENV
-dotenv.config();
 
 // =============================================================
 // =============================================================
@@ -97,39 +116,40 @@ module.exports = function(app) {
 
       // stores the req.body as a new object
       let obj = req.body;
-
+      console.log(req.file.location);
       // initializes filepath variable
       let filepath;
 
       // Only performs operations on the file path if the file exists
-      if (typeof req.file !== "undefined") {
-        // Returns the file path on windows machines that use the \ for filepaths
-        if (
-          req.file.path.substring(
-            req.file.path.toLowerCase().lastIndexOf("\\assets\\")
-          ) != -1
-        ) {
-          filepath = req.file.path.substring(
-            req.file.path.toLowerCase().lastIndexOf("\\assets\\")
-          );
-        } else if (
-          // Returns the correct file path on mac/unix systems that use / for filepaths
-          req.file.path.substring(
-            req.file.path.toLowerCase().lastIndexOf("/assets/")
-          ) != -1
-        ) {
-          filepath = req.file.path.substring(
-            req.file.path.toLowerCase().lastIndexOf("/assets/")
-          );
-        }
-      }
+      // if (typeof req.file !== "undefined") {
+      //   // Returns the file path on windows machines that use the \ for filepaths
+      //   if (
+      //     req.file.path.substring(
+      //       req.file.path.toLowerCase().lastIndexOf("\\assets\\")
+      //     ) != -1
+      //   ) {
+      //     filepath = req.file.path.substring(
+      //       req.file.path.toLowerCase().lastIndexOf("\\assets\\")
+      //     );
+      //   } else if (
+      //     // Returns the correct file path on mac/unix systems that use / for filepaths
+      //     req.file.path.substring(
+      //       req.file.path.toLowerCase().lastIndexOf("/assets/")
+      //     ) != -1
+      //   ) {
+      //     filepath = req.file.path.substring(
+      //       req.file.path.toLowerCase().lastIndexOf("/assets/")
+      //     );
+      //   }
+      // }
 
-      // replaces \ globally with / for storing in the db
-      let filepath2 = filepath.replace(/\\/g, "/");
+      // // replaces \ globally with / for storing in the db
+      // let filepath2 = filepath.replace(/\\/g, "/");
 
-      // Sets the img property of the new object to a filepath
-      obj.img = filepath2;
+      // // Sets the img property of the new object to a filepath
+      // obj.img = filepath2;
 
+      obj.img = req.file.location;
       // Adds an item to the database.
       query.addItem(obj);
       res.redirect("/inventory");
