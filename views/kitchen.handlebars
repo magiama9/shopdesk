@@ -19,7 +19,7 @@
       <li><a href="/"><i class="home green-text material-icons left" id="home">home</i>Home</a></li>
       <li><a href="/cart"><i class="material-icons left shopping-cart">shopping_cart</i>Your cart</a></li>
       <li><a class='btn red small-text' href='/inventory'><i
-          class="material-icons left shopping-cart">people_outline</i>Admin</a></li>
+            class="material-icons left shopping-cart">people_outline</i>Admin</a></li>
     </ul>
   </div>
 </nav>
@@ -82,9 +82,10 @@
               <div class="card-action">
                 <p class="item product-name">Name: {{this.dataValues.name}}</p>
                 <p class="item description">Description: {{this.dataValues.description}}</p>
-                <p class="item price">Price: {{this.dataValues.price}}</p>
+                <p id="price{{this.dataValues.id}}" class="item price">Price: {{this.dataValues.price}}</p>
                 <br>
-                <button class="btn add-to-cart waves-effect waves-light" id="add-to-cart" type="submit" name="action" data-id="{{this.dataValues.id}}">Add to cart
+                <button class="btn add-to-cart waves-effect waves-light" id="add-to-cart" type="submit" name="action"
+                  data-id="{{this.dataValues.id}}">Add to cart
                   <i class="material-icons right">add_shopping_cart</i>
                 </button>
               </div>
