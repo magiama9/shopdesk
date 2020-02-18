@@ -112,85 +112,64 @@ $(document).ready(function () {
   });
 
   // =============================================================================================================//
-  // converting prices to different currencies
+ // converting prices to different currencies
+ let price = $(".price").text();
+ // using regular expression match method to extract a number from a string, in this case a price
+ let characters = /[-]{0,1}[\d]*[.]{0,1}[\d]+/g;
+ let numb = price.match(characters);
+ price = numb;
+ console.log(price);
+ 
+ const currency = ["EUR", "CAD", "USD"];
+ var settings = {
+   "async": true,
+   "crossDomain": true,
+   "url": `https://currency-converter5.p.rapidapi.com/currency/convert?format=json&from=USD&to=${currency}&amount=1`,
+   "method": "GET",
+   "headers": {
+     "x-rapidapi-host": "currency-converter5.p.rapidapi.com",
+     "x-rapidapi-key": "0f8b4936e4msh4b12f41af486daap16e507jsn846907cf2bfd"
+   }
+ }
+ $.ajax(settings).done(function (res) {
+   console.log(res);
+   let currentRate = res.rates.EUR.rate_for_amount; // current rate exchange dolar to euro
+   const euroExchange = function () {
+   // converting all prices into euros  
+     let arrayPrice = price[0] * currentRate / numb[0];
+     
+     convertedPrice = price.map(newPrice => {
+       return JSON.stringify(newPrice * arrayPrice);
+     });
+     console.log(convertedPrice); // this returns array of new prices
+// =====================================================//
+// HERE IS THE ISSUE. I CAN'T MATCH PRICES TO DISPLAY WHERE THEY BELONG
+     for (let i = 0; i < price.length; i++) {
+       price[i] === convertedPrice[i] / currentRate;
+       $(".price").text("Price: EUR " + convertedPrice[i]);
+     }
+//======================================================//
+ }
+   $(".eur").on("click", function (e) {
+   e.preventDefault();
+   euroExchange();
+ });
+ $(".currency").on("click", function (e) {
+   e.preventDefault();
+   switch (currency) {
+     case "EUR":
+       euroExchange();
+       break;
+     case "CAD":
+       canadianExchange();
+       break;
+     case "USD":
+       dollarExchange();
+       break;
+     default: "USD"
+   };
+ });
+});   
 
 
-  let price = $(".price").text();
-  // using regular expression match method to extract a number from a string, in this case a price
-  let characters = /[-]{0,1}[\d]*[.]{0,1}[\d]+/g;
-  let numb = price.match(characters);
-  price = numb;
-  console.log(price);
-  
-
-  const currency = ["EUR", "CAD", "USD"];
-
-  var settings = {
-    "async": true,
-    "crossDomain": true,
-    "url": `https://currency-converter5.p.rapidapi.com/currency/convert?format=json&from=USD&to=${currency}&amount=1`,
-    "method": "GET",
-    "headers": {
-      "x-rapidapi-host": "currency-converter5.p.rapidapi.com",
-      "x-rapidapi-key": "0f8b4936e4msh4b12f41af486daap16e507jsn846907cf2bfd"
-    }
-  }
-
-  $.ajax(settings).done(function (res) {
-    console.log(res);
-
-    let currentRate = res.rates.EUR.rate_for_amount;
-
-    const euroExchange = function () {
-
-      let arrayPrice = price[0] * currentRate / numb[0];
-      
-
-      convertedPrice = price.map(newPrice => {
-        return JSON.stringify(newPrice * arrayPrice);
-      });
-      console.log(convertedPrice); // this returns array of new prices
-
-
-//      let conditionalPrice = convertedPrice[0] / currentRate;
-// console.log(conditionalPrice);
-    
-//      divided = convertedPrice.map(dividedPrice => {
-//       return JSON.stringify(dividedPrice  );
-//     });
-
-//      console.log(divided);
-
-      for (let i = 0; i < price.length; i++) {
-        price[i] === convertedPrice[i] / currentRate;
-        $(".price").text("Price: EUR " + convertedPrice[i]);
-      }
-  }
-
-
-    $(".eur").on("click", function (e) {
-    e.preventDefault();
-    euroExchange();
-  });
-
-
-  $(".currency").on("click", function (e) {
-    e.preventDefault();
-
-    switch (currency) {
-      case "EUR":
-        euroExchange();
-        break;
-      case "CAD":
-        canadianExchange();
-        break;
-      case "USD":
-        dollarExchange();
-        break;
-      default: "USD"
-    };
-  });
-
-
-});
 });
