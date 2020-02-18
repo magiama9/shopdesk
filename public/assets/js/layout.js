@@ -119,6 +119,7 @@ $(document).ready(function() {
       console.log(convertedPrice); // this returns array of new prices
       // =====================================================//
 
+      dispTotal(calcTotal(convertedPrice), "eur");
       // LOOPS THROUGH EACH PRICE VALUE AND SETS THE TEXT TO THE REQUESTED VALUE
       // CONVERTS TO A FLOATING POINT NUMBER AND BACK TO A STRING TO GET THE CORRECT NUMBER OF DECIMALS
       price.forEach((val, idx) => {
@@ -140,7 +141,7 @@ $(document).ready(function() {
       // =====================================================//
 
       // LOOPS THROUGH EACH PRICE VALUE AND SETS THE TEXT TO THE REQUESTED VALUE
-
+      dispTotal(calcTotal(convertedPrice), "cad");
       price.forEach((val, idx) => {
         let selector = `#price${idx}`;
         $(selector).text(
@@ -160,7 +161,7 @@ $(document).ready(function() {
       // =====================================================//
 
       // LOOPS THROUGH EACH PRICE VALUE AND SETS THE TEXT TO THE REQUESTED VALUE
-
+      dispTotal(calcTotal(convertedPrice), "usd");
       price.forEach((val, idx) => {
         let selector = `#price${idx}`;
         $(selector).text("Price: $" + convertedPrice[idx]);
@@ -180,4 +181,33 @@ $(document).ready(function() {
       dollarExchange();
     });
   });
+
+  // Calculates subtotal
+  // Each price is coerced into a number before being added to the subtotal
+  const calcTotal = array => {
+    let subT = 0;
+    array.forEach(idx => {
+      subT += +idx;
+    });
+    return subT;
+  };
+
+  // Displays the subtotal in the subtotal span
+  // Switches currency symbol based on currency selected
+  const dispTotal = (num, curr) => {
+    let sub = num.toFixed(2);
+    switch (curr) {
+      case "usd":
+        $(".subtotal").text(`$${sub}`);
+        break;
+      case "cad":
+        $(".subtotal").text(`CAD ${sub}`);
+        break;
+      case "eur":
+        $(".subtotal").text(`\u20AC${sub}`);
+        break;
+    }
+  };
+
+  dispTotal(calcTotal(price), "usd");
 });
