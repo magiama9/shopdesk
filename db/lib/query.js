@@ -16,7 +16,8 @@ const addItem = obj => {
     description: obj.description,
     qty: obj.qty,
     price: obj.price,
-    img: obj.img
+    img: obj.img,
+    category: obj.category
   }).then(dbItems => {});
 };
 
@@ -55,6 +56,61 @@ const viewCart = (sessionID, res) => {
   db.Carts.findAll({ where: { session: sessionID } }).then(result => {
     console.log(result);
     res.render("cart", { cart: result });
+  });
+};
+
+const viewKitchen = (category, res) => {
+  db.Items.findAll({
+    where: {
+      category: category
+    }
+  }).then(catItems => {
+    // console.log(catItems)
+    res.render("kitchen", { items: catItems});
+  });
+};
+
+const viewBathroom = (category, res) => {
+  db.Items.findAll({
+    where: {
+      category: category
+    }
+  }).then(catItems => {
+    // console.log(catItems)
+    res.render("bathroom", { items: catItems});
+  });
+};
+
+const viewOutdoors = (category, res) => {
+  db.Items.findAll({
+    where: {
+      category: category
+    }
+  }).then(result => {
+    console.log(result)
+    res.render("outdoors", { outdoors: result});
+  });
+};
+
+const viewBedroom = (category, res) => {
+  db.Items.findAll({
+    where: {
+      category: category
+    }
+  }).then(catItems => {
+    console.log(catItems)
+    res.render("bedroom", { items: catItems});
+  });
+};
+
+const viewLivingroom = (category, res) => {
+  db.Items.findAll({
+    where: {
+      category: category
+    }
+  }).then(catItems => {
+    // console.log(catItems)
+    res.render("living-room", { items: catItems});
   });
 };
 
@@ -105,5 +161,10 @@ module.exports = {
   unSave: unSave,
   search: searchItem,
   decreaseQty: decreaseQty,
-  viewCart: viewCart
+  viewCart: viewCart,
+  viewKitchen: viewKitchen,
+  viewBathroom: viewBathroom,
+  viewLivingroom: viewLivingroom,
+  viewOutdoors: viewOutdoors,
+  viewBedroom: viewBedroom
 };
