@@ -1,5 +1,9 @@
 $(document).ready(function() {
   console.log("kanslkdf");
+
+  // USES A PROXY TO MAKE THE API WORK ON HEROKU & WITH CORS
+  // PROXY IS CORS-ANYWHERE
+  // WE CAN ALSO SET THIS UP AS A NODE PACKAGE AND USE IT TO FORWARD API CALLS THROUGH OUR SERVER
   jQuery.ajaxPrefilter(function(options) {
     if (options.crossDomain && jQuery.support.cors) {
       options.url = "https://cors-anywhere.herokuapp.com/" + options.url;
