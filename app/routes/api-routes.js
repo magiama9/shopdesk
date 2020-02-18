@@ -9,7 +9,6 @@ dotenv.config();
 const multer = require("multer");
 const multerS3 = require("multer-s3");
 const aws = require("aws-sdk");
-const path = require("path");
 
 // SETS STORAGE DESTINATION AND FILENAMES WHEN IMAGES ARE UPLOADED
 // const storage = multer.diskStorage({
@@ -24,7 +23,11 @@ const path = require("path");
 // INITIALIZES MULTER FOR UPLOADING
 // const upload = multer({ storage: storage });
 
-const s3 = new aws.S3({});
+const s3 = new aws.S3({
+  accessKeyId: process.env.AWS_ACCESS_KEY_ID,
+  secretAccessKey: process.env.AWS_SECRET_ACCESS_KEY,
+  region: "us-east-2"
+});
 
 const upload = multer({
   storage: multerS3({
