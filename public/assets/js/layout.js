@@ -1,5 +1,10 @@
 $(document).ready(function() {
   console.log("kanslkdf");
+  jQuery.ajaxPrefilter(function(options) {
+    if (options.crossDomain && jQuery.support.cors) {
+      options.url = "https://cors-anywhere.herokuapp.com/" + options.url;
+    }
+  });
   $("select").formSelect(); // materialize plugin for form where user is selecting state
   $(".dropdown-trigger").dropdown(); // materialize plugin for 'my account' button
 
@@ -87,7 +92,7 @@ $(document).ready(function() {
   const currency = ["EUR", "CAD", "USD"];
   const settings = {
     async: true,
-    origin:"https://guarded-brook-11312.herokuapp.com",
+    origin: "https://guarded-brook-11312.herokuapp.com",
     crossDomain: true,
     url: `https://currency-converter5.p.rapidapi.com/currency/convert?format=json&from=USD&to=${currency}&amount=1`,
     method: "GET",
