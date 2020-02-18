@@ -118,13 +118,13 @@ module.exports = function(app) {
             req.file.path.toLowerCase().lastIndexOf("/assets/")
           );
         }
-
-        // replaces \ globally with / for storing in the db
-        let filepath2 = filepath.replace(/\\/g, "/");
-
-        // Sets the img property of the new object to a filepath
-        obj.img = filepath2;
       }
+
+      // replaces \ globally with / for storing in the db
+      let filepath2 = filepath.replace(/\\/g, "/");
+
+      // Sets the img property of the new object to a filepath
+      obj.img = filepath2;
 
       // Adds an item to the database.
       query.addItem(obj);
@@ -224,7 +224,6 @@ module.exports = function(app) {
     res.redirect(logoutURL);
   });
 
-
   // =============================================================
 
   app.get("/kitchen", function(req, res) {
@@ -246,5 +245,4 @@ module.exports = function(app) {
   app.get("/living-room", function(req, res) {
     query.viewLivingroom("living-room", res);
   });
-
 };
