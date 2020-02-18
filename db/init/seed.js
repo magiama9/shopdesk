@@ -153,9 +153,5 @@ module.exports = seedDB = () => {
   add.addItem(kitchen1);
   add.addItem(kitchen2);
   add.addItem(kitchen3);
-  // add.addItem(outdoor3);
 
-
-  // Add an item to the cart on DB load
-  add.addToCart(123, 1);
 };
