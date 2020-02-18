@@ -152,7 +152,7 @@ module.exports = function(app) {
 
     // Adds an item to the database.
     query.addItem(obj);
-    res.redirect("/inventory");
+    // res.redirect("/inventory");
   });
 
   // PUT ROUTE FOR UPDATING INVENTORY QUANTITY
