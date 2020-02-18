@@ -1,11 +1,11 @@
 module.exports = function(sequelize, DataTypes) {
   const Items = sequelize.define("Items", {
     name: DataTypes.STRING,
-    price: DataTypes.INTEGER,
+    price: DataTypes.DECIMAL,
     description: DataTypes.STRING,
     qty: DataTypes.INTEGER,
+    category: DataTypes.STRING,
     img: DataTypes.STRING,
-    category: DataTypes.STRING
   });
   return Items;
 };

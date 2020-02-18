@@ -224,5 +224,27 @@ module.exports = function(app) {
     res.redirect(logoutURL);
   });
 
+
   // =============================================================
+
+  app.get("/kitchen", function(req, res) {
+    query.viewKitchen("kitchen", res);
+  });
+
+  app.get("/bathroom", function(req, res) {
+    query.viewBathroom("bathroom", res);
+  });
+
+  app.get("/bedroom", function(req, res) {
+    query.viewBedroom("bedroom", res);
+  });
+
+  app.get("/outdoors", function(req, res) {
+    query.viewOutdoors("outdoors", res);
+  });
+
+  app.get("/living-room", function(req, res) {
+    query.viewLivingroom("living-room", res);
+  });
+
 };

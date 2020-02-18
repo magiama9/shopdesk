@@ -18,7 +18,8 @@ const addItem = obj => {
     qty: obj.qty,
     category: obj.category,
     price: obj.price,
-    img: obj.img
+    img: obj.img,
+    category: obj.category
   }).then(dbItems => {});
 };
 
@@ -67,9 +68,65 @@ const viewCart = (sessionID, res) => {
   });
 };
 
+
+const viewKitchen = (category, res) => {
+  db.Items.findAll({
+    where: {
+      category: category
+    }
+  }).then(catItems => {
+    // console.log(catItems)
+    res.render("kitchen", { items: catItems});
+  });
+};
+
+const viewBathroom = (category, res) => {
+  db.Items.findAll({
+    where: {
+      category: category
+    }
+  }).then(catItems => {
+    // console.log(catItems)
+    res.render("bathroom", { items: catItems});
+  });
+};
+
+const viewOutdoors = (category, res) => {
+  db.Items.findAll({
+    where: {
+      category: category
+    }
+  }).then(result => {
+    console.log(result)
+    res.render("outdoors", { outdoors: result});
+  });
+};
+
+const viewBedroom = (category, res) => {
+  db.Items.findAll({
+    where: {
+      category: category
+    }
+  }).then(catItems => {
+    console.log(catItems)
+    res.render("bedroom", { items: catItems});
+  });
+};
+
+const viewLivingroom = (category, res) => {
+  db.Items.findAll({
+    where: {
+      category: category
+    }
+  }).then(catItems => {
+    // console.log(catItems)
+    res.render("living-room", { items: catItems});
+  });
+};
+
+
 // Remove items from the cart
 // Makes sure it only deletes items for the given session
-// Expects ID to be the ID of a selected item and valid
 const removeFromCart = (sessionID, id) => {
   db.Carts.destroy({ where: { session: sessionID, id: id } }).then(result => {
     return result;
@@ -113,5 +170,10 @@ module.exports = {
   removeFromCart: removeFromCart,
   search: searchItem,
   decreaseQty: decreaseQty,
-  viewCart: viewCart
+  viewCart: viewCart,
+  viewKitchen: viewKitchen,
+  viewBathroom: viewBathroom,
+  viewLivingroom: viewLivingroom,
+  viewOutdoors: viewOutdoors,
+  viewBedroom: viewBedroom
 };

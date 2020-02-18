@@ -6,10 +6,7 @@ $(document).ready(function() {
   // All the content lives on one html page, so we're adding hide/show classes for all links and buttons
 
   // Class menu added to these buttons: kitchen, bedroom, bathroom, living room, outdoors
-  $(".menu").on("click", function() {
-    $(".initial").addClass("hide");
-    $(".product-display").removeClass("hide");
-  });
+ 
 
   // Listener to post to the search route when enter is pressed on the search input field
   $(document).keyup(function(event) {

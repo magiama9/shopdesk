@@ -1,0 +1,113 @@
+<nav class="grey darken-3">
+  <div class="nav-wrapper">
+    <ul>
+      <li>
+        <div class="center row">
+          <div class="col 12 ">
+            <div class="row" id="topbarsearch">
+              <div class="input-field col s12 s6 text">
+                <i class="green-text material-icons prefix">search</i>
+                <input type="text" placeholder="search" id="autocomplete-input" class="autocomplete text">
+              </div>
+            </div>
+          </div>
+        </div>
+      </li>
+    </ul>
+
+    <ul class="right">
+
+      <li><a href="/"><i class="home green-text material-icons left" id="home">home</i>Home</a></li>
+      <li><a href="/cart"><i class="material-icons left shopping-cart">shopping_cart</i>Your cart</a></li>
+      <li><a href="#" class="green-text"><i class="material-icons left">input</i>Login</a></li>
+      <li><a href="#"><i class="material-icons left">person_add</i>Signup</li>
+      <a class='dropdown-trigger btn red small-text' href='#' data-target='dropdown1'><i
+          class="material-icons left shopping-cart">people_outline</i>My account</a>
+      <ul id='dropdown1' class='dropdown-content'>
+        <li><a href="#" class="red-text login">Login</a></li>
+        <li><a href="#" class="red-text signup">Sign up</a></li>
+        <li><a href="/productupload" class="red-text upload">Admin</a></li>
+      </ul>
+    </ul>
+  </div>
+</nav>
+
+<nav class="white nav2">
+  <div class="nav-wrapper">
+    <a href="" class="brand-logo left"><img src="assets/images/logo.png" width="150px" height="60px" /></a>
+
+    <ul id="nav-mobile" class="right">
+      <li><a href="/kitchen" class="green-text menu">Kitchen</a></li>
+      <li><a href="/bedroom" class="black-text menu">Bedroom</a></li>
+      <li><a href="/living-room" class="green-text menu">Living room</a></li>
+      <li><a href="/bathroom" class="black-text menu">Bathroom</a></li>
+      <li><a href="/outdoors" class="green-text menu">Outdoors</a></li>
+    </ul>
+  </div>
+</nav>
+
+
+<!-- This is a placeholder for all products-->
+<div class="row">
+  <div class="col s12 m12">
+    <div class="card product-display">
+      <div class="row">
+        <div class="col s12 m12">
+          <div class="col s12 m12">
+            <div class="card horizontal">
+
+              <div class="card-image">
+                <div class="card-action"></div>
+                <img src="assets/images/1.jpeg">
+              </div>
+              <div class="card-stacked">
+                <div class="card-content">
+                  <h5>Let's make your home beautiful together</h5>
+                  <div class="card-action"></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+
+      <div class="card-content">
+        <div class="row">
+          {{#each items}}
+          <div class="col s12 m3">
+            <div class="card main item">
+              <div class="card-image">
+                <img src="{{this.dataValues.img}}" width="90px" height="160px">
+              </div>
+              <div class="card-action">
+                <p class="item product-name">Name: {{this.dataValues.name}}</p>
+                <p class="item description">Description: {{this.dataValues.description}}</p>
+                <p class="item price">Price: {{this.dataValues.price}}</p>
+                <br>
+                <button class="btn add-to-cart waves-effect waves-light" id="add-to-cart" type="submit" name="action" data-id="{{this.dataValues.id}}">Add to cart
+                  <i class="material-icons right">add_shopping_cart</i>
+                </button>
+              </div>
+            </div>
+          </div>
+          {{/each}}
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<footer class="page-footer white">
+  <div class="container">
+    <div class="row center align">
+      <div class="col l12 s12">
+        <img src="assets/images/logo.png" width="150px" height="60px" />
+        <h5 class="green-text">Elegant living costs less with Elite Modern</h5>
+      </div>
+    </div>
+  </div>
+  <div class="footer-copyright black-text">
+    © Copyright Elite Modern
+  </div>
+</footer>
