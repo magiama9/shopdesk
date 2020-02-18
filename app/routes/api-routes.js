@@ -112,7 +112,6 @@ module.exports = function(app) {
 
     // stores the req.body as a new object
     let obj = req.body;
-    console.log(req.file.location);
     // initializes filepath variable
     let filepath;
 
@@ -144,8 +143,10 @@ module.exports = function(app) {
 
     // // Sets the img property of the new object to a filepath
     // obj.img = filepath2;
+    if (typeof req.file != "undefined") {
+      obj.img = req.file.location;
+    }
 
-    obj.img = req.file.location;
     // Adds an item to the database.
     query.addItem(obj);
     res.redirect("/inventory");
