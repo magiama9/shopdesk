@@ -6,12 +6,12 @@ $(document).ready(function() {
   // All the content lives on one html page, so we're adding hide/show classes for all links and buttons
 
   // Class menu added to these buttons: kitchen, bedroom, bathroom, living room, outdoors
- 
 
   // Listener to post to the search route when enter is pressed on the search input field
   $(document).keyup(function(event) {
     if ($("#autocomplete-input").is(":focus") && event.key == "Enter") {
-      $.post(`/search/${$("#autocomplete-input").val()}`);
+      let search = $("#autocomplete-input").val();
+      window.location.href = `/search/${search}`;
     }
   });
 
@@ -29,7 +29,6 @@ $(document).ready(function() {
     $.ajax("/delete/cart/" + id, {
       type: "delete"
     }).then(() => {
-
       // THIS IS A HACKY WAY TO DO THIS
       // WE SHOULD REALLY BE ABLE TO DYNAMICALLY RENDER NEW CONTENT
       // MAYBE WHEN WE LEARN REACT :{

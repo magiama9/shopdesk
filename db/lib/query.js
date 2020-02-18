@@ -36,7 +36,7 @@ const searchItem = (searchTerm, res) => {
     // THESE RENDER FUNCTIONS SHOULD REALLY HAPPEN IN THE ROUTES, NOT HERE
     // WE SHOULD RETURN VALUES OUT OF THESE FUNCTIONS TO USE IN THE RENDER
     // ASYNCHRONICITY BECOMES AN ISSUE IF WE DO SO
-    res.render("index", { items: search });
+    res.render("search", { items: search });
   });
 };
 
