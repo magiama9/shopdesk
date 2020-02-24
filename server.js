@@ -1,5 +1,6 @@
 // Express and Express Handlebars Dependencies
 const express = require("express");
+const compression = require("compression");
 const session = require("express-session");
 const exphb = require("express-handlebars");
 const dotenv = require("dotenv");
@@ -17,7 +18,7 @@ const seed = require("./db/init/seed");
 
 // Initializes Express
 const app = express();
-
+app.use(compression());
 // DEFINES SESSION INFO FOR DEV/PRODUCTION
 const sess = {
   secret: process.env.SESSION_SECRET,
