@@ -45,3 +45,23 @@ h5{
     margin-top: -100px;
 }
 
+.admin{
+    font-size: x-small;
+}
+
+.currency{
+box-shadow: none;
+}
+
+.phone-mode{
+    background-color: white;
+    border-color: white;
+    color:black;
+    box-shadow: none;
+    font-size: large;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+}
+
+.small-screen{
+    font-size: x-small;
+}
