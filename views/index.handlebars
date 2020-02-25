@@ -16,9 +16,9 @@
     </ul>
 
     <ul class="right">
-      <li><a href="/"><i class="home green-text material-icons left" id="home">home</i>Home</a></li>
-      <li><a href="/cart"><i class="material-icons left shopping-cart">shopping_cart</i>Your cart</a></li>
-      <li><a class='btn red small-text' href='/inventory'><i
+      <li><a href="/" class="green-text"><i class="home green-text material-icons left" id="home">home</i>Home</a></li>
+      <li><a href="/cart" class="green-text"><i class="material-icons green-text left shopping-cart">shopping_cart</i>Your cart</a></li>
+      <li><a class='btn red small-text admin' href='/inventory'><i
             class="material-icons left shopping-cart">people_outline</i>Admin</a></li>
     </ul>
   </div>
@@ -31,16 +31,26 @@
   <div class="nav-wrapper">
     <a href="/" class="brand-logo left"><img src="assets/images/logo.png" width="150px" height="60px" /></a>
 
-    <ul id="nav-mobile" class="right">
-      
+    <ul id="nav-mobile" class="right hide-on-small-only">
       <li><a href="/kitchen" class="green-text menu">Kitchen</a></li>
       <li><a href="/bedroom" class="black-text menu">Bedroom</a></li>
       <li><a href="/living-room" class="green-text menu">Living room</a></li>
       <li><a href="/bathroom" class="black-text menu">Bathroom</a></li>
       <li><a href="/outdoors" class="green-text menu">Outdoors</a></li>
     </ul>
+
+<!--this will show on a small screen only-->
+    <ul id="nav-mobile" class="hide-on-med-and-up">
+      <li><a href="/kitchen" class="green-text menu small-screen">Kitchen</a></li>
+      <li><a href="/bedroom" class="black-text menu small-screen">Bedroom</a></li>
+      <li><a href="/living-room" class="green-text menu small-screen">Living room</a></li>
+      <li><a href="/bathroom" class="black-text menu small-screen">Bathroom</a></li>
+      <li><a href="/outdoors" class="green-text menu small-screen">Outdoors</a></li>
+    </ul>
+
   </div>
 </nav>
+
 
 
 <!--landing page-->
@@ -51,9 +61,13 @@
       <div class="card-image">
         <img src="assets/images/homepic1.jpg">
       </div>
-      <div class="card-action">
+      <div class="card-action hide-on-small-only">
         <a href="#"><i class="left  material-icons">phone</i>+571 555 0000</a>
         <a href="#" class="right"><i class="right material-icons">mail_outline</i>EliteModern@gmail.com</a>
+      </div>
+       <div class="card-action hide-on-med-and-up">
+        <a href="#"><i class="left  material-icons">phone</i></a>
+        <a href="#" class="right"><i class="right material-icons">mail_outline</i></a>
       </div>
     </div>
   </div>
